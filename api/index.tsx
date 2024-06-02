@@ -23,7 +23,7 @@ export const app = new Frog({
 
 let player = {
   name: 'player',
-  life: 1,
+  life: 100,
   timegated: 1,
   forgednumber: 0,
   timeremaining: "9000",
@@ -34,6 +34,26 @@ let player = {
 
 let enemy1 = {
   name: 'ENEMY1',
+  life: 50, 
+};
+
+let enemy2 = {
+  name: 'ENEMY2',
+  life: 50, 
+};
+
+let enemy3 = {
+  name: 'ENEMY3',
+  life: 50, 
+};
+
+let enemy4 = {
+  name: 'ENEMY4',
+  life: 50, 
+};
+
+let enemy5 = {
+  name: 'ENEMY5',
   life: 50, 
 };
 
@@ -1014,7 +1034,7 @@ app.frame('/counterResult', (c) => {
     if (counterRandomNum < 4) {
         // succesful counter
         enemy1.life -= 10
-        progressMarker = { ...progressMarker, previousFrame: '/counterResult' };
+        
         if (enemy1.life > 0) {
           //show counter frame
 
@@ -1060,18 +1080,8 @@ app.frame('/counterResult', (c) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////
-//trap system
+  /////////////////////////////////////////////////////////////////////////////////////////////////////
+  //trap system
 
 app.frame('/trap1', (c) => {
     let image;
@@ -1397,13 +1407,13 @@ app.frame('/trapwounded', (c) => {
 
 
 
-//////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////////////
 
 
 
 
 
-app.frame('/narrative1', (c) => {
+  app.frame('/narrative1', (c) => {
     let image;
     let intents;
 
@@ -1444,61 +1454,16 @@ app.frame('/narrative1', (c) => {
         ];
 
 
-    return c.res({
-       
-        image: image,
-        intents: intents
-    });
-});
-
-
-app.frame('/narrative2', (c) => {
-    let image;
-    let intents;
-
-
-        image = (
-            <div
-                style={{
-                    alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmcvnPFeYRWkH4qPagsDHiom4p2yUrfistTX7HheBPwawM)',
-                    backgroundSize: '100% 100%',
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    flexWrap: 'nowrap',
-                    height: '100%',
-                    justifyContent: 'center',
-                    textAlign: 'center',
-                    width: '100%',
-                    color: '#E1A411',
-                    fontStyle: 'normal',
-                    letterSpacing: '-0.025em',
-                    lineHeight: 1.4,
-                    marginTop: 0,
-                    padding: '0 120px',
-                    whiteSpace: 'pre-wrap',
-                }}
-            >
-                <p style={{ fontSize : '50px', margin : '0', marginTop : '-500', color: 'red'  }}> {`Narrative 2`} </p>
-              
-            </div>
-        );
-        intents = [
+        return c.res({
            
-           <Button action="/trap2">Option1</Button>,
-           <Button action="/battle2">Option2</Button>,
-           
-        ];
-
-
-    return c.res({
-       
-        image: image,
-        intents: intents
+            image: image,
+            intents: intents
+        });
     });
-});
+
+
+  ////////////////////////////////////////////////////////////////////////////
+  //narrative 3 entire line
 
 
 
@@ -1539,6 +1504,1047 @@ app.frame('/narrative3', (c) => {
            
            <Button action="/battle3">Continue</Button>,
            
+           
+        ];
+
+
+    return c.res({
+       
+        image: image,
+        intents: intents
+    });
+});
+
+
+
+//////////////////////////////////////////////////////////////
+//batle3 system
+
+app.frame('/battle3', (c) => {
+    let image;
+    let intents;
+
+
+   progressMarker = { ...progressMarker, previousFrame: '/battle3' };
+
+
+    if (player.specials === 0) {
+      
+        image = 'https://gateway.pinata.cloud/ipfs/QmYxN6UJJER3U24RrEUQuKCpyWP4c3uo2ikEN3zCHErBM3';
+        intents = [<Button action="/SwiftAttack3">Swift Attack</Button>,<Button action="/HeavyAttack3">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
+    } else {
+ 
+        image = 'https://gateway.pinata.cloud/ipfs/QmYxN6UJJER3U24RrEUQuKCpyWP4c3uo2ikEN3zCHErBM3';
+        intents = [<Button action="/SwiftAttack3">SwiftAtk</Button>,<Button action="/HeavyAttack3">PowerAtk</Button>,<Button action="/specialAttack3">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
+
+
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+app.frame('/fight2-3', (c) => {
+    let image;
+    let intents;
+    const fightRandomImage3 = Math.floor(Math.random() * 3);
+
+   progressMarker = { ...progressMarker, previousFrame: '/fight2-3' };
+
+
+    if (player.specials === 0) {
+      //player has no special attack
+
+        if (fightRandomImage3 < 1) {
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmR8kC4gUEWHxAKwvMJxsz6km43vNyNFaq7rT7edktbGxL';
+          intents = [<Button action="/SwiftAttack3">Swift Attack</Button>,<Button action="/HeavyAttack3">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
+
+        } else if (fightRandomImage3 === 1) {
+          image = 'https://gateway.pinata.cloud/ipfs/Qmeej7fcEzjimVYuvLLaNkqKJw8LE4G4P29THcFKkFfWyj';
+          intents = [<Button action="/SwiftAttack3">Swift Attack</Button>,<Button action="/HeavyAttack3">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
+
+        } else {
+          image = 'https://gateway.pinata.cloud/ipfs/QmRVPUNzsD7nMPNNFR3zVsc3x4KhtpeyJxzBfbNZ1zK4d4';
+          intents = [<Button action="/SwiftAttack3">Swift Attack</Button>,<Button action="/HeavyAttack3">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
+
+        }
+        
+    } else {
+ 
+        image = 'https://gateway.pinata.cloud/ipfs/QmRVPUNzsD7nMPNNFR3zVsc3x4KhtpeyJxzBfbNZ1zK4d4';
+        intents = [<Button action="/SwiftAttack3">SwiftAtk</Button>,<Button action="/HeavyAttack3">PowerAtk</Button>,<Button action="/specialAttack3">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
+
+
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+
+app.frame('/SwiftAttack3', (c) => {
+    let image;
+    let intents;
+
+    const swiftRandomNum3 = Math.floor(Math.random() * 8);
+    const swiftRandomMiss3 = Math.floor(Math.random() * 3);
+
+
+    if (swiftRandomNum3 < 3) {
+        // glancing blow
+        enemy3.life -= 7
+
+        if (enemy3.life > 0) {
+          //enemy is still alive
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmSLsUjxkrjqSsqNKrmPaaiEu4qygSR8MtrehgLHcdbfbc';
+          intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
+
+        } else {
+          // enemy is dead
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative5">Continue</Button>];
+
+
+        }
+        
+
+
+    } else if (swiftRandomNum3 === 3) {
+      // attack missed
+      if (swiftRandomMiss3 < 1) {
+        image = 'https://gateway.pinata.cloud/ipfs/QmbZ964voi8yRCcyzaBWgVqxKYNrYUbzLCyoPPSWzaw2J7';
+        intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
+
+      } else {
+
+        image = 'https://gateway.pinata.cloud/ipfs/QmV5oZgViyiw6cihQtwP2ZFyD8WJRqFkjL1TgsYxN1gQdp';
+        intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
+
+      }
+
+
+
+    } else if (swiftRandomNum3 === 4) {
+      //critical hit
+      enemy3.life -= 28
+
+      if (enemy3.life > 0) {
+          //enemy is still alive
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmQpk4VqwCCgoMN9P5RSW2jaLDtyTrR7C2q3gE5p5vNMNj';
+          intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
+
+        } else {
+          // enemy is dead
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative5">Continue</Button>];
+
+
+        }
+      
+
+    } else {
+        // normal attack
+        enemy3.life -= 14
+
+        if (enemy3.life > 0) {
+          //enemy is still alive
+
+            if (swiftRandomMiss3 < 1) {
+              image = 'https://gateway.pinata.cloud/ipfs/QmViDE4Th6MB5REsZA144cKgJWmhAMfkAehh89UHEiVVog';
+              intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
+
+            }else if (swiftRandomMiss3 === 1) {
+
+              image = 'https://gateway.pinata.cloud/ipfs/QmQZ8zgwBEZCyBWvbXo7JUWPzLu5wGPzU4f9kauxgmjAje';
+              intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
+
+            } else {
+
+              image = 'https://gateway.pinata.cloud/ipfs/QmcTZnXczFqYX14rdrfnj3aZ54ULBB9sRUkopsQe4kSeNB';
+              intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
+
+            }
+
+          
+
+        } else {
+          // enemy is dead
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative5">Continue</Button>];
+
+
+        }
+
+        
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+
+
+app.frame('/HeavyAttack3', (c) => {
+    let image;
+    let intents;
+
+
+    const heavyRandomNum3 = Math.floor(Math.random() * 10);
+    const heavyRandomMiss3 = Math.floor(Math.random() * 2);
+
+
+    if (heavyRandomNum3 < 4) {
+        // glancing blow
+        enemy3.life -= 10
+
+        if (enemy3.life > 0) {
+          //enemy is still alive
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmSLsUjxkrjqSsqNKrmPaaiEu4qygSR8MtrehgLHcdbfbc';
+          intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
+
+        } else {
+          // enemy is dead
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative5">Continue</Button>];
+
+
+        }
+        
+
+
+    } else if (heavyRandomNum3 === 4) {
+        // attack missed
+        if (heavyRandomMiss3 < 1) {
+          image = 'https://gateway.pinata.cloud/ipfs/QmbZ964voi8yRCcyzaBWgVqxKYNrYUbzLCyoPPSWzaw2J7';
+          intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
+
+        } else {
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmV5oZgViyiw6cihQtwP2ZFyD8WJRqFkjL1TgsYxN1gQdp';
+          intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
+
+        }
+
+    } else if (heavyRandomNum3 === 5) {
+          // attack missed
+          if (heavyRandomMiss3 < 1) {
+            image = 'https://gateway.pinata.cloud/ipfs/QmbZ964voi8yRCcyzaBWgVqxKYNrYUbzLCyoPPSWzaw2J7';
+            intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
+
+          } else {
+
+            image = 'https://gateway.pinata.cloud/ipfs/QmV5oZgViyiw6cihQtwP2ZFyD8WJRqFkjL1TgsYxN1gQdp';
+            intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
+
+          }
+
+
+    } else if (heavyRandomNum3 === 6) {
+      //critical hit
+      enemy3.life -= 40
+
+      if (enemy3.life > 0) {
+          //enemy is still alive
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmQpk4VqwCCgoMN9P5RSW2jaLDtyTrR7C2q3gE5p5vNMNj';
+          intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
+
+        } else {
+          // enemy is dead
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative5">Continue</Button>];
+
+
+        }      
+
+    } else {
+        // normal attack
+        enemy3.life -= 20
+
+        if (enemy3.life > 0) {
+          //enemy is still alive
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmQh9GBmb654DzCciGBDCN2L5doaMJxs7npuWJMkHZt8Zp';
+          intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
+
+        } else {
+          // enemy is dead
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative5">Continue</Button>];
+
+
+        }
+
+        
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+app.frame('/specialAttack3', (c) => {
+    let image;
+    let intents;
+    player.specials -=1
+   
+    const specialRandomNum3 = Math.floor(Math.random() * 8);
+
+    const specialRandomMiss3 = Math.floor(Math.random() * 2);
+    //progressMarker = { ...progressMarker, previousFrame: '/specialAttack' };
+
+
+    if (specialRandomNum3 < 3) {
+        //unsuccessful special attack 
+
+        if (specialRandomMiss3 < 1) {
+            image = 'https://gateway.pinata.cloud/ipfs/QmV4Mvd7Vx8mHrYsxJkuhYNxohC5x9ZPo2Bib5Dx5AokEQ';
+            intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
+
+        } else {
+
+            image = 'https://gateway.pinata.cloud/ipfs/QmVT2zFLdm7WXYqnhZ63UmtadikPYJ9viYS2YqiWxpGk5G';
+            intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
+
+        }
+              
+
+    } else {
+        // successful special attack
+        enemy3.life -= 25
+
+        if (enemy3.life > 0) {
+          //enemy is still alive
+
+          if (specialRandomMiss3 < 1) {
+            image = 'https://gateway.pinata.cloud/ipfs/QmWzb6y1NoNRts5H776dshNVkrmFJcYVtvaxAQ7U7A7jsB';
+            intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
+
+          } else {
+
+              image = 'https://gateway.pinata.cloud/ipfs/QmdEHVWZsR9XDbuoYnKdU2qkFTPA9iyVHDBFv6r5E237Kq';
+              intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
+
+          }
+
+
+        } else {
+          // enemy is dead
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative5">Continue</Button>];
+
+
+        }
+
+        
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+
+
+
+
+app.frame('/dodgeResult3', (c) => {
+    let image;
+    let intents;
+
+    //progressMarker = { ...progressMarker, previousFrame: '/dodgeResult' };
+    const dodgeRandomNum3 = Math.floor(Math.random() * 10);
+
+
+    if (dodgeRandomNum3 < 6) {
+        // player dodged
+        image = 'https://gateway.pinata.cloud/ipfs/QmWfFCDtRMe6wPv9K7gkDtHSNt9GpAvkw247pxPoeJELvt';
+        intents = [<Button action="/fight2-3">Continue</Button>];
+
+    } else {
+        // player is hit
+        player.life -= 15
+        if (player.life > 0) {
+          //player is still alive
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnjewER2GNLSwyrZcqDrd4AzMSkhRddJBDCeAnZS6mac';
+          intents = [<Button action="/fight2-3">Continue</Button>];
+
+        } else {
+          // player is dead
+          progressMarker = { ...progressMarker, deathFrame: '/page12' };
+          deathFrame = "/narrative3";
+          currentframe = "checktime";
+          image = 'https://gateway.pinata.cloud/ipfs/QmQXehPigXANi1MQHTXVsWi5PL4oBA9mC2jtmA6sk2WPQM';
+          intents = [<Button action="/fleedeath">Continue</Button>];
+
+
+        }
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+app.frame('/counterResult3', (c) => {
+    let image;
+    let intents;
+
+   
+    const counterRandomNum3 = Math.floor(Math.random() * 10);
+
+
+    if (counterRandomNum3 < 4) {
+        // succesful counter
+        enemy3.life -= 10
+        
+
+        if (enemy3.life > 0) {
+          //show counter frame
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmPKbeqxXhFTWA6YFfSetPYjRzqEtTbSFL7rnqw5qUjnpp';
+          intents = [<Button action="/fight2-3">Continue</Button>];
+
+        } else {
+          // enemy is dead
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative5">Continue</Button>];
+
+        }
+        
+
+    } else {
+        // player is hit
+        player.life -= 15
+        if (player.life > 0) {
+          //player is still alive
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnjewER2GNLSwyrZcqDrd4AzMSkhRddJBDCeAnZS6mac';
+          intents = [<Button action="/fight2-3">Continue</Button>];
+
+        } else {
+          // player is dead
+          progressMarker = { ...progressMarker, deathFrame: '/page12' };
+          deathFrame = "/narrative3";
+          currentframe = "checktime";
+          image = 'https://gateway.pinata.cloud/ipfs/QmQXehPigXANi1MQHTXVsWi5PL4oBA9mC2jtmA6sk2WPQM';
+          intents = [<Button action="/fleedeath">Continue</Button>];
+
+
+        }
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+app.frame('/narrative5', (c) => {
+    let image;
+    let intents;
+
+
+        image = (
+            <div
+                style={{
+                    alignItems: 'center',
+                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmcvnPFeYRWkH4qPagsDHiom4p2yUrfistTX7HheBPwawM)',
+                    backgroundSize: '100% 100%',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flexWrap: 'nowrap',
+                    height: '100%',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                    width: '100%',
+                    color: '#E1A411',
+                    fontStyle: 'normal',
+                    letterSpacing: '-0.025em',
+                    lineHeight: 1.4,
+                    marginTop: 0,
+                    padding: '0 120px',
+                    whiteSpace: 'pre-wrap',
+                }}
+            >
+                <p style={{ fontSize : '50px', margin : '0', marginTop : '-500', color: 'red'  }}> {`Narrative 5`} </p>
+              
+            </div>
+        );
+        intents = [
+           
+           <Button action="/battle5">Fight</Button>,
+          
+           
+        ];
+
+
+    return c.res({
+       
+        image: image,
+        intents: intents
+    });
+});
+
+
+
+
+
+//////////////////////////////////////////////////////////////
+//batle5 system
+
+app.frame('/battle5', (c) => {
+    let image;
+    let intents;
+
+
+   progressMarker = { ...progressMarker, previousFrame: '/battle5' };
+
+
+    if (player.specials === 0) {
+      
+        image = 'https://gateway.pinata.cloud/ipfs/QmYxN6UJJER3U24RrEUQuKCpyWP4c3uo2ikEN3zCHErBM3';
+        intents = [<Button action="/SwiftAttack5">Swift Attack</Button>,<Button action="/HeavyAttack5">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
+    } else {
+ 
+        image = 'https://gateway.pinata.cloud/ipfs/QmYxN6UJJER3U24RrEUQuKCpyWP4c3uo2ikEN3zCHErBM3';
+        intents = [<Button action="/SwiftAttack5">SwiftAtk</Button>,<Button action="/HeavyAttack5">PowerAtk</Button>,<Button action="/specialAttack5">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
+
+
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+app.frame('/fight2-5', (c) => {
+    let image;
+    let intents;
+    const fightRandomImage5 = Math.floor(Math.random() * 3);
+
+   progressMarker = { ...progressMarker, previousFrame: '/fight2-5' };
+
+
+    if (player.specials === 0) {
+      //player has no special attack
+
+        if (fightRandomImage5 < 1) {
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmR8kC4gUEWHxAKwvMJxsz6km43vNyNFaq7rT7edktbGxL';
+          intents = [<Button action="/SwiftAttack5">Swift Attack</Button>,<Button action="/HeavyAttack5">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
+
+        } else if (fightRandomImage5 === 1) {
+          image = 'https://gateway.pinata.cloud/ipfs/Qmeej7fcEzjimVYuvLLaNkqKJw8LE4G4P29THcFKkFfWyj';
+          intents = [<Button action="/SwiftAttack5">Swift Attack</Button>,<Button action="/HeavyAttack5">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
+
+        } else {
+          image = 'https://gateway.pinata.cloud/ipfs/QmRVPUNzsD7nMPNNFR3zVsc3x4KhtpeyJxzBfbNZ1zK4d4';
+          intents = [<Button action="/SwiftAttack5">Swift Attack</Button>,<Button action="/HeavyAttack5">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
+
+        }
+        
+    } else {
+ 
+        image = 'https://gateway.pinata.cloud/ipfs/QmRVPUNzsD7nMPNNFR3zVsc3x4KhtpeyJxzBfbNZ1zK4d4';
+        intents = [<Button action="/SwiftAttack5">SwiftAtk</Button>,<Button action="/HeavyAttack5">PowerAtk</Button>,<Button action="/specialAttack5">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
+
+
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+
+app.frame('/SwiftAttack5', (c) => {
+    let image;
+    let intents;
+
+    const swiftRandomNum5 = Math.floor(Math.random() * 8);
+    const swiftRandomMiss5 = Math.floor(Math.random() * 3);
+
+
+    if (swiftRandomNum5 < 3) {
+        // glancing blow
+        enemy5.life -= 7
+
+        if (enemy5.life > 0) {
+          //enemy is still alive
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmSLsUjxkrjqSsqNKrmPaaiEu4qygSR8MtrehgLHcdbfbc';
+          intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
+
+        } else {
+          // enemy is dead
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative6">Continue</Button>];
+
+
+        }
+        
+
+
+    } else if (swiftRandomNum5 === 3) {
+      // attack missed
+      if (swiftRandomMiss5 < 1) {
+        image = 'https://gateway.pinata.cloud/ipfs/QmbZ964voi8yRCcyzaBWgVqxKYNrYUbzLCyoPPSWzaw2J7';
+        intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
+
+      } else {
+
+        image = 'https://gateway.pinata.cloud/ipfs/QmV5oZgViyiw6cihQtwP2ZFyD8WJRqFkjL1TgsYxN1gQdp';
+        intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
+
+      }
+
+
+
+    } else if (swiftRandomNum5 === 4) {
+      //critical hit
+      enemy5.life -= 28
+
+      if (enemy5.life > 0) {
+          //enemy is still alive
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmQpk4VqwCCgoMN9P5RSW2jaLDtyTrR7C2q3gE5p5vNMNj';
+          intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
+
+        } else {
+          // enemy is dead
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative6">Continue</Button>];
+
+
+        }
+      
+
+    } else {
+        // normal attack
+        enemy5.life -= 14
+
+        if (enemy5.life > 0) {
+          //enemy is still alive
+
+            if (swiftRandomMiss5 < 1) {
+              image = 'https://gateway.pinata.cloud/ipfs/QmViDE4Th6MB5REsZA144cKgJWmhAMfkAehh89UHEiVVog';
+              intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
+
+            }else if (swiftRandomMiss5 === 1) {
+
+              image = 'https://gateway.pinata.cloud/ipfs/QmQZ8zgwBEZCyBWvbXo7JUWPzLu5wGPzU4f9kauxgmjAje';
+              intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
+
+            } else {
+
+              image = 'https://gateway.pinata.cloud/ipfs/QmcTZnXczFqYX14rdrfnj3aZ54ULBB9sRUkopsQe4kSeNB';
+              intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
+
+            }
+
+          
+
+        } else {
+          // enemy is dead
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative6">Continue</Button>];
+
+
+        }
+
+        
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+
+
+app.frame('/HeavyAttack5', (c) => {
+    let image;
+    let intents;
+
+
+    const heavyRandomNum5 = Math.floor(Math.random() * 10);
+    const heavyRandomMiss5 = Math.floor(Math.random() * 2);
+
+
+    if (heavyRandomNum5 < 4) {
+        // glancing blow
+        enemy5.life -= 10
+
+        if (enemy5.life > 0) {
+          //enemy is still alive
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmSLsUjxkrjqSsqNKrmPaaiEu4qygSR8MtrehgLHcdbfbc';
+          intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
+
+        } else {
+          // enemy is dead
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative6">Continue</Button>];
+
+
+        }
+        
+
+
+    } else if (heavyRandomNum5 === 4) {
+        // attack missed
+        if (heavyRandomMiss5 < 1) {
+          image = 'https://gateway.pinata.cloud/ipfs/QmbZ964voi8yRCcyzaBWgVqxKYNrYUbzLCyoPPSWzaw2J7';
+          intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
+
+        } else {
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmV5oZgViyiw6cihQtwP2ZFyD8WJRqFkjL1TgsYxN1gQdp';
+          intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
+
+        }
+
+    } else if (heavyRandomNum5 === 5) {
+          // attack missed
+          if (heavyRandomMiss5 < 1) {
+            image = 'https://gateway.pinata.cloud/ipfs/QmbZ964voi8yRCcyzaBWgVqxKYNrYUbzLCyoPPSWzaw2J7';
+            intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
+
+          } else {
+
+            image = 'https://gateway.pinata.cloud/ipfs/QmV5oZgViyiw6cihQtwP2ZFyD8WJRqFkjL1TgsYxN1gQdp';
+            intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
+
+          }
+
+
+    } else if (heavyRandomNum5 === 6) {
+      //critical hit
+      enemy5.life -= 40
+
+      if (enemy5.life > 0) {
+          //enemy is still alive
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmQpk4VqwCCgoMN9P5RSW2jaLDtyTrR7C2q3gE5p5vNMNj';
+          intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
+
+        } else {
+          // enemy is dead
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative6">Continue</Button>];
+
+
+        }      
+
+    } else {
+        // normal attack
+        enemy5.life -= 20
+
+        if (enemy5.life > 0) {
+          //enemy is still alive
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmQh9GBmb654DzCciGBDCN2L5doaMJxs7npuWJMkHZt8Zp';
+          intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
+
+        } else {
+          // enemy is dead
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative6">Continue</Button>];
+
+
+        }
+
+        
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+app.frame('/specialAttack5', (c) => {
+    let image;
+    let intents;
+    player.specials -=1
+   
+    const specialRandomNum5 = Math.floor(Math.random() * 8);
+
+    const specialRandomMiss5 = Math.floor(Math.random() * 2);
+    //progressMarker = { ...progressMarker, previousFrame: '/specialAttack' };
+
+
+    if (specialRandomNum5 < 3) {
+        //unsuccessful special attack 
+
+        if (specialRandomMiss5 < 1) {
+            image = 'https://gateway.pinata.cloud/ipfs/QmV4Mvd7Vx8mHrYsxJkuhYNxohC5x9ZPo2Bib5Dx5AokEQ';
+            intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
+
+        } else {
+
+            image = 'https://gateway.pinata.cloud/ipfs/QmVT2zFLdm7WXYqnhZ63UmtadikPYJ9viYS2YqiWxpGk5G';
+            intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
+
+        }
+              
+
+    } else {
+        // successful special attack
+        enemy5.life -= 25
+
+        if (enemy5.life > 0) {
+          //enemy is still alive
+
+          if (specialRandomMiss5 < 1) {
+            image = 'https://gateway.pinata.cloud/ipfs/QmWzb6y1NoNRts5H776dshNVkrmFJcYVtvaxAQ7U7A7jsB';
+            intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
+
+          } else {
+
+              image = 'https://gateway.pinata.cloud/ipfs/QmdEHVWZsR9XDbuoYnKdU2qkFTPA9iyVHDBFv6r5E237Kq';
+              intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
+
+          }
+
+
+        } else {
+          // enemy is dead
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative6">Continue</Button>];
+
+
+        }
+
+        
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+
+
+
+
+app.frame('/dodgeResult5', (c) => {
+    let image;
+    let intents;
+
+    //progressMarker = { ...progressMarker, previousFrame: '/dodgeResult' };
+    const dodgeRandomNum5 = Math.floor(Math.random() * 10);
+
+
+    if (dodgeRandomNum5 < 6) {
+        // player dodged
+        image = 'https://gateway.pinata.cloud/ipfs/QmWfFCDtRMe6wPv9K7gkDtHSNt9GpAvkw247pxPoeJELvt';
+        intents = [<Button action="/fight2-5">Continue</Button>];
+
+    } else {
+        // player is hit
+        player.life -= 15
+        if (player.life > 0) {
+          //player is still alive
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnjewER2GNLSwyrZcqDrd4AzMSkhRddJBDCeAnZS6mac';
+          intents = [<Button action="/fight2-5">Continue</Button>];
+
+        } else {
+          // player is dead
+          progressMarker = { ...progressMarker, deathFrame: '/narrative5' };
+          deathFrame = "/narrative5";
+          currentframe = "checktime";
+          image = 'https://gateway.pinata.cloud/ipfs/QmQXehPigXANi1MQHTXVsWi5PL4oBA9mC2jtmA6sk2WPQM';
+          intents = [<Button action="/fleedeath">Continue</Button>];
+
+
+        }
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+app.frame('/counterResult5', (c) => {
+    let image;
+    let intents;
+
+   
+    const counterRandomNum5 = Math.floor(Math.random() * 10);
+
+
+    if (counterRandomNum5 < 4) {
+        // succesful counter
+        enemy5.life -= 10
+        
+        if (enemy5.life > 0) {
+          //show counter frame
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmPKbeqxXhFTWA6YFfSetPYjRzqEtTbSFL7rnqw5qUjnpp';
+          intents = [<Button action="/fight2-5">Continue</Button>];
+
+        } else {
+          // enemy is dead
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative6">Continue</Button>];
+
+        }
+        
+
+    } else {
+        // player is hit
+        player.life -= 15
+        if (player.life > 0) {
+          //player is still alive
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnjewER2GNLSwyrZcqDrd4AzMSkhRddJBDCeAnZS6mac';
+          intents = [<Button action="/fight2-5">Continue</Button>];
+
+        } else {
+          // player is dead
+          progressMarker = { ...progressMarker, deathFrame: '/narrative5' };
+          deathFrame = "/narrative5";
+          currentframe = "checktime";
+          image = 'https://gateway.pinata.cloud/ipfs/QmQXehPigXANi1MQHTXVsWi5PL4oBA9mC2jtmA6sk2WPQM';
+          intents = [<Button action="/fleedeath">Continue</Button>];
+
+
+        }
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////////
+  //narrative2 entire line
+
+
+
+
+app.frame('/narrative2', (c) => {
+    let image;
+    let intents;
+
+
+        image = (
+            <div
+                style={{
+                    alignItems: 'center',
+                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmcvnPFeYRWkH4qPagsDHiom4p2yUrfistTX7HheBPwawM)',
+                    backgroundSize: '100% 100%',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flexWrap: 'nowrap',
+                    height: '100%',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                    width: '100%',
+                    color: '#E1A411',
+                    fontStyle: 'normal',
+                    letterSpacing: '-0.025em',
+                    lineHeight: 1.4,
+                    marginTop: 0,
+                    padding: '0 120px',
+                    whiteSpace: 'pre-wrap',
+                }}
+            >
+                <p style={{ fontSize : '50px', margin : '0', marginTop : '-500', color: 'red'  }}> {`Narrative 2`} </p>
+              
+            </div>
+        );
+        intents = [
+           
+           <Button action="/trap2">Option1</Button>,
+           <Button action="/battle2">Option2</Button>,
            
         ];
 
@@ -1799,9 +2805,1139 @@ app.frame('/option2', (c) => {
 
 });
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+//trap system 3
+
+app.frame('/trap3', (c) => {
+    let image;
+    let intents;
+    progressMarker = { ...progressMarker, previousFrame: '/trap3' };
+
+        image = (
+            <div
+                style={{
+                    alignItems: 'center',
+                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmcvnPFeYRWkH4qPagsDHiom4p2yUrfistTX7HheBPwawM)',
+                    backgroundSize: '100% 100%',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flexWrap: 'nowrap',
+                    height: '100%',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                    width: '100%',
+                    color: '#E1A411',
+                    fontStyle: 'normal',
+                    letterSpacing: '-0.025em',
+                    lineHeight: 1.4,
+                    marginTop: 0,
+                    padding: '0 120px',
+                    whiteSpace: 'pre-wrap',
+                }}
+            >
+                <p style={{ fontSize : '50px', margin : '0', marginTop : '-500', color: 'red'  }}> {`Trap3, Also Currently unkown`} </p>
+              
+            </div>
+        );
+        intents = [
+           
+           <Button action="/trap3Option">Dodge</Button>,
+           <Button action="/showPlayerStatus">Status</Button>,
+           
+        ];
+
+
+    return c.res({
+       
+        image: image,
+        intents: intents
+    });
+});
+
+
+
+
+app.frame('/trap3Option', (c) => {
+
+  let image;
+  let intents;
+  let trap3num;
+
+
+  trap3num = Math.floor(Math.random() * 10);  // Assign value without redeclaring
+
+
+  if (trap3num < 5) {
+    //fail
+    player.life -= 10
+    image = (
+            <div
+                style={{
+                    alignItems: 'center',
+                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmcvnPFeYRWkH4qPagsDHiom4p2yUrfistTX7HheBPwawM)',
+                    backgroundSize: '100% 100%',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flexWrap: 'nowrap',
+                    height: '100%',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                    width: '100%',
+                    color: '#E1A411',
+                    fontStyle: 'normal',
+                    letterSpacing: '-0.025em',
+                    lineHeight: 1.4,
+                    marginTop: 0,
+                    padding: '0 120px',
+                    whiteSpace: 'pre-wrap',
+                }}
+            >
+                <p style={{ fontSize : '50px', margin : '0', marginTop : '-500', color: 'red'  }}> {`Failed Trap 3`} </p>
+              
+            </div>
+        );
+
+          if (player.life > 1) {
+            //player is stil alive after failing
+            intents = [<Button action="/battle4">Continue</Button>];
+
+          } else {
+            //player is dead
+            progressMarker = { ...progressMarker, deathFrame: '/trap2' };
+            deathFrame = "/trap2";
+            currentframe = "checktime";
+            intents = [<Button action="/trapwounded">Continue</Button>];
+          }
+    
+  } else {
+    //victory
+    image = (
+            <div
+                style={{
+                    alignItems: 'center',
+                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmcvnPFeYRWkH4qPagsDHiom4p2yUrfistTX7HheBPwawM)',
+                    backgroundSize: '100% 100%',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flexWrap: 'nowrap',
+                    height: '100%',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                    width: '100%',
+                    color: '#E1A411',
+                    fontStyle: 'normal',
+                    letterSpacing: '-0.025em',
+                    lineHeight: 1.4,
+                    marginTop: 0,
+                    padding: '0 120px',
+                    whiteSpace: 'pre-wrap',
+                }}
+            >
+                <p style={{ fontSize : '50px', margin : '0', marginTop : '-500', color: 'red'  }}> {`Succeded against Trap 3`} </p>
+              
+            </div>
+        );
+    intents = [<Button action="/battle4">Continue</Button>];
+
+  }
+
+  return c.res({
+    image: image,
+    intents: intents
+  });
+
+});
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+app.frame('/narrative4', (c) => {
+    let image;
+    let intents;
+    progressMarker = { ...progressMarker, previousFrame: '/narrative4' };
+
+        image = (
+            <div
+                style={{
+                    alignItems: 'center',
+                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmcvnPFeYRWkH4qPagsDHiom4p2yUrfistTX7HheBPwawM)',
+                    backgroundSize: '100% 100%',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flexWrap: 'nowrap',
+                    height: '100%',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                    width: '100%',
+                    color: '#E1A411',
+                    fontStyle: 'normal',
+                    letterSpacing: '-0.025em',
+                    lineHeight: 1.4,
+                    marginTop: 0,
+                    padding: '0 120px',
+                    whiteSpace: 'pre-wrap',
+                }}
+            >
+                <p style={{ fontSize : '50px', margin : '0', marginTop : '-500', color: 'red'  }}> {`Narrative 4`} </p>
+              
+            </div>
+        );
+        intents = [
+           
+           <Button action="/battle4">choice1</Button>,
+           <Button action="/battle5">choice2</Button>,
+           <Button action="/showPlayerStatus">Status</Button>,
+           
+        ];
+
+
+    return c.res({
+       
+        image: image,
+        intents: intents
+    });
+});
+
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////
+//battle2 system
+
+app.frame('/battle2', (c) => {
+    let image;
+    let intents;
+
+
+   progressMarker = { ...progressMarker, previousFrame: '/battle2' };
+
+
+    if (player.specials === 0) {
+      
+        image = 'https://gateway.pinata.cloud/ipfs/QmYxN6UJJER3U24RrEUQuKCpyWP4c3uo2ikEN3zCHErBM3';
+        intents = [<Button action="/SwiftAttack2">Swift Attack</Button>,<Button action="/HeavyAttack2">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
+    } else {
+ 
+        image = 'https://gateway.pinata.cloud/ipfs/QmYxN6UJJER3U24RrEUQuKCpyWP4c3uo2ikEN3zCHErBM3';
+        intents = [<Button action="/SwiftAttack2">SwiftAtk</Button>,<Button action="/HeavyAttack2">PowerAtk</Button>,<Button action="/specialAttack2">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
+
+
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+app.frame('/fight2-2', (c) => {
+    let image;
+    let intents;
+    const fightRandomImage2 = Math.floor(Math.random() * 3);
+
+   progressMarker = { ...progressMarker, previousFrame: '/fight2-2' };
+
+
+    if (player.specials === 0) {
+      //player has no special attack
+
+        if (fightRandomImage2 < 1) {
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmR8kC4gUEWHxAKwvMJxsz6km43vNyNFaq7rT7edktbGxL';
+          intents = [<Button action="/SwiftAttack2">Swift Attack</Button>,<Button action="/HeavyAttack2">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
+
+        } else if (fightRandomImage2 === 1) {
+          image = 'https://gateway.pinata.cloud/ipfs/Qmeej7fcEzjimVYuvLLaNkqKJw8LE4G4P29THcFKkFfWyj';
+          intents = [<Button action="/SwiftAttack2">Swift Attack</Button>,<Button action="/HeavyAttack2">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
+
+        } else {
+          image = 'https://gateway.pinata.cloud/ipfs/QmRVPUNzsD7nMPNNFR3zVsc3x4KhtpeyJxzBfbNZ1zK4d4';
+          intents = [<Button action="/SwiftAttack2">Swift Attack</Button>,<Button action="/HeavyAttack2">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
+
+        }
+        
+    } else {
+ 
+        image = 'https://gateway.pinata.cloud/ipfs/QmRVPUNzsD7nMPNNFR3zVsc3x4KhtpeyJxzBfbNZ1zK4d4';
+        intents = [<Button action="/SwiftAttack2">SwiftAtk</Button>,<Button action="/HeavyAttack2">PowerAtk</Button>,<Button action="/specialAttack2">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
+
+
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+
+app.frame('/SwiftAttack2', (c) => {
+    let image;
+    let intents;
+
+    const swiftRandomNum2 = Math.floor(Math.random() * 8);
+    const swiftRandomMiss2 = Math.floor(Math.random() * 3);
+
+
+    if (swiftRandomNum2 < 3) {
+        // glancing blow
+        enemy2.life -= 7
+
+        if (enemy2.life > 0) {
+          //enemy is still alive
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmSLsUjxkrjqSsqNKrmPaaiEu4qygSR8MtrehgLHcdbfbc';
+          intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
+
+        } else {
+          // enemy is dead
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative5">Continue</Button>];
+
+
+        }
+        
+
+
+    } else if (swiftRandomNum2 === 3) {
+      // attack missed
+      if (swiftRandomMiss2 < 1) {
+        image = 'https://gateway.pinata.cloud/ipfs/QmbZ964voi8yRCcyzaBWgVqxKYNrYUbzLCyoPPSWzaw2J7';
+        intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
+
+      } else {
+
+        image = 'https://gateway.pinata.cloud/ipfs/QmV5oZgViyiw6cihQtwP2ZFyD8WJRqFkjL1TgsYxN1gQdp';
+        intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
+
+      }
+
+
+
+    } else if (swiftRandomNum2 === 4) {
+      //critical hit
+      enemy2.life -= 28
+
+      if (enemy2.life > 0) {
+          //enemy is still alive
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmQpk4VqwCCgoMN9P5RSW2jaLDtyTrR7C2q3gE5p5vNMNj';
+          intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
+
+        } else {
+          // enemy is dead
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative5">Continue</Button>];
+
+
+        }
+      
+
+    } else {
+        // normal attack
+        enemy2.life -= 14
+
+        if (enemy2.life > 0) {
+          //enemy is still alive
+
+            if (swiftRandomMiss2 < 1) {
+              image = 'https://gateway.pinata.cloud/ipfs/QmViDE4Th6MB5REsZA144cKgJWmhAMfkAehh89UHEiVVog';
+              intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
+
+            }else if (swiftRandomMiss2 === 1) {
+
+              image = 'https://gateway.pinata.cloud/ipfs/QmQZ8zgwBEZCyBWvbXo7JUWPzLu5wGPzU4f9kauxgmjAje';
+              intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
+
+            } else {
+
+              image = 'https://gateway.pinata.cloud/ipfs/QmcTZnXczFqYX14rdrfnj3aZ54ULBB9sRUkopsQe4kSeNB';
+              intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
+
+            }
+
+          
+
+        } else {
+          // enemy is dead
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative5">Continue</Button>];
+
+
+        }
+
+        
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+
+
+app.frame('/HeavyAttack2', (c) => {
+    let image;
+    let intents;
+
+
+    const heavyRandomNum2 = Math.floor(Math.random() * 10);
+    const heavyRandomMiss2 = Math.floor(Math.random() * 2);
+
+
+    if (heavyRandomNum2 < 4) {
+        // glancing blow
+        enemy2.life -= 10
+
+        if (enemy2.life > 0) {
+          //enemy is still alive
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmSLsUjxkrjqSsqNKrmPaaiEu4qygSR8MtrehgLHcdbfbc';
+          intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
+
+        } else {
+          // enemy is dead
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative5">Continue</Button>];
+
+
+        }
+        
+
+
+    } else if (heavyRandomNum2 === 4) {
+        // attack missed
+        if (heavyRandomMiss2 < 1) {
+          image = 'https://gateway.pinata.cloud/ipfs/QmbZ964voi8yRCcyzaBWgVqxKYNrYUbzLCyoPPSWzaw2J7';
+          intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
+
+        } else {
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmV5oZgViyiw6cihQtwP2ZFyD8WJRqFkjL1TgsYxN1gQdp';
+          intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
+
+        }
+
+    } else if (heavyRandomNum2 === 5) {
+          // attack missed
+          if (heavyRandomMiss2 < 1) {
+            image = 'https://gateway.pinata.cloud/ipfs/QmbZ964voi8yRCcyzaBWgVqxKYNrYUbzLCyoPPSWzaw2J7';
+            intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
+
+          } else {
+
+            image = 'https://gateway.pinata.cloud/ipfs/QmV5oZgViyiw6cihQtwP2ZFyD8WJRqFkjL1TgsYxN1gQdp';
+            intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
+
+          }
+
+
+    } else if (heavyRandomNum2 === 6) {
+      //critical hit
+      enemy2.life -= 40
+
+      if (enemy2.life > 0) {
+          //enemy is still alive
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmQpk4VqwCCgoMN9P5RSW2jaLDtyTrR7C2q3gE5p5vNMNj';
+          intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
+
+        } else {
+          // enemy is dead
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative5">Continue</Button>];
+
+
+        }      
+
+    } else {
+        // normal attack
+        enemy2.life -= 20
+
+        if (enemy2.life > 0) {
+          //enemy is still alive
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmQh9GBmb654DzCciGBDCN2L5doaMJxs7npuWJMkHZt8Zp';
+          intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
+
+        } else {
+          // enemy is dead
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative5">Continue</Button>];
+
+
+        }
+
+        
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+app.frame('/specialAttack2', (c) => {
+    let image;
+    let intents;
+    player.specials -=1
+   
+    const specialRandomNum2 = Math.floor(Math.random() * 8);
+
+    const specialRandomMiss2 = Math.floor(Math.random() * 2);
+    //progressMarker = { ...progressMarker, previousFrame: '/specialAttack' };
+
+
+    if (specialRandomNum2 < 3) {
+        //unsuccessful special attack 
+
+        if (specialRandomMiss2 < 1) {
+            image = 'https://gateway.pinata.cloud/ipfs/QmV4Mvd7Vx8mHrYsxJkuhYNxohC5x9ZPo2Bib5Dx5AokEQ';
+            intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
+
+        } else {
+
+            image = 'https://gateway.pinata.cloud/ipfs/QmVT2zFLdm7WXYqnhZ63UmtadikPYJ9viYS2YqiWxpGk5G';
+            intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
+
+        }
+              
+
+    } else {
+        // successful special attack
+        enemy2.life -= 25
+
+        if (enemy2.life > 0) {
+          //enemy is still alive
+
+          if (specialRandomMiss2 < 1) {
+            image = 'https://gateway.pinata.cloud/ipfs/QmWzb6y1NoNRts5H776dshNVkrmFJcYVtvaxAQ7U7A7jsB';
+            intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
+
+          } else {
+
+              image = 'https://gateway.pinata.cloud/ipfs/QmdEHVWZsR9XDbuoYnKdU2qkFTPA9iyVHDBFv6r5E237Kq';
+              intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
+
+          }
+
+
+        } else {
+          // enemy is dead
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative5">Continue</Button>];
+
+
+        }
+
+        
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+
+
+
+
+app.frame('/dodgeResult2', (c) => {
+    let image;
+    let intents;
+
+    //progressMarker = { ...progressMarker, previousFrame: '/dodgeResult' };
+    const dodgeRandomNum2 = Math.floor(Math.random() * 10);
+
+
+    if (dodgeRandomNum2 < 6) {
+        // player dodged
+        image = 'https://gateway.pinata.cloud/ipfs/QmWfFCDtRMe6wPv9K7gkDtHSNt9GpAvkw247pxPoeJELvt';
+        intents = [<Button action="/fight2-2">Continue</Button>];
+
+    } else {
+        // player is hit
+        player.life -= 15
+        if (player.life > 0) {
+          //player is still alive
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnjewER2GNLSwyrZcqDrd4AzMSkhRddJBDCeAnZS6mac';
+          intents = [<Button action="/fight2-2">Continue</Button>];
+
+        } else {
+          // player is dead
+          progressMarker = { ...progressMarker, deathFrame: '/narrative2' };
+          deathFrame = "/narrative2";
+          currentframe = "checktime";
+          image = 'https://gateway.pinata.cloud/ipfs/QmQXehPigXANi1MQHTXVsWi5PL4oBA9mC2jtmA6sk2WPQM';
+          intents = [<Button action="/fleedeath">Continue</Button>];
+
+
+        }
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+app.frame('/counterResult2', (c) => {
+    let image;
+    let intents;
+
+   
+    const counterRandomNum2 = Math.floor(Math.random() * 10);
+
+
+    if (counterRandomNum2 < 4) {
+        // succesful counter
+        enemy2.life -= 10
+        
+        if (enemy2.life > 0) {
+          //show counter frame
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmPKbeqxXhFTWA6YFfSetPYjRzqEtTbSFL7rnqw5qUjnpp';
+          intents = [<Button action="/fight2-2">Continue</Button>];
+
+        } else {
+          // enemy is dead
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative5">Continue</Button>];
+
+        }
+        
+
+    } else {
+        // player is hit
+        player.life -= 15
+        if (player.life > 0) {
+          //player is still alive
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnjewER2GNLSwyrZcqDrd4AzMSkhRddJBDCeAnZS6mac';
+          intents = [<Button action="/fight2-2">Continue</Button>];
+
+        } else {
+          // player is dead
+          progressMarker = { ...progressMarker, deathFrame: '/narrative2' };
+          deathFrame = "/narrative2";
+          currentframe = "checktime";
+          image = 'https://gateway.pinata.cloud/ipfs/QmQXehPigXANi1MQHTXVsWi5PL4oBA9mC2jtmA6sk2WPQM';
+          intents = [<Button action="/fleedeath">Continue</Button>];
+
+
+        }
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//battle4 system
+
+app.frame('/battle4', (c) => {
+    let image;
+    let intents;
+
+
+   progressMarker = { ...progressMarker, previousFrame: '/battle4' };
+
+
+    if (player.specials === 0) {
+      
+        image = 'https://gateway.pinata.cloud/ipfs/QmYxN6UJJER3U24RrEUQuKCpyWP4c3uo2ikEN3zCHErBM3';
+        intents = [<Button action="/SwiftAttack4">Swift Attack</Button>,<Button action="/HeavyAttack4">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
+    } else {
+ 
+        image = 'https://gateway.pinata.cloud/ipfs/QmYxN6UJJER3U24RrEUQuKCpyWP4c3uo2ikEN3zCHErBM3';
+        intents = [<Button action="/SwiftAttack4">SwiftAtk</Button>,<Button action="/HeavyAttack4">PowerAtk</Button>,<Button action="/specialAttack4">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
+
+
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+app.frame('/fight2-4', (c) => {
+    let image;
+    let intents;
+    const fightRandomImage4 = Math.floor(Math.random() * 3);
+
+   progressMarker = { ...progressMarker, previousFrame: '/fight2-4' };
+
+
+    if (player.specials === 0) {
+      //player has no special attack
+
+        if (fightRandomImage4 < 1) {
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmR8kC4gUEWHxAKwvMJxsz6km43vNyNFaq7rT7edktbGxL';
+          intents = [<Button action="/SwiftAttack4">Swift Attack</Button>,<Button action="/HeavyAttack4">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
+
+        } else if (fightRandomImage4 === 1) {
+          image = 'https://gateway.pinata.cloud/ipfs/Qmeej7fcEzjimVYuvLLaNkqKJw8LE4G4P29THcFKkFfWyj';
+          intents = [<Button action="/SwiftAttack4">Swift Attack</Button>,<Button action="/HeavyAttack4">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
+
+        } else {
+          image = 'https://gateway.pinata.cloud/ipfs/QmRVPUNzsD7nMPNNFR3zVsc3x4KhtpeyJxzBfbNZ1zK4d4';
+          intents = [<Button action="/SwiftAttack4">Swift Attack</Button>,<Button action="/HeavyAttack4">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
+
+        }
+        
+    } else {
+ 
+        image = 'https://gateway.pinata.cloud/ipfs/QmRVPUNzsD7nMPNNFR3zVsc3x4KhtpeyJxzBfbNZ1zK4d4';
+        intents = [<Button action="/SwiftAttack4">SwiftAtk</Button>,<Button action="/HeavyAttack4">PowerAtk</Button>,<Button action="/specialAttack4">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
+
+
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+
+app.frame('/SwiftAttack4', (c) => {
+    let image;
+    let intents;
+
+    const swiftRandomNum4 = Math.floor(Math.random() * 8);
+    const swiftRandomMiss4 = Math.floor(Math.random() * 3);
+
+
+    if (swiftRandomNum4 < 3) {
+        // glancing blow
+        enemy4.life -= 7
+
+        if (enemy4.life > 0) {
+          //enemy is still alive
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmSLsUjxkrjqSsqNKrmPaaiEu4qygSR8MtrehgLHcdbfbc';
+          intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
+
+        } else {
+          // enemy is dead
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative6">Continue</Button>];
+
+
+        }
+        
+
+
+    } else if (swiftRandomNum4 === 3) {
+      // attack missed
+      if (swiftRandomMiss4 < 1) {
+        image = 'https://gateway.pinata.cloud/ipfs/QmbZ964voi8yRCcyzaBWgVqxKYNrYUbzLCyoPPSWzaw2J7';
+        intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
+
+      } else {
+
+        image = 'https://gateway.pinata.cloud/ipfs/QmV5oZgViyiw6cihQtwP2ZFyD8WJRqFkjL1TgsYxN1gQdp';
+        intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
+
+      }
+
+
+
+    } else if (swiftRandomNum4 === 4) {
+      //critical hit
+      enemy4.life -= 28
+
+      if (enemy4.life > 0) {
+          //enemy is still alive
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmQpk4VqwCCgoMN9P5RSW2jaLDtyTrR7C2q3gE5p5vNMNj';
+          intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
+
+        } else {
+          // enemy is dead
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative6">Continue</Button>];
+
+
+        }
+      
+
+    } else {
+        // normal attack
+        enemy4.life -= 14
+
+        if (enemy4.life > 0) {
+          //enemy is still alive
+
+            if (swiftRandomMiss4 < 1) {
+              image = 'https://gateway.pinata.cloud/ipfs/QmViDE4Th6MB5REsZA144cKgJWmhAMfkAehh89UHEiVVog';
+              intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
+
+            }else if (swiftRandomMiss4 === 1) {
+
+              image = 'https://gateway.pinata.cloud/ipfs/QmQZ8zgwBEZCyBWvbXo7JUWPzLu5wGPzU4f9kauxgmjAje';
+              intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
+
+            } else {
+
+              image = 'https://gateway.pinata.cloud/ipfs/QmcTZnXczFqYX14rdrfnj3aZ54ULBB9sRUkopsQe4kSeNB';
+              intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
+
+            }
+
+          
+
+        } else {
+          // enemy is dead
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative6">Continue</Button>];
+
+
+        }
+
+        
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+
+
+app.frame('/HeavyAttack4', (c) => {
+    let image;
+    let intents;
+
+
+    const heavyRandomNum4 = Math.floor(Math.random() * 10);
+    const heavyRandomMiss4 = Math.floor(Math.random() * 2);
+
+
+    if (heavyRandomNum4 < 4) {
+        // glancing blow
+        enemy4.life -= 10
+
+        if (enemy4.life > 0) {
+          //enemy is still alive
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmSLsUjxkrjqSsqNKrmPaaiEu4qygSR8MtrehgLHcdbfbc';
+          intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
+
+        } else {
+          // enemy is dead
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative6">Continue</Button>];
+
+
+        }
+        
+
+
+    } else if (heavyRandomNum4 === 4) {
+        // attack missed
+        if (heavyRandomMiss4 < 1) {
+          image = 'https://gateway.pinata.cloud/ipfs/QmbZ964voi8yRCcyzaBWgVqxKYNrYUbzLCyoPPSWzaw2J7';
+          intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
+
+        } else {
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmV5oZgViyiw6cihQtwP2ZFyD8WJRqFkjL1TgsYxN1gQdp';
+          intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
+
+        }
+
+    } else if (heavyRandomNum4 === 5) {
+          // attack missed
+          if (heavyRandomMiss4 < 1) {
+            image = 'https://gateway.pinata.cloud/ipfs/QmbZ964voi8yRCcyzaBWgVqxKYNrYUbzLCyoPPSWzaw2J7';
+            intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
+
+          } else {
+
+            image = 'https://gateway.pinata.cloud/ipfs/QmV5oZgViyiw6cihQtwP2ZFyD8WJRqFkjL1TgsYxN1gQdp';
+            intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
+
+          }
+
+
+    } else if (heavyRandomNum4 === 6) {
+      //critical hit
+      enemy4.life -= 40
+
+      if (enemy4.life > 0) {
+          //enemy is still alive
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmQpk4VqwCCgoMN9P5RSW2jaLDtyTrR7C2q3gE5p5vNMNj';
+          intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
+
+        } else {
+          // enemy is dead
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative6">Continue</Button>];
+
+
+        }      
+
+    } else {
+        // normal attack
+        enemy4.life -= 20
+
+        if (enemy4.life > 0) {
+          //enemy is still alive
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmQh9GBmb654DzCciGBDCN2L5doaMJxs7npuWJMkHZt8Zp';
+          intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
+
+        } else {
+          // enemy is dead
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative6">Continue</Button>];
+
+
+        }
+
+        
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+app.frame('/specialAttack4', (c) => {
+    let image;
+    let intents;
+    player.specials -=1
+   
+    const specialRandomNum4 = Math.floor(Math.random() * 8);
+
+    const specialRandomMiss4 = Math.floor(Math.random() * 2);
+    //progressMarker = { ...progressMarker, previousFrame: '/specialAttack' };
+
+
+    if (specialRandomNum4 < 3) {
+        //unsuccessful special attack 
+
+        if (specialRandomMiss4 < 1) {
+            image = 'https://gateway.pinata.cloud/ipfs/QmV4Mvd7Vx8mHrYsxJkuhYNxohC5x9ZPo2Bib5Dx5AokEQ';
+            intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
+
+        } else {
+
+            image = 'https://gateway.pinata.cloud/ipfs/QmVT2zFLdm7WXYqnhZ63UmtadikPYJ9viYS2YqiWxpGk5G';
+            intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
+
+        }
+              
+
+    } else {
+        // successful special attack
+        enemy4.life -= 25
+
+        if (enemy4.life > 0) {
+          //enemy is still alive
+
+          if (specialRandomMiss4 < 1) {
+            image = 'https://gateway.pinata.cloud/ipfs/QmWzb6y1NoNRts5H776dshNVkrmFJcYVtvaxAQ7U7A7jsB';
+            intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
+
+          } else {
+
+              image = 'https://gateway.pinata.cloud/ipfs/QmdEHVWZsR9XDbuoYnKdU2qkFTPA9iyVHDBFv6r5E237Kq';
+              intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
+
+          }
+
+
+        } else {
+          // enemy is dead
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative6">Continue</Button>];
+
+
+        }
+
+        
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+
+
+
+
+app.frame('/dodgeResult4', (c) => {
+    let image;
+    let intents;
+
+    //progressMarker = { ...progressMarker, previousFrame: '/dodgeResult' };
+    const dodgeRandomNum4 = Math.floor(Math.random() * 10);
+
+
+    if (dodgeRandomNum4 < 6) {
+        // player dodged
+        image = 'https://gateway.pinata.cloud/ipfs/QmWfFCDtRMe6wPv9K7gkDtHSNt9GpAvkw247pxPoeJELvt';
+        intents = [<Button action="/fight2-4">Continue</Button>];
+
+    } else {
+        // player is hit
+        player.life -= 15
+        if (player.life > 0) {
+          //player is still alive
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnjewER2GNLSwyrZcqDrd4AzMSkhRddJBDCeAnZS6mac';
+          intents = [<Button action="/fight2-4">Continue</Button>];
+
+        } else {
+          // player is dead
+          progressMarker = { ...progressMarker, deathFrame: '/narrative4' };
+          deathFrame = "/narrative4";
+          currentframe = "checktime";
+          image = 'https://gateway.pinata.cloud/ipfs/QmQXehPigXANi1MQHTXVsWi5PL4oBA9mC2jtmA6sk2WPQM';
+          intents = [<Button action="/fleedeath">Continue</Button>];
+
+
+        }
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+app.frame('/counterResult4', (c) => {
+    let image;
+    let intents;
+
+   
+    const counterRandomNum4 = Math.floor(Math.random() * 10);
+
+
+    if (counterRandomNum4 < 4) {
+        // succesful counter
+        enemy4.life -= 10
+        
+        if (enemy4.life > 0) {
+          //show counter frame
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmPKbeqxXhFTWA6YFfSetPYjRzqEtTbSFL7rnqw5qUjnpp';
+          intents = [<Button action="/fight2-4">Continue</Button>];
+
+        } else {
+          // enemy is dead
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
+          intents = [<Button action="/narrative6">Continue</Button>];
+
+        }
+        
+
+    } else {
+        // player is hit
+        player.life -= 15
+        if (player.life > 0) {
+          //player is still alive
+
+          image = 'https://gateway.pinata.cloud/ipfs/QmRnjewER2GNLSwyrZcqDrd4AzMSkhRddJBDCeAnZS6mac';
+          intents = [<Button action="/fight2-4">Continue</Button>];
+
+        } else {
+          // player is dead
+          progressMarker = { ...progressMarker, deathFrame: '/narrative4' };
+          deathFrame = "/narrative4";
+          currentframe = "checktime";
+          image = 'https://gateway.pinata.cloud/ipfs/QmQXehPigXANi1MQHTXVsWi5PL4oBA9mC2jtmA6sk2WPQM';
+          intents = [<Button action="/fleedeath">Continue</Button>];
+
+
+        }
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1962,8 +4098,263 @@ app.frame('/checktime', (c) => {
 
 
 
+app.frame('/narrative6', (c) => {
+    let image;
+    let intents;
 
 
+        image = (
+            <div
+                style={{
+                    alignItems: 'center',
+                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmcvnPFeYRWkH4qPagsDHiom4p2yUrfistTX7HheBPwawM)',
+                    backgroundSize: '100% 100%',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flexWrap: 'nowrap',
+                    height: '100%',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                    width: '100%',
+                    color: '#E1A411',
+                    fontStyle: 'normal',
+                    letterSpacing: '-0.025em',
+                    lineHeight: 1.4,
+                    marginTop: 0,
+                    padding: '0 120px',
+                    whiteSpace: 'pre-wrap',
+                }}
+            >
+                <p style={{ fontSize : '50px', margin : '0', marginTop : '-500', color: 'red'  }}> {`Narrative 6`} </p>
+              
+            </div>
+        );
+        intents = [
+           
+           <Button action="/endscene1">Ending1</Button>,
+           <Button action="/endscene2">Ending2</Button>,
+           <Button action="/endscene3">Ending3</Button>,
+           <Button action="/endscene4">Ending4</Button>,
+           
+        ];
+
+
+    return c.res({
+       
+        image: image,
+        intents: intents
+    });
+});
+
+
+
+
+app.frame('/endscene1', (c) => {
+    let image;
+    let intents;
+
+
+        image = (
+            <div
+                style={{
+                    alignItems: 'center',
+                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmcvnPFeYRWkH4qPagsDHiom4p2yUrfistTX7HheBPwawM)',
+                    backgroundSize: '100% 100%',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flexWrap: 'nowrap',
+                    height: '100%',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                    width: '100%',
+                    color: '#E1A411',
+                    fontStyle: 'normal',
+                    letterSpacing: '-0.025em',
+                    lineHeight: 1.4,
+                    marginTop: 0,
+                    padding: '0 120px',
+                    whiteSpace: 'pre-wrap',
+                }}
+            >
+                <p style={{ fontSize : '50px', margin : '0', marginTop : '-500', color: 'red'  }}> {`Endscene 1`} </p>
+              
+            </div>
+        );
+        intents = [
+           
+           <Button action="/endscene1">End</Button>,
+
+           
+        ];
+
+
+    return c.res({
+       
+        image: image,
+        intents: intents
+    });
+});
+
+
+
+
+app.frame('/endscene2', (c) => {
+    let image;
+    let intents;
+
+
+        image = (
+            <div
+                style={{
+                    alignItems: 'center',
+                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmcvnPFeYRWkH4qPagsDHiom4p2yUrfistTX7HheBPwawM)',
+                    backgroundSize: '100% 100%',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flexWrap: 'nowrap',
+                    height: '100%',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                    width: '100%',
+                    color: '#E1A411',
+                    fontStyle: 'normal',
+                    letterSpacing: '-0.025em',
+                    lineHeight: 1.4,
+                    marginTop: 0,
+                    padding: '0 120px',
+                    whiteSpace: 'pre-wrap',
+                }}
+            >
+                <p style={{ fontSize : '50px', margin : '0', marginTop : '-500', color: 'red'  }}> {`Endscene 2`} </p>
+              
+            </div>
+        );
+        intents = [
+           
+           <Button action="/endscene2">End</Button>,
+
+           
+        ];
+
+
+    return c.res({
+       
+        image: image,
+        intents: intents
+    });
+});
+
+
+
+
+
+app.frame('/endscene3', (c) => {
+    let image;
+    let intents;
+
+
+        image = (
+            <div
+                style={{
+                    alignItems: 'center',
+                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmcvnPFeYRWkH4qPagsDHiom4p2yUrfistTX7HheBPwawM)',
+                    backgroundSize: '100% 100%',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flexWrap: 'nowrap',
+                    height: '100%',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                    width: '100%',
+                    color: '#E1A411',
+                    fontStyle: 'normal',
+                    letterSpacing: '-0.025em',
+                    lineHeight: 1.4,
+                    marginTop: 0,
+                    padding: '0 120px',
+                    whiteSpace: 'pre-wrap',
+                }}
+            >
+               <p style={{ fontSize : '50px', margin : '0', marginTop : '-500', color: 'red'  }}> {`Endscene 3`} </p>
+              
+            </div>
+        );
+        intents = [
+           
+           <Button action="/endscene3">End</Button>,
+
+           
+        ];
+
+
+    return c.res({
+       
+        image: image,
+        intents: intents
+    });
+});
+
+
+
+
+
+
+
+app.frame('/endscene4', (c) => {
+    let image;
+    let intents;
+
+
+        image = (
+            <div
+                style={{
+                    alignItems: 'center',
+                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmcvnPFeYRWkH4qPagsDHiom4p2yUrfistTX7HheBPwawM)',
+                    backgroundSize: '100% 100%',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flexWrap: 'nowrap',
+                    height: '100%',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                    width: '100%',
+                    color: '#E1A411',
+                    fontStyle: 'normal',
+                    letterSpacing: '-0.025em',
+                    lineHeight: 1.4,
+                    marginTop: 0,
+                    padding: '0 120px',
+                    whiteSpace: 'pre-wrap',
+                }}
+            >
+                <p style={{ fontSize : '50px', margin : '0', marginTop : '-500', color: 'red'  }}> {`Endscene 4`} </p>
+              
+            </div>
+        );
+        intents = [
+           
+           <Button action="/endscene4">End</Button>,
+
+           
+        ];
+
+
+    return c.res({
+       
+        image: image,
+        intents: intents
+    });
+});
 
 
 
