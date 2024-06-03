@@ -484,7 +484,7 @@ app.frame('/page11', (c) => {
 app.frame('/page12', (c) => {
     let image;
     let intents;
-    currentframe = "level12";
+    currentframe = "page12";
 
     updateData(farcasterid, currentframe, deathFrame, timerWatch)
     .then(() => {
