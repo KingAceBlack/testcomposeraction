@@ -62,7 +62,7 @@ let expirationTimeRem = new Date(Date.now() + 60000);
 
 
 let progressMarker = {
-  previousFrame: '/page1',
+  previousFrame: '/page2',
   backButton:1,
   inventorySlot1: 0,
   inventorySlot2: 0,
@@ -77,8 +77,8 @@ type FarcasterID = string;
 type CurrentFrame = string;
 type DeathtFrame = string;
 type TimerWatch = number;
-let farcasterid: FarcasterID = '1';
-let currentframe: CurrentFrame = 'page3';
+let farcasterid: FarcasterID = '20359';
+let currentframe: CurrentFrame = 'page2';
 let deathFrame: DeathtFrame = '/page12';
 let timerWatch: TimerWatch = 17172627846293;
 
@@ -596,7 +596,7 @@ app.frame('/fleedeath', (c) => {
   //UPDATE SERVER WITH TIMEGATE AND OTHER STATS
   expirationTimeRem = new Date(Date.now() + 69);
   
-  timerWatch = expirationTimeRem.setMinutes(expirationTimeRem.getMinutes() + 10);;
+  timerWatch = expirationTimeRem.setMinutes(expirationTimeRem.getMinutes() + 2);;
 
   updateData(farcasterid, currentframe, deathFrame, timerWatch)
     .then(() => {
@@ -1347,7 +1347,7 @@ app.frame('/trapwounded', (c) => {
     //UPDATE SERVER WITH TIMEGATE AND OTHER STATS
     expirationTimeRem = new Date(Date.now() + 69);
     
-    timerWatch = expirationTimeRem.setMinutes(expirationTimeRem.getMinutes() + 10);
+    timerWatch = expirationTimeRem.setMinutes(expirationTimeRem.getMinutes() + 2);
 
       updateData(farcasterid, currentframe, deathFrame, timerWatch)
       .then(() => {
