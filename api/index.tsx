@@ -299,7 +299,8 @@ app.frame('/page1', async (c) => {
     image: 'https://gateway.pinata.cloud/ipfs/QmTuEMMDWRkCvGGRr74quvjnZH3vGfZhkUg1HbHpcEujqs',
     intents: [
       //<Button action={enemy1.name}>Continue</Button>, // example of how to pass a variable to the button
-      <Button action={`/${progressMarker.previousFrame}`}>Continue</Button>,
+      //<Button action={`/${progressMarker.previousFrame}`}>Continue</Button>,
+      <Button action="/page2">Continue</Button>,
     ],
   });
 });
@@ -3144,7 +3145,7 @@ app.frame('/vision', (c) => {
         );
         intents = [
            
-           <Button action="/vision2">Continue</Button>,
+           <Button action="/vision2">Open Your Eyes</Button>,
           
            
         ];
@@ -3289,7 +3290,7 @@ app.frame('/vision4', (c) => {
         );
         intents = [
            
-           <Button action="/vision5">Continue</Button>,
+           <Button action="/vision5">Open Your Eyes</Button>,
           
            
         ];
@@ -3337,7 +3338,7 @@ app.frame('/vision5', (c) => {
         );
         intents = [
            
-           <Button action="/vision6">Continue</Button>,
+           <Button action="/vision6">Approach</Button>,
           
            
         ];
@@ -6643,7 +6644,7 @@ app.frame('/finalDecision1', (c) => {
         );
         intents = [
            
-           <Button action="/blank">Flee</Button>,
+           <Button action="/blank">Continue</Button>,
 
            
         ];
