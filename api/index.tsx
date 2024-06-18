@@ -52,6 +52,8 @@ let player = {
   hasGem: 0,
   metStranger: 0,
   death: 0,
+  finalDecision: 0,
+  framesLoaded: 0 
  
 };
 
@@ -100,10 +102,12 @@ type FarcasterID = string;
 type CurrentFrame = string;
 type DeathtFrame = string;
 type TimerWatch = number;
+type FinalDecision = number;
 let farcasterid: FarcasterID = '20359';
 let currentframe: CurrentFrame = 'page2';
 let deathFrame: DeathtFrame = '/page17';
 let timerWatch: TimerWatch = 17172627846293;
+let finalDecision: FinalDecision = 0
 
 interface DataItem {
   fid: string;
@@ -111,6 +115,7 @@ interface DataItem {
   deathpos: string;
   health: number; // Assuming 'health' is a number, adjust type if necessary
   stopWatch: number;
+  finalDecision: number;
   // Add other properties if there are any
 }
 
@@ -176,7 +181,7 @@ async function fetchData(): Promise<DataItem[]> {
 
 
 
-async function updateData(farcasterid: FarcasterID, currentframe: CurrentFrame, deathFrame: DeathtFrame, timerWatch: TimerWatch) {
+async function updateData(farcasterid: FarcasterID, currentframe: CurrentFrame, deathFrame: DeathtFrame, timerWatch: TimerWatch, finalDecision: FinalDecision) {
   // Construct the URL using template literals
   const url = `https://gpzytjchmkcglwzkxcrc.supabase.co/rest/v1/warpcastertest?fid=eq.${farcasterid}`;
    console.log(url);
@@ -185,6 +190,7 @@ async function updateData(farcasterid: FarcasterID, currentframe: CurrentFrame, 
     lastknownframe: currentframe,
     deathpos: deathFrame,
     stopWatch: timerWatch,
+    finalDecision: player.finalDecision,
   };
 
   try {
@@ -236,8 +242,16 @@ app.frame('/', (c) => {
     let image;
     let intents;
 
+    player = { ...player, life: 100 };
+    player = { ...player, hasGem: 0 };
+    player = { ...player, metStranger: 0 };
+    player = { ...player, framesLoaded: 0 };
 
-        image = 'https://gateway.pinata.cloud/ipfs/QmPGfb1SDvz5qM9ibXt6sr2UpvCK5yKduVoqq6Yfc4hPYq';
+    player.framesLoaded += 1;
+    
+
+
+        image = 'https://gateway.pinata.cloud/ipfs/QmbrxySXqW5DtwLW1fRJPw6SY7UnENvudTL39dEwx6VaDw';
         intents = [
            
            <Button action="/page1">Continue</Button>,
@@ -258,10 +272,11 @@ app.frame('/page1', async (c) => {
   let intents;
   const { buttonValue, inputText, status, frameData, verified } = c;
 
-
+  player.framesLoaded += 1;
   const { fid } = frameData || {};
   farcasterid = fid !== undefined ? String(fid) : farcasterid;// Use existing farcasterid if fid is undefined
   console.log('real id is:', farcasterid);
+  console.log('frames loaded is :', player.framesLoaded);
 
   try {
     const data: DataItem[] = await fetchData();
@@ -296,11 +311,11 @@ app.frame('/page1', async (c) => {
   }
   
   return c.res({
-    image: 'https://gateway.pinata.cloud/ipfs/QmTuEMMDWRkCvGGRr74quvjnZH3vGfZhkUg1HbHpcEujqs',
+    image: 'https://gateway.pinata.cloud/ipfs/QmW7c9DAWLQswZ4LWeWgPFMtNfQPNNsYq1YnYAu7tU41Pt',
     intents: [
       //<Button action={enemy1.name}>Continue</Button>, // example of how to pass a variable to the button
       //<Button action={`/${progressMarker.previousFrame}`}>Continue</Button>,
-      <Button action="/page2">Continue</Button>,
+      <Button action="/page6">Continue</Button>,
     ],
   });
 });
@@ -310,7 +325,7 @@ app.frame('/page2', (c) => {
     let image;
     let intents;
 
-
+    player.framesLoaded += 1;
         image = 'https://gateway.pinata.cloud/ipfs/QmPHukU9yW92rHXzaCK7rzaCpNezn2bHMv8PRqPKwbgWzk';
         intents = [
            
@@ -329,6 +344,7 @@ app.frame('/page2', (c) => {
 app.frame('/page3', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
         image = 'https://gateway.pinata.cloud/ipfs/QmTAAhhrrLT8G3MoP5JtoTyeeHEySEi1mZ6DEt6K24L9CA';
@@ -349,6 +365,7 @@ app.frame('/page3', (c) => {
 app.frame('/page4', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
         image = 'https://gateway.pinata.cloud/ipfs/QmeysSoLVdEGaTN3GtibY5aMinxAQZyJgNaFb72zxHdNPf';
@@ -369,6 +386,7 @@ app.frame('/page4', (c) => {
 app.frame('/page5', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
         image = 'https://gateway.pinata.cloud/ipfs/QmW7c9DAWLQswZ4LWeWgPFMtNfQPNNsYq1YnYAu7tU41Pt';
@@ -389,6 +407,7 @@ app.frame('/page5', (c) => {
 app.frame('/page6', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
         image = 'https://gateway.pinata.cloud/ipfs/Qma86ajf9Ypgz7x9ACud3FK8PpLLzXnb4kLvzWTCmCVfR9';
@@ -409,6 +428,7 @@ app.frame('/page6', (c) => {
 app.frame('/page7', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
         image = 'https://gateway.pinata.cloud/ipfs/QmPXNPXRDrKep4FvgunvmYPgYqtxTjZGFe8xdmnDA445ax';
@@ -429,6 +449,7 @@ app.frame('/page7', (c) => {
 app.frame('/page8', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
         image = 'https://gateway.pinata.cloud/ipfs/Qmb4gxDGb1i1DE4T1gjcR8hgFvJmUzuGLir6t6vNpPKRru';
@@ -449,6 +470,7 @@ app.frame('/page8', (c) => {
 app.frame('/page9', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
         image = 'https://gateway.pinata.cloud/ipfs/QmRKDiH5r4wmbrSozVfQDPLGsSi76TnNfmQZJYAmfizLUX';
@@ -469,6 +491,7 @@ app.frame('/page9', (c) => {
 app.frame('/page10', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
         image = 'https://gateway.pinata.cloud/ipfs/QmUn3xvseCruKD71t6S6WwwqrnUVDf9eGEszF27xF7QhfN';
@@ -489,9 +512,10 @@ app.frame('/page10', (c) => {
 app.frame('/page11', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
-        image = 'https://gateway.pinata.cloud/ipfs/QmbsPZxWgKqtKDLZsC2UbymvgDXeo6rZRcvxhZw8gk2gxE';
+        image = 'https://gateway.pinata.cloud/ipfs/QmcFtaDb4zn8rf73jGhjmo4UPFznBnpVKaHA4SGoo1Tgfr';
         intents = [
            
            <Button action="/page12">Continue</Button>,
@@ -509,6 +533,7 @@ app.frame('/page11', (c) => {
 app.frame('/page12', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
         image = 'https://gateway.pinata.cloud/ipfs/QmYxdpdWjgNVgzCLv96eLMTHKyDpc3baF8HSBfDh9nK3HR';
@@ -529,6 +554,7 @@ app.frame('/page12', (c) => {
 app.frame('/page13', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
         image = 'https://gateway.pinata.cloud/ipfs/Qmah1EN6DLdjhckatDeZFpjmvbADq3U8HVpzNHDXXNkDQS';
@@ -549,9 +575,10 @@ app.frame('/page13', (c) => {
 app.frame('/page14', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
-        image = 'https://gateway.pinata.cloud/ipfs/QmaisevzgrHs9AephgzsgxZrNeSYVFSuWH7dHQJ6StfZb8';
+        image = 'https://gateway.pinata.cloud/ipfs/QmX9tUhVJKbcnwQLxvPxhSjYdoLButiJHWpcWo925dZ1rn';
         intents = [
            
            <Button action="/page15">Continue</Button>,
@@ -569,6 +596,7 @@ app.frame('/page14', (c) => {
 app.frame('/page15', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
         image = 'https://gateway.pinata.cloud/ipfs/QmaU4YRpUASHGm7YfCEPwA5Aa2pA66CkyiH4ETHB7naoGu';
@@ -592,6 +620,7 @@ app.frame('/page15', (c) => {
 app.frame('/page16', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
         image = 'https://gateway.pinata.cloud/ipfs/QmWVvc4fgFDNprYSGB7474zp3rmNSB5Zw9dL2innz2AFmT';
@@ -618,6 +647,7 @@ app.frame('/page17', (c) => {
     let image;
     let intents;
     currentframe = "page17";
+    player.framesLoaded += 1;
 
     /*updateData(farcasterid, currentframe, deathFrame, timerWatch)
     .then(() => {
@@ -653,9 +683,7 @@ app.frame('/page17', (c) => {
                     whiteSpace: 'pre-wrap',
                 }}
             >
-                <p style={{ fontSize: '42px', margin: '0', marginTop: '-514px', color: 'green', textAlign: 'right', marginRight: '-892px', fontWeight: 'bold' }}>
-                    {player.life}
-                </p>
+
               
             </div>
         );
@@ -680,6 +708,7 @@ app.frame('/showPlayerStatus', (c) => {
     let image;
     let intents;
     let healthColour;
+    player.framesLoaded += 1;
 
     if (player.life > 30) {
 
@@ -1037,6 +1066,7 @@ app.frame('/showPlayerStatus', (c) => {
 app.frame('/fleedeath', (c) => {
   //UPDATE SERVER WITH TIMEGATE AND OTHER STATS
   expirationTimeRem = new Date(Date.now() + 69);
+  player.framesLoaded += 1;
   
   timerWatch = expirationTimeRem.setMinutes(expirationTimeRem.getMinutes() + 2);
 
@@ -1074,6 +1104,7 @@ app.frame('/fleedeath', (c) => {
 app.frame('/battle1', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
    progressMarker = { ...progressMarker, previousFrame: '/battle1' };
@@ -1102,6 +1133,7 @@ app.frame('/fight2', (c) => {
     let image;
     let intents;
     const fightRandomImage = Math.floor(Math.random() * 4);
+    player.framesLoaded += 1;
 
    progressMarker = { ...progressMarker, previousFrame: '/fight2' };
 
@@ -1156,6 +1188,7 @@ app.frame('/fight2', (c) => {
 app.frame('/SwiftAttack', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
     const swiftRandomNum = Math.floor(Math.random() * 8);
     const swiftRandomMiss = Math.floor(Math.random() * 3);
@@ -1175,7 +1208,7 @@ app.frame('/SwiftAttack', (c) => {
           // enemy is dead
 
           image = 'https://gateway.pinata.cloud/ipfs/QmSzG66K5d7RiCLN3LZoMefZi9DrJNbHcsNjmhXh6enbc9';
-          intents = [<Button action="/narrative3">Continue</Button>];
+          intents = [<Button action="/battle1narrative1">Continue</Button>];
 
 
         }
@@ -1211,7 +1244,7 @@ app.frame('/SwiftAttack', (c) => {
           // enemy is dead
 
           image = 'https://gateway.pinata.cloud/ipfs/QmSzG66K5d7RiCLN3LZoMefZi9DrJNbHcsNjmhXh6enbc9';
-          intents = [<Button action="/narrative3">Continue</Button>];
+          intents = [<Button action="/battle1narrative1">Continue</Button>];
 
 
       }
@@ -1245,8 +1278,8 @@ app.frame('/SwiftAttack', (c) => {
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmRnhFP1aAr9FpZaUpDd5mRTtvWDBYC6UE11P7cx368gVy';
-          intents = [<Button action="/narrative3">Continue</Button>];
+          image = 'https://gateway.pinata.cloud/ipfs/QmSzG66K5d7RiCLN3LZoMefZi9DrJNbHcsNjmhXh6enbc9';
+          intents = [<Button action="/battle1narrative1">Continue</Button>];
 
 
         }
@@ -1266,6 +1299,7 @@ app.frame('/SwiftAttack', (c) => {
 app.frame('/HeavyAttack', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
     const heavyRandomNum =  Math.floor(Math.random() * 10);
@@ -1287,7 +1321,7 @@ app.frame('/HeavyAttack', (c) => {
           // enemy is dead
 
           image = 'https://gateway.pinata.cloud/ipfs/QmSzG66K5d7RiCLN3LZoMefZi9DrJNbHcsNjmhXh6enbc9';
-          intents = [<Button action="/narrative3">Continue</Button>];
+          intents = [<Button action="/battle1narrative1">Continue</Button>];
 
 
         }
@@ -1334,7 +1368,7 @@ app.frame('/HeavyAttack', (c) => {
           // enemy is dead
 
           image = 'https://gateway.pinata.cloud/ipfs/QmSzG66K5d7RiCLN3LZoMefZi9DrJNbHcsNjmhXh6enbc9';
-          intents = [<Button action="/narrative3">Continue</Button>];
+          intents = [<Button action="/battle1narrative1">Continue</Button>];
 
 
       }      
@@ -1353,7 +1387,7 @@ app.frame('/HeavyAttack', (c) => {
           // enemy is dead
 
           image = 'https://gateway.pinata.cloud/ipfs/QmSzG66K5d7RiCLN3LZoMefZi9DrJNbHcsNjmhXh6enbc9';
-          intents = [<Button action="/narrative3">Continue</Button>];
+          intents = [<Button action="/battle1narrative1">Continue</Button>];
 
 
         }
@@ -1372,6 +1406,7 @@ app.frame('/specialAttack', (c) => {
     let image;
     let intents;
     player.specials -=1
+    player.framesLoaded += 1;
    
     const specialRandomNum = Math.floor(Math.random() * 8);
 
@@ -1417,7 +1452,7 @@ app.frame('/specialAttack', (c) => {
           // enemy is dead
 
           image = 'https://gateway.pinata.cloud/ipfs/QmSzG66K5d7RiCLN3LZoMefZi9DrJNbHcsNjmhXh6enbc9';
-          intents = [<Button action="/narrative3">Continue</Button>];
+          intents = [<Button action="/battle1narrative1">Continue</Button>];
 
 
         }
@@ -1439,6 +1474,7 @@ app.frame('/specialAttack', (c) => {
 app.frame('/dodgeResult', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
     //progressMarker = { ...progressMarker, previousFrame: '/dodgeResult' };
     const dodgeRandomNum = Math.floor(Math.random() * 10);
@@ -1480,6 +1516,7 @@ app.frame('/dodgeResult', (c) => {
 app.frame('/counterResult', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
    
     const counterRandomNum = Math.floor(Math.random() * 10);
@@ -1498,7 +1535,7 @@ app.frame('/counterResult', (c) => {
         } else {
           // enemy is dead
           image = 'https://gateway.pinata.cloud/ipfs/QmSzG66K5d7RiCLN3LZoMefZi9DrJNbHcsNjmhXh6enbc9';
-          intents = [<Button action="/narrative3">Continue</Button>];
+          intents = [<Button action="/battle1narrative1">Continue</Button>];
 
         }
         
@@ -1529,7 +1566,107 @@ app.frame('/counterResult', (c) => {
         intents: intents
     });
 });
+  /////////////////////////////////////////////////////////////////////////////////////////////////////
+  //battle 1 pre narrative
 
+  app.frame('/battle1narrative1', (c) => {
+    let image;
+    let intents;
+    player.framesLoaded += 1;
+
+    progressMarker = { ...progressMarker, previousFrame: '/battle1narrative1' };
+        image = (
+            <div
+                style={{
+                    alignItems: 'center',
+                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmebqhTMzcdm31DGnqz49jywFhVBTr9bo5RykFc97KCzmZ)',
+                    backgroundSize: '100% 100%',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flexWrap: 'nowrap',
+                    height: '100%',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                    width: '100%',
+                    color: '#E1A411',
+                    fontStyle: 'normal',
+                    letterSpacing: '-0.025em',
+                    lineHeight: 1.4,
+                    marginTop: 0,
+                    padding: '0 120px',
+                    whiteSpace: 'pre-wrap',
+                }}
+            >
+               
+              
+            </div>
+        );
+        intents = [
+           <Button action="/battle1narrative2">Continue</Button>,
+           <Button action="/showPlayerStatus">Status</Button>,
+
+           
+        ];
+
+
+        return c.res({
+           
+            image: image,
+            intents: intents
+        });
+    });
+
+
+  app.frame('/battle1narrative2', (c) => {
+    let image;
+    let intents;
+    player.framesLoaded += 1;
+
+    progressMarker = { ...progressMarker, previousFrame: '/battle1narrative2' };
+        image = (
+            <div
+                style={{
+                    alignItems: 'center',
+                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmWEEiBBmiGVLk7nMd2fAFbB2RuNtTkvswcJwLZmNkDL8v)',
+                    backgroundSize: '100% 100%',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flexWrap: 'nowrap',
+                    height: '100%',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                    width: '100%',
+                    color: '#E1A411',
+                    fontStyle: 'normal',
+                    letterSpacing: '-0.025em',
+                    lineHeight: 1.4,
+                    marginTop: 0,
+                    padding: '0 120px',
+                    whiteSpace: 'pre-wrap',
+                }}
+            >
+               
+              
+            </div>
+        );
+        intents = [
+           <Button action="/narrative3">Open Door</Button>,
+           <Button action="/showPlayerStatus">Status</Button>,
+
+           
+        ];
+
+
+        return c.res({
+           
+            image: image,
+            intents: intents
+        });
+    });
 
 
 
@@ -1541,7 +1678,7 @@ app.frame('/trap1', (c) => {
     let image;
     let intents;
     progressMarker = { ...progressMarker, previousFrame: '/trap1' };
-
+    player.framesLoaded += 1;
 
         image = (
             <div
@@ -1595,14 +1732,15 @@ app.frame('/dodgeCrossbow', (c) => {
   let image;
   let intents;
   let dodgeBowNum;
+  player.framesLoaded += 1;
 
 
-  dodgeBowNum = 2//Math.floor(Math.random() * 10);  // Assign value without redeclaring
+  dodgeBowNum = Math.floor(Math.random() * 10);  // Assign value without redeclaring
 
 
   if (dodgeBowNum < 6) {
     //fail
-    player.life -= 100
+    player.life -= 10
     image = (
             <div
                 style={{
@@ -1691,6 +1829,7 @@ app.frame('/fleeCrossbow', (c) => {
   let image;
   let intents;
   let fleeBowNum;
+  player.framesLoaded += 1;
 
 
   fleeBowNum = Math.floor(Math.random() * 10);  // Assign value without redeclaring
@@ -1796,6 +1935,7 @@ app.frame('/fleeCrossbow', (c) => {
 app.frame('/trapwounded', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
     //UPDATE SERVER WITH TIMEGATE AND OTHER STATS
     expirationTimeRem = new Date(Date.now() + 69);
@@ -1868,6 +2008,7 @@ app.frame('/trapwounded', (c) => {
   app.frame('/narrative1', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
     progressMarker = { ...progressMarker, previousFrame: '/narrative1' };
         image = (
@@ -1900,7 +2041,8 @@ app.frame('/trapwounded', (c) => {
         );
         intents = [
            <Button action="/narrative1b">Continue</Button>,
-           
+           <Button action="/showPlayerStatus">Status</Button>,
+
            
         ];
 
@@ -1915,6 +2057,7 @@ app.frame('/trapwounded', (c) => {
   app.frame('/narrative1b', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
         progressMarker = { ...progressMarker, previousFrame: '/narrative1b' };
 
@@ -1974,6 +2117,7 @@ app.frame('/trapwounded', (c) => {
 app.frame('/narrative3', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
     progressMarker = { ...progressMarker, previousFrame: '/narrative3' };
 
@@ -2010,6 +2154,7 @@ app.frame('/narrative3', (c) => {
           
            <Button action="/narrative3a1">Approach</Button>, 
            <Button action="/narrative3b1">Wait</Button>,
+           <Button action="/showPlayerStatus">Status</Button>,
            
         ];
 
@@ -2028,6 +2173,7 @@ app.frame('/narrative3', (c) => {
 app.frame('/narrative3b1', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
     progressMarker = { ...progressMarker, previousFrame: '/narrative3b1' };
 
@@ -2061,7 +2207,9 @@ app.frame('/narrative3b1', (c) => {
         );
         intents = [
            
+           <Button action="/narrative3a1">Approach</Button>,
            <Button action="/narrative3b2">Stay Hidden</Button>,
+            <Button action="/showPlayerStatus">Status</Button>,
            
         ];
 
@@ -2077,6 +2225,7 @@ app.frame('/narrative3b1', (c) => {
 app.frame('/narrative3b2', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
     progressMarker = { ...progressMarker, previousFrame: '/narrative3b2' };
 
@@ -2111,6 +2260,7 @@ app.frame('/narrative3b2', (c) => {
         intents = [
            
            <Button action="/narrative3b3">Follow</Button>,
+           <Button action="/narrative3a2">Search the Room</Button>,
            
         ];
 
@@ -2126,6 +2276,7 @@ app.frame('/narrative3b2', (c) => {
 app.frame('/narrative3b3', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
     progressMarker = { ...progressMarker, previousFrame: '/narrative3b3' };
 
@@ -2160,6 +2311,7 @@ app.frame('/narrative3b3', (c) => {
         intents = [
            
            <Button action="/trap3">Continue</Button>,
+            <Button action="/showPlayerStatus">Status</Button>,
            
         ];
 
@@ -2180,6 +2332,7 @@ app.frame('/narrative3b3', (c) => {
 app.frame('/narrative3a1', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
     progressMarker = { ...progressMarker, previousFrame: '/narrative3a1' };
 
@@ -2232,6 +2385,7 @@ app.frame('/narrative3a1', (c) => {
 app.frame('/narrative3a1a', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
     progressMarker = { ...progressMarker, previousFrame: '/narrative3a1a' };
 
@@ -2286,6 +2440,7 @@ app.frame('/narrative3a1a', (c) => {
 app.frame('/narrative3a3', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
     player.metStranger += 1
 
@@ -2296,7 +2451,7 @@ app.frame('/narrative3a3', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmTN3F4YxSGTrqZC5CHkRgTx3yjiqcFQALoLoJNf6BVZ1W)',
+                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmNLq5MzsoLdyomxDGKX9XwKjzZ2cbviP3qGZGQTZQRSmf)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -2323,6 +2478,7 @@ app.frame('/narrative3a3', (c) => {
            
           
            <Button action="/trap3">Continue</Button>, 
+            <Button action="/showPlayerStatus">Status</Button>,
            
         ];
 
@@ -2339,6 +2495,7 @@ app.frame('/narrative3a3', (c) => {
 app.frame('/narrative3a1b', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
     progressMarker = { ...progressMarker, previousFrame: '/narrative3a1b' };
 
@@ -2391,6 +2548,7 @@ app.frame('/narrative3a1b', (c) => {
 app.frame('/narrative3a2', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
     progressMarker = { ...progressMarker, previousFrame: '/narrative3a2' };
@@ -2454,6 +2612,7 @@ app.frame('/narrative3a2', (c) => {
 app.frame('/battle3', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
    progressMarker = { ...progressMarker, previousFrame: '/battle3' };
@@ -2482,6 +2641,7 @@ app.frame('/fight2-3', (c) => {
     let image;
     let intents;
     const fightRandomImage3 = Math.floor(Math.random() * 4);
+    player.framesLoaded += 1;
 
    progressMarker = { ...progressMarker, previousFrame: '/fight2-3' };
 
@@ -2537,6 +2697,7 @@ app.frame('/fight2-3', (c) => {
 app.frame('/SwiftAttack3', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
     const swiftRandomNum3 = Math.floor(Math.random() * 8);
     const swiftRandomMiss3 = Math.floor(Math.random() * 4);
@@ -2556,7 +2717,7 @@ app.frame('/SwiftAttack3', (c) => {
           // enemy is dead
 
           image = 'https://gateway.pinata.cloud/ipfs/Qme92iuQNJt3knc8rTqj8mpDS3FUZznaawnUiREY3pZSX4';
-          intents = [<Button action="/narrative6">Continue</Button>];
+          intents = [<Button action="/battle3transition">Continue</Button>];
 
 
         }
@@ -2592,7 +2753,7 @@ app.frame('/SwiftAttack3', (c) => {
           // enemy is dead
 
           image = 'https://gateway.pinata.cloud/ipfs/Qme92iuQNJt3knc8rTqj8mpDS3FUZznaawnUiREY3pZSX4';
-          intents = [<Button action="/narrative6">Continue</Button>];
+          intents = [<Button action="/battle3transition">Continue</Button>];
 
 
         }
@@ -2627,7 +2788,7 @@ app.frame('/SwiftAttack3', (c) => {
           // enemy is dead
 
           image = 'https://gateway.pinata.cloud/ipfs/Qme92iuQNJt3knc8rTqj8mpDS3FUZznaawnUiREY3pZSX4';
-          intents = [<Button action="/narrative6">Continue</Button>];
+          intents = [<Button action="/battle3transition">Continue</Button>];
 
 
         }
@@ -2647,6 +2808,7 @@ app.frame('/SwiftAttack3', (c) => {
 app.frame('/HeavyAttack3', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
     const heavyRandomNum3 = Math.floor(Math.random() * 11);
@@ -2667,7 +2829,7 @@ app.frame('/HeavyAttack3', (c) => {
           // enemy is dead
 
           image = 'https://gateway.pinata.cloud/ipfs/Qme92iuQNJt3knc8rTqj8mpDS3FUZznaawnUiREY3pZSX4';
-          intents = [<Button action="/narrative6">Continue</Button>];
+          intents = [<Button action="/battle3transition">Continue</Button>];
 
 
         }
@@ -2715,7 +2877,7 @@ app.frame('/HeavyAttack3', (c) => {
           // enemy is dead
 
           image = 'https://gateway.pinata.cloud/ipfs/Qme92iuQNJt3knc8rTqj8mpDS3FUZznaawnUiREY3pZSX4';
-          intents = [<Button action="/narrative6">Continue</Button>];
+          intents = [<Button action="/battle3transition">Continue</Button>];
 
 
         }      
@@ -2734,7 +2896,7 @@ app.frame('/HeavyAttack3', (c) => {
           // enemy is dead
 
           image = 'https://gateway.pinata.cloud/ipfs/Qme92iuQNJt3knc8rTqj8mpDS3FUZznaawnUiREY3pZSX4';
-          intents = [<Button action="/narrative6">Continue</Button>];
+          intents = [<Button action="/battle3transition">Continue</Button>];
 
 
         }
@@ -2753,6 +2915,7 @@ app.frame('/specialAttack3', (c) => {
     let image;
     let intents;
     player.specials -=1
+    player.framesLoaded += 1;
    
     const specialRandomNum3 = Math.floor(Math.random() * 8);
 
@@ -2798,7 +2961,7 @@ app.frame('/specialAttack3', (c) => {
           // enemy is dead
 
           image = 'https://gateway.pinata.cloud/ipfs/Qme92iuQNJt3knc8rTqj8mpDS3FUZznaawnUiREY3pZSX4';
-          intents = [<Button action="/narrative6">Continue</Button>];
+          intents = [<Button action="/battle3transition">Continue</Button>];
 
 
         }
@@ -2820,6 +2983,7 @@ app.frame('/specialAttack3', (c) => {
 app.frame('/dodgeResult3', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
     //progressMarker = { ...progressMarker, previousFrame: '/dodgeResult' };
     const dodgeRandomNum3 = Math.floor(Math.random() * 10);
@@ -2861,6 +3025,7 @@ app.frame('/dodgeResult3', (c) => {
 app.frame('/counterResult3', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
    
     const counterRandomNum3 = Math.floor(Math.random() * 10);
@@ -2880,7 +3045,7 @@ app.frame('/counterResult3', (c) => {
         } else {
           // enemy is dead
           image = 'https://gateway.pinata.cloud/ipfs/Qme92iuQNJt3knc8rTqj8mpDS3FUZznaawnUiREY3pZSX4';
-          intents = [<Button action="/narrative6">Continue</Button>];
+          intents = [<Button action="/battle3transition">Continue</Button>];
 
         }
         
@@ -2914,12 +3079,82 @@ app.frame('/counterResult3', (c) => {
 
 
 
+
+
+  // battle 3 transition
+
+  app.frame('/battle3transition', (c) => {
+      let image;
+      let intents;
+      player.framesLoaded += 1;
+      progressMarker = { ...progressMarker, previousFrame: '/battle3transition' };
+
+          image = (
+              <div
+                  style={{
+                      alignItems: 'center',
+                      backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmWAaD4VDEPh3AcV5BKbCNMJumEo5XtteN6cbPJs1pMdrh)',
+                      backgroundSize: '100% 100%',
+                      backgroundPosition: 'center',
+                      backgroundRepeat: 'no-repeat',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      flexWrap: 'nowrap',
+                      height: '100%',
+                      justifyContent: 'center',
+                      textAlign: 'center',
+                      width: '100%',
+                      color: '#E1A411',
+                      fontStyle: 'normal',
+                      letterSpacing: '-0.025em',
+                      lineHeight: 1.4,
+                      marginTop: 0,
+                      padding: '0 120px',
+                      whiteSpace: 'pre-wrap',
+                  }}
+              >
+                  
+                
+              </div>
+          );
+          intents = [
+             
+             <Button action="/narrative6">Continue</Button>,
+             <Button action="/showPlayerStatus">Status</Button>,
+
+             
+          ];
+
+
+      return c.res({
+         
+          image: image,
+          intents: intents
+      });
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 app.frame('/narrative5', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
         progressMarker = { ...progressMarker, previousFrame: '/narrative5' };
         image = (
@@ -2953,6 +3188,7 @@ app.frame('/narrative5', (c) => {
            
            <Button action="/drink">Drink</Button>,
            <Button action="/resist">Resist Urge</Button>,
+           <Button action="/showPlayerStatus">Status</Button>,
           
            
         ];
@@ -2968,6 +3204,7 @@ app.frame('/narrative5', (c) => {
 app.frame('/resist', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
         progressMarker = { ...progressMarker, previousFrame: '/resist' };
         image = (
@@ -3001,6 +3238,7 @@ app.frame('/resist', (c) => {
            
            <Button action="/drink">Drink</Button>,
            <Button action="/resistb">Resist Urge</Button>,
+           <Button action="/showPlayerStatus">Status</Button>,
           
            
         ];
@@ -3017,6 +3255,7 @@ app.frame('/resist', (c) => {
 app.frame('/resistb', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
         progressMarker = { ...progressMarker, previousFrame: '/resistb' };
 
@@ -3050,6 +3289,7 @@ app.frame('/resistb', (c) => {
         intents = [
            
            <Button action="/battle2">Continue</Button>,
+           <Button action="/showPlayerStatus">Status</Button>,
           
            
         ];
@@ -3066,6 +3306,7 @@ app.frame('/resistb', (c) => {
 app.frame('/drink', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
         progressMarker = { ...progressMarker, previousFrame: '/drink' };
         image = (
@@ -3098,6 +3339,7 @@ app.frame('/drink', (c) => {
         intents = [
            
            <Button action="/vision">Continue</Button>,
+
           
            
         ];
@@ -3114,6 +3356,7 @@ app.frame('/drink', (c) => {
 app.frame('/vision', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
         image = (
@@ -3162,6 +3405,7 @@ app.frame('/vision', (c) => {
 app.frame('/vision2', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
         image = (
@@ -3210,6 +3454,7 @@ app.frame('/vision2', (c) => {
 app.frame('/vision3', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
         image = (
@@ -3259,6 +3504,7 @@ app.frame('/vision3', (c) => {
 app.frame('/vision4', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
         image = (
@@ -3307,6 +3553,7 @@ app.frame('/vision4', (c) => {
 app.frame('/vision5', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
         image = (
@@ -3355,6 +3602,7 @@ app.frame('/vision5', (c) => {
 app.frame('/vision6', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
         image = (
@@ -3403,6 +3651,7 @@ app.frame('/vision6', (c) => {
 app.frame('/vision7', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
         image = (
@@ -3451,13 +3700,14 @@ app.frame('/vision7', (c) => {
 app.frame('/vision8', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
         image = (
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmdPEHEaohSqHYkvaYX5VqCG8zTy1Pk13z4cHUhnvwN83g)',
+                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmSuqiFotyWsdf6c8c3Yi62iJW25drcJUuSyvUivzeZrYT)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -3500,6 +3750,7 @@ app.frame('/vision8', (c) => {
 app.frame('/vision9', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
         image = (
@@ -3550,6 +3801,7 @@ app.frame('/vision9', (c) => {
 app.frame('/vision10', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
 
         image = (
@@ -3598,6 +3850,8 @@ app.frame('/vision10', (c) => {
 app.frame('/vision11', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
+
 
 
         image = (
@@ -3647,6 +3901,8 @@ app.frame('/vision11', (c) => {
 app.frame('/vision12', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
+
 
 
         image = (
@@ -3695,6 +3951,8 @@ app.frame('/vision12', (c) => {
 app.frame('/vision13', (c) => {
     let image;
     let intents;
+      player.framesLoaded += 1;
+
 
 
         image = (
@@ -3750,6 +4008,7 @@ app.frame('/vision13', (c) => {
 app.frame('/battle5', (c) => {
     let image;
     let intents;
+      player.framesLoaded += 1;
 
 
    progressMarker = { ...progressMarker, previousFrame: '/battle5' };
@@ -3778,6 +4037,7 @@ app.frame('/fight2-5', (c) => {
     let image;
     let intents;
     const fightRandomImage5 = Math.floor(Math.random() * 4);
+      player.framesLoaded += 1;
 
    progressMarker = { ...progressMarker, previousFrame: '/fight2-5' };
 
@@ -3834,6 +4094,7 @@ app.frame('/fight2-5', (c) => {
 app.frame('/SwiftAttack5', (c) => {
     let image;
     let intents;
+      player.framesLoaded += 1;
 
     const swiftRandomNum5 =  Math.floor(Math.random() * 8);
     const swiftRandomMiss5 = Math.floor(Math.random() * 3);
@@ -3945,6 +4206,7 @@ app.frame('/HeavyAttack5', (c) => {
     let image;
     let intents;
 
+  player.framesLoaded += 1;
 
     const heavyRandomNum5 = Math.floor(Math.random() * 8);
     const heavyRandomMiss5 = Math.floor(Math.random() * 2);
@@ -4050,7 +4312,8 @@ app.frame('/specialAttack5', (c) => {
     let image;
     let intents;
     player.specials -=1
-   
+     player.framesLoaded += 1;
+
     const specialRandomNum5 = Math.floor(Math.random() * 8);
 
     const specialRandomMiss5 = Math.floor(Math.random() * 2);
@@ -4117,6 +4380,7 @@ app.frame('/specialAttack5', (c) => {
 app.frame('/dodgeResult5', (c) => {
     let image;
     let intents;
+      player.framesLoaded += 1;
 
     //progressMarker = { ...progressMarker, previousFrame: '/dodgeResult' };
     const dodgeRandomNum5 = Math.floor(Math.random() * 10);
@@ -4158,6 +4422,7 @@ app.frame('/dodgeResult5', (c) => {
 app.frame('/counterResult5', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
 
    
     const counterRandomNum5 = Math.floor(Math.random() * 10);
@@ -4246,6 +4511,7 @@ app.frame('/counterResult5', (c) => {
 app.frame('/narrative2', (c) => {
     let image;
     let intents;
+      player.framesLoaded += 1;
 
         progressMarker = { ...progressMarker, previousFrame: '/narrative2' };
 
@@ -4280,6 +4546,7 @@ app.frame('/narrative2', (c) => {
         intents = [
            
            <Button action="/narrative4">Continue</Button>,
+           <Button action="/showPlayerStatus">Status</Button>,
 
            
         ];
@@ -4305,6 +4572,7 @@ app.frame('/trap2', (c) => {
     let image;
     let intents;
     progressMarker = { ...progressMarker, previousFrame: '/trap2' };
+  player.framesLoaded += 1;
 
         image = (
             <div
@@ -4358,14 +4626,15 @@ app.frame('/option1', (c) => {
   let image;
   let intents;
   let trap2opt1Num;
+  player.framesLoaded += 1;
 
 
-  trap2opt1Num = 2// Math.floor(Math.random() * 10);  // Assign value without redeclaring
+  trap2opt1Num = Math.floor(Math.random() * 10);  // Assign value without redeclaring
 
 
   if (trap2opt1Num < 5) {
     //fail
-    player.life -= 100
+    player.life -= 10
     image = (
             <div
                 style={{
@@ -4454,6 +4723,7 @@ app.frame('/option2', (c) => {
   let image;
   let intents;
   let trap2option2Num;
+  player.framesLoaded += 1;
 
 
   trap2option2Num = Math.floor(Math.random() * 10);  // Assign value without redeclaring
@@ -4553,6 +4823,7 @@ app.frame('/trap3', (c) => {
     let image;
     let intents;
     progressMarker = { ...progressMarker, previousFrame: '/trap3' };
+        player.framesLoaded += 1;
 
         image = (
             <div
@@ -4584,8 +4855,8 @@ app.frame('/trap3', (c) => {
         );
         intents = [
            
-           <Button action="/trap3Option">Carefully</Button>,
-           <Button action="/trap3Option2">Swiftly</Button>,
+           <Button action="/trap3Option">Walk Slowly</Button>,
+           <Button action="/trap3Option2">Walk Quickly</Button>,
            <Button action="/showPlayerStatus">Status</Button>,
            
         ];
@@ -4606,6 +4877,7 @@ app.frame('/trap3Option', (c) => {
   let image;
   let intents;
   let trap3num;
+  player.framesLoaded += 1;
 
 
   trap3num = Math.floor(Math.random() * 10);  // Assign value without redeclaring
@@ -4710,7 +4982,7 @@ app.frame('/trap3Option2', (c) => {
   let image;
   let intents;
   let trap3num;
-
+  player.framesLoaded += 1;
 
   trap3num = Math.floor(Math.random() * 10);  // Assign value without redeclaring
 
@@ -4818,7 +5090,7 @@ app.frame('/narrative4', (c) => {
     let image;
     let intents;
     progressMarker = { ...progressMarker, previousFrame: '/narrative4' };
-
+    player.framesLoaded += 1;
         image = (
             <div
                 style={{
@@ -4850,6 +5122,7 @@ app.frame('/narrative4', (c) => {
         intents = [
            
            <Button action="/narrative4b">Continue</Button>,
+           <Button action="/showPlayerStatus">Status</Button>,
 
            
         ];
@@ -4868,7 +5141,7 @@ app.frame('/narrative4b', (c) => {
     let image;
     let intents;
     progressMarker = { ...progressMarker, previousFrame: '/narrative4b' };
-
+    player.framesLoaded += 1;
         image = (
             <div
                 style={{
@@ -4900,6 +5173,7 @@ app.frame('/narrative4b', (c) => {
         intents = [
            
            <Button action="/battle4">Continue</Button>,
+           <Button action="/showPlayerStatus">Status</Button>,
 
            
         ];
@@ -4924,7 +5198,7 @@ app.frame('/narrative4b', (c) => {
 app.frame('/battle2', (c) => {
     let image;
     let intents;
-
+    player.framesLoaded += 1;
 
    progressMarker = { ...progressMarker, previousFrame: '/battle2' };
 
@@ -4952,7 +5226,7 @@ app.frame('/fight2-2', (c) => {
     let image;
     let intents;
     const fightRandomImage2 = Math.floor(Math.random() * 4);
-
+    player.framesLoaded += 1;
    progressMarker = { ...progressMarker, previousFrame: '/fight2-2' };
 
 
@@ -5005,7 +5279,7 @@ app.frame('/fight2-2', (c) => {
 app.frame('/SwiftAttack2', (c) => {
     let image;
     let intents;
-
+    player.framesLoaded += 1;
     const swiftRandomNum2 = Math.floor(Math.random() * 8);
     const swiftRandomMiss2 = Math.floor(Math.random() * 4);
 
@@ -5024,7 +5298,7 @@ app.frame('/SwiftAttack2', (c) => {
           // enemy is dead
 
           image = 'https://gateway.pinata.cloud/ipfs/QmUqk9oVXtLUArg9o8rzr4ygdzXWCybayiWeHJDCrvp9Kt';
-          intents = [<Button action="/narrative7">Continue</Button>];
+          intents = [<Button action="/battle2transition">Continue</Button>];
 
 
         }
@@ -5060,7 +5334,7 @@ app.frame('/SwiftAttack2', (c) => {
           // enemy is dead
 
           image = 'https://gateway.pinata.cloud/ipfs/QmUqk9oVXtLUArg9o8rzr4ygdzXWCybayiWeHJDCrvp9Kt';
-          intents = [<Button action="/narrative7">Continue</Button>];
+          intents = [<Button action="/battle2transition">Continue</Button>];
 
 
         }
@@ -5095,7 +5369,7 @@ app.frame('/SwiftAttack2', (c) => {
           // enemy is dead
 
           image = 'https://gateway.pinata.cloud/ipfs/QmUqk9oVXtLUArg9o8rzr4ygdzXWCybayiWeHJDCrvp9Kt';
-          intents = [<Button action="/narrative7">Continue</Button>];
+          intents = [<Button action="/battle2transition">Continue</Button>];
 
 
         }
@@ -5115,7 +5389,7 @@ app.frame('/SwiftAttack2', (c) => {
 app.frame('/HeavyAttack2', (c) => {
     let image;
     let intents;
-
+    player.framesLoaded += 1;
 
     const heavyRandomNum2 = Math.floor(Math.random() * 10);
     const heavyRandomMiss2 = Math.floor(Math.random() * 4);
@@ -5135,7 +5409,7 @@ app.frame('/HeavyAttack2', (c) => {
           // enemy is dead
 
           image = 'https://gateway.pinata.cloud/ipfs/QmUqk9oVXtLUArg9o8rzr4ygdzXWCybayiWeHJDCrvp9Kt';
-          intents = [<Button action="/narrative7">Continue</Button>];
+          intents = [<Button action="/battle2transition">Continue</Button>];
 
 
         }
@@ -5183,7 +5457,7 @@ app.frame('/HeavyAttack2', (c) => {
           // enemy is dead
 
           image = 'https://gateway.pinata.cloud/ipfs/QmUqk9oVXtLUArg9o8rzr4ygdzXWCybayiWeHJDCrvp9Kt';
-          intents = [<Button action="/narrative7">Continue</Button>];
+          intents = [<Button action="/battle2transition">Continue</Button>];
 
 
         }      
@@ -5202,7 +5476,7 @@ app.frame('/HeavyAttack2', (c) => {
           // enemy is dead
 
           image = 'https://gateway.pinata.cloud/ipfs/QmUqk9oVXtLUArg9o8rzr4ygdzXWCybayiWeHJDCrvp9Kt';
-          intents = [<Button action="/narrative7">Continue</Button>];
+          intents = [<Button action="/battle2transition">Continue</Button>];
 
 
         }
@@ -5221,7 +5495,7 @@ app.frame('/specialAttack2', (c) => {
     let image;
     let intents;
     player.specials -=1
-   
+    player.framesLoaded += 1;
     const specialRandomNum2 = Math.floor(Math.random() * 8);
 
     const specialRandomMiss2 = Math.floor(Math.random() * 2);
@@ -5266,7 +5540,7 @@ app.frame('/specialAttack2', (c) => {
           // enemy is dead
 
           image = 'https://gateway.pinata.cloud/ipfs/QmUqk9oVXtLUArg9o8rzr4ygdzXWCybayiWeHJDCrvp9Kt';
-          intents = [<Button action="/narrative7">Continue</Button>];
+          intents = [<Button action="/battle2transition">Continue</Button>];
 
 
         }
@@ -5288,7 +5562,7 @@ app.frame('/specialAttack2', (c) => {
 app.frame('/dodgeResult2', (c) => {
     let image;
     let intents;
-
+    player.framesLoaded += 1;
     //progressMarker = { ...progressMarker, previousFrame: '/dodgeResult' };
     const dodgeRandomNum2 = Math.floor(Math.random() * 10);
 
@@ -5329,7 +5603,7 @@ app.frame('/dodgeResult2', (c) => {
 app.frame('/counterResult2', (c) => {
     let image;
     let intents;
-
+    player.framesLoaded += 1;
    
     const counterRandomNum2 = Math.floor(Math.random() * 10);
 
@@ -5347,7 +5621,7 @@ app.frame('/counterResult2', (c) => {
         } else {
           // enemy is dead
           image = 'https://gateway.pinata.cloud/ipfs/QmUqk9oVXtLUArg9o8rzr4ygdzXWCybayiWeHJDCrvp9Kt';
-          intents = [<Button action="/narrative7">Continue</Button>];
+          intents = [<Button action="/battle2transition">Continue</Button>];
 
         }
         
@@ -5380,13 +5654,72 @@ app.frame('/counterResult2', (c) => {
 });
 
 
+
+  //battle 2 transition
+
+
+  app.frame('/battle2transition', (c) => {
+      let image;
+      let intents;
+      progressMarker = { ...progressMarker, previousFrame: '/battle2transition' };
+      player.framesLoaded += 1;
+          image = (
+              <div
+                  style={{
+                      alignItems: 'center',
+                      backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmWmkszrpfMatjpgvzwFG2JrcLR6TbSYWKjqkqJHkvv9t9)',
+                      backgroundSize: '100% 100%',
+                      backgroundPosition: 'center',
+                      backgroundRepeat: 'no-repeat',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      flexWrap: 'nowrap',
+                      height: '100%',
+                      justifyContent: 'center',
+                      textAlign: 'center',
+                      width: '100%',
+                      color: '#E1A411',
+                      fontStyle: 'normal',
+                      letterSpacing: '-0.025em',
+                      lineHeight: 1.4,
+                      marginTop: 0,
+                      padding: '0 120px',
+                      whiteSpace: 'pre-wrap',
+                  }}
+              >
+                  
+                
+              </div>
+          );
+          intents = [
+             
+             <Button action="/narrative7">Continue</Button>,
+             <Button action="/showPlayerStatus">Status</Button>,
+
+             
+          ];
+
+
+      return c.res({
+         
+          image: image,
+          intents: intents
+      });
+  });
+
+
+
+
+
+
+
   /////////////////////////////////////////////////////////////////////////////////////////////////////
   //narrative 7
   app.frame('/narrative7', (c) => {
       let image;
       let intents;
       progressMarker = { ...progressMarker, previousFrame: '/narrative7' };
-
+      player.framesLoaded += 1;
           image = (
               <div
                   style={{
@@ -5418,7 +5751,7 @@ app.frame('/counterResult2', (c) => {
           intents = [
              
              <Button action="/narrative7b">Collect</Button>,
-             <Button action="/showPlayerStatus">status</Button>,
+             <Button action="/showPlayerStatus">Status</Button>,
 
              
           ];
@@ -5438,7 +5771,7 @@ app.frame('/counterResult2', (c) => {
       let intents;
       progressMarker = { ...progressMarker, previousFrame: '/narrative7b' };
       player.hasGem += 1
-
+      player.framesLoaded += 1;
           image = (
               <div
                   style={{
@@ -5470,7 +5803,7 @@ app.frame('/counterResult2', (c) => {
           intents = [
              
              <Button action="/narrative8">Continue</Button>,
-             <Button action="/showPlayerStatus">status</Button>,
+             <Button action="/showPlayerStatus">Status</Button>,
 
              
           ];
@@ -5491,7 +5824,7 @@ app.frame('/counterResult2', (c) => {
       let image;
       let intents;
       progressMarker = { ...progressMarker, previousFrame: '/narrative8' };
-      
+      player.framesLoaded += 1;
 
           image = (
               <div
@@ -5524,6 +5857,7 @@ app.frame('/counterResult2', (c) => {
           intents = [
              
              <Button action="/battle5">Fight</Button>,
+             <Button action="/showPlayerStatus">Status</Button>,
              
 
              
@@ -5548,7 +5882,7 @@ app.frame('/counterResult2', (c) => {
 app.frame('/battle4', (c) => {
     let image;
     let intents;
-
+    player.framesLoaded += 1;
 
    progressMarker = { ...progressMarker, previousFrame: '/battle4' };
 
@@ -5576,7 +5910,7 @@ app.frame('/fight2-4', (c) => {
     let image;
     let intents;
     const fightRandomImage4 = Math.floor(Math.random() * 3);
-
+    player.framesLoaded += 1;
    progressMarker = { ...progressMarker, previousFrame: '/fight2-4' };
 
 
@@ -5634,7 +5968,7 @@ app.frame('/SwiftAttack4', (c) => {
 
     const swiftRandomNum4 = Math.floor(Math.random() * 8);
     const swiftRandomMiss4 = Math.floor(Math.random() * 4);
-
+    player.framesLoaded += 1;
 
     if (swiftRandomNum4 < 3) {
         // glancing blow
@@ -5650,7 +5984,7 @@ app.frame('/SwiftAttack4', (c) => {
           // enemy is dead
 
           image = 'https://gateway.pinata.cloud/ipfs/QmT4ue93NYK4rgfzFFrV7LzQ8NuMtuP6f7vEtrAJdhpF7N';
-          intents = [<Button action="/narrative5">Continue</Button>];
+          intents = [<Button action="/battle4transition">Continue</Button>];
 
 
         }
@@ -5686,7 +6020,7 @@ app.frame('/SwiftAttack4', (c) => {
           // enemy is dead
 
           image = 'https://gateway.pinata.cloud/ipfs/QmT4ue93NYK4rgfzFFrV7LzQ8NuMtuP6f7vEtrAJdhpF7N';
-          intents = [<Button action="/narrative5">Continue</Button>];
+          intents = [<Button action="/battle4transition">Continue</Button>];
 
 
         }
@@ -5721,7 +6055,7 @@ app.frame('/SwiftAttack4', (c) => {
           // enemy is dead
 
           image = 'https://gateway.pinata.cloud/ipfs/QmT4ue93NYK4rgfzFFrV7LzQ8NuMtuP6f7vEtrAJdhpF7N';
-          intents = [<Button action="/narrative5">Continue</Button>];
+          intents = [<Button action="/battle4transition">Continue</Button>];
 
 
         }
@@ -5741,7 +6075,7 @@ app.frame('/SwiftAttack4', (c) => {
 app.frame('/HeavyAttack4', (c) => {
     let image;
     let intents;
-
+    player.framesLoaded += 1;
 
     const heavyRandomNum4 = Math.floor(Math.random() * 10);
     const heavyRandomMiss4 = Math.floor(Math.random() * 4);
@@ -5761,7 +6095,7 @@ app.frame('/HeavyAttack4', (c) => {
           // enemy is dead
 
           image = 'https://gateway.pinata.cloud/ipfs/QmT4ue93NYK4rgfzFFrV7LzQ8NuMtuP6f7vEtrAJdhpF7N';
-          intents = [<Button action="/narrative5">Continue</Button>];
+          intents = [<Button action="/battle4transition">Continue</Button>];
 
 
         }
@@ -5809,7 +6143,7 @@ app.frame('/HeavyAttack4', (c) => {
           // enemy is dead
 
           image = 'https://gateway.pinata.cloud/ipfs/QmT4ue93NYK4rgfzFFrV7LzQ8NuMtuP6f7vEtrAJdhpF7N';
-          intents = [<Button action="/narrative5">Continue</Button>];
+          intents = [<Button action="/battle4transition">Continue</Button>];
 
 
         }      
@@ -5842,7 +6176,7 @@ app.frame('/HeavyAttack4', (c) => {
           // enemy is dead
 
           image = 'https://gateway.pinata.cloud/ipfs/QmT4ue93NYK4rgfzFFrV7LzQ8NuMtuP6f7vEtrAJdhpF7N';
-          intents = [<Button action="/narrative5">Continue</Button>];
+          intents = [<Button action="/battle4transition">Continue</Button>];
 
 
         }
@@ -5861,7 +6195,7 @@ app.frame('/specialAttack4', (c) => {
     let image;
     let intents;
     player.specials -=1
-   
+    player.framesLoaded += 1;
     const specialRandomNum4 = Math.floor(Math.random() * 8);
 
     const specialRandomMiss4 = Math.floor(Math.random() * 2);
@@ -5906,7 +6240,7 @@ app.frame('/specialAttack4', (c) => {
           // enemy is dead
 
           image = 'https://gateway.pinata.cloud/ipfs/QmT4ue93NYK4rgfzFFrV7LzQ8NuMtuP6f7vEtrAJdhpF7N';
-          intents = [<Button action="/narrative5">Continue</Button>];
+          intents = [<Button action="/battle4transition">Continue</Button>];
 
 
         }
@@ -5928,7 +6262,7 @@ app.frame('/specialAttack4', (c) => {
 app.frame('/dodgeResult4', (c) => {
     let image;
     let intents;
-
+    player.framesLoaded += 1;
     //progressMarker = { ...progressMarker, previousFrame: '/dodgeResult' };
     const dodgeRandomNum4 = Math.floor(Math.random() * 10);
 
@@ -5969,7 +6303,7 @@ app.frame('/dodgeResult4', (c) => {
 app.frame('/counterResult4', (c) => {
     let image;
     let intents;
-
+    player.framesLoaded += 1;
    
     const counterRandomNum4 = Math.floor(Math.random() * 10);
 
@@ -5987,7 +6321,7 @@ app.frame('/counterResult4', (c) => {
         } else {
           // enemy is dead
           image = 'https://gateway.pinata.cloud/ipfs/QmT4ue93NYK4rgfzFFrV7LzQ8NuMtuP6f7vEtrAJdhpF7N';
-          intents = [<Button action="/narrative5">Continue</Button>];
+          intents = [<Button action="/battle4transition">Continue</Button>];
 
         }
         
@@ -6023,26 +6357,57 @@ app.frame('/counterResult4', (c) => {
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////
 
+  // battle 3 transition
+
+  app.frame('/battle4transition', (c) => {
+      let image;
+      let intents;
+      player.framesLoaded += 1;
+      progressMarker = { ...progressMarker, previousFrame: '/battle4transition' };
+
+          image = (
+              <div
+                  style={{
+                      alignItems: 'center',
+                      backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmWAaD4VDEPh3AcV5BKbCNMJumEo5XtteN6cbPJs1pMdrh)',
+                      backgroundSize: '100% 100%',
+                      backgroundPosition: 'center',
+                      backgroundRepeat: 'no-repeat',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      flexWrap: 'nowrap',
+                      height: '100%',
+                      justifyContent: 'center',
+                      textAlign: 'center',
+                      width: '100%',
+                      color: '#E1A411',
+                      fontStyle: 'normal',
+                      letterSpacing: '-0.025em',
+                      lineHeight: 1.4,
+                      marginTop: 0,
+                      padding: '0 120px',
+                      whiteSpace: 'pre-wrap',
+                  }}
+              >
+                  
+                
+              </div>
+          );
+          intents = [
+             
+             <Button action="/narrative5">Continue</Button>,
+             <Button action="/showPlayerStatus">Status</Button>,
+
+             
+          ];
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      return c.res({
+         
+          image: image,
+          intents: intents
+      });
+  });
 
 
 
@@ -6056,7 +6421,8 @@ app.frame('/timegate', (c) => {
     // Update player object to indicate that time has been gated
     
     player.timegated += 1
-
+    player.death += 1
+    player.framesLoaded += 1;
     // Get the current date and time
     const currentDate = new Date();
 
@@ -6094,7 +6460,6 @@ app.frame('/timegate', (c) => {
 app.frame('/checktime', (c) => {
     let image;
     let intents;
-
     const timeDifference = timerWatch - Date.now();
 
       if (timeDifference > 0) {
@@ -6198,7 +6563,8 @@ app.frame('/checktime', (c) => {
 app.frame('/narrative6', (c) => {
     let image;
     let intents;
-
+    player.framesLoaded += 1;
+    progressMarker = { ...progressMarker, previousFrame: '/narrative6' };
 
         image = (
             <div
@@ -6231,6 +6597,7 @@ app.frame('/narrative6', (c) => {
            
            <Button action="/battle2">Dark Path</Button>,
            <Button action="/trap2">Noisy Path</Button>,
+           <Button action="/showPlayerStatus">Status</Button>,
 
            
         ];
@@ -6254,7 +6621,7 @@ app.frame('/narrative6', (c) => {
 app.frame('/scriptedfight', (c) => {
     let image;
     let intents;
-
+    player.framesLoaded += 1;
 
         image = (
             <div
@@ -6304,7 +6671,7 @@ app.frame('/scriptedfight', (c) => {
 app.frame('/endscene1', (c) => {
     let image;
     let intents;
-
+    player.framesLoaded += 1;
 
         image = (
             <div
@@ -6355,7 +6722,7 @@ app.frame('/endscene1', (c) => {
 app.frame('/endscene2', (c) => {
     let image;
     let intents;
-
+    player.framesLoaded += 1;
 
         image = (
             <div
@@ -6408,7 +6775,7 @@ app.frame('/endscene3', (c) => {
     let image;
     let intents;
 
-
+    player.framesLoaded += 1;
         image = (
             <div
                 style={{
@@ -6460,7 +6827,7 @@ app.frame('/endscene3', (c) => {
 app.frame('/endscene4', (c) => {
     let image;
     let intents;
-
+    player.framesLoaded += 1;
 
         image = (
             <div
@@ -6510,7 +6877,7 @@ app.frame('/endscene4', (c) => {
 app.frame('/endscene5', (c) => {
     let image;
     let intents;
-
+    player.framesLoaded += 1;
 
         image = (
             <div
@@ -6561,7 +6928,7 @@ app.frame('/endscene5', (c) => {
 app.frame('/endscene6', (c) => {
     let image;
     let intents;
-
+    player.framesLoaded += 1;
 
         image = (
             <div
@@ -6612,7 +6979,7 @@ app.frame('/endscene6', (c) => {
 app.frame('/finalDecision1', (c) => {
     let image;
     let intents;
-
+    player.framesLoaded += 1;
 
         image = (
             <div
@@ -6644,7 +7011,7 @@ app.frame('/finalDecision1', (c) => {
         );
         intents = [
            
-           <Button action="/blank">Continue</Button>,
+           <Button action="/finalDecision2">Continue</Button>,
 
            
         ];
@@ -6662,13 +7029,17 @@ app.frame('/finalDecision1', (c) => {
 app.frame('/finalDecision2', (c) => {
     let image;
     let intents;
+    player.framesLoaded += 1;
+    
 
 
-        image = (
+    if (player.metStranger > 0) {
+
+      image = (
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmSEtYPBHm1f23Nx8DYTbNXP9KUEfn6xYKjEGazwM8HVor)',
+                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmQ87pc2eYmdCK5wz4oY8EEMBCQM9xUTvAX1uT22dKU4QB)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -6694,10 +7065,118 @@ app.frame('/finalDecision2', (c) => {
         );
         intents = [
            
-           <Button action="/blank">1</Button>,
-           <Button action="/blank">2</Button>,
-           <Button action="/blank">3</Button>,
+           <Button action="/blank1">1</Button>,
+           <Button action="/blank2">2</Button>,
+           <Button action="/blank3">3</Button>,
+           <Button action="/blank4">4</Button>,
 
+           
+        ];
+
+
+    } else {
+
+      image = (
+            <div
+                style={{
+                    alignItems: 'center',
+                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmeucsR5KoMMu8ZRXFkuwp94ffEGBHEdFvSr1rtf3TUZZp)',
+                    backgroundSize: '100% 100%',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flexWrap: 'nowrap',
+                    height: '100%',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                    width: '100%',
+                    color: '#E1A411',
+                    fontStyle: 'normal',
+                    letterSpacing: '-0.025em',
+                    lineHeight: 1.4,
+                    marginTop: 0,
+                    padding: '0 120px',
+                    whiteSpace: 'pre-wrap',
+                }}
+            >
+               
+              
+            </div>
+        );
+        intents = [
+           
+           <Button action="/blank1">1</Button>,
+           <Button action="/blank2">2</Button>,
+           <Button action="/blank3">3</Button>,
+
+           
+        ];
+
+
+
+    }
+
+        
+
+
+    return c.res({
+       
+        image: image,
+        intents: intents
+    });
+});
+
+
+app.frame('/blank1', (c) => {
+    let image;
+    let intents;
+
+    player.framesLoaded += 1;
+
+    player.finalDecision = 1;
+
+    updateData(farcasterid, currentframe, deathFrame, timerWatch, finalDecision)
+    .then(() => {
+      console.log('Data updated successfully');
+      console.log(farcasterid)
+    })
+    .catch((error) => {
+      console.error('Error updating data:', error.message);
+    });
+
+
+        image = (
+            <div
+                style={{
+                    alignItems: 'center',
+                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmU8cvifAS6gEkLRxrJKXat2XCr2wMyLSLXvAkmYRhFU6Z)',
+                    backgroundSize: '100% 100%',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flexWrap: 'nowrap',
+                    height: '100%',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                    width: '100%',
+                    color: '#E1A411',
+                    fontStyle: 'normal',
+                    letterSpacing: '-0.025em',
+                    lineHeight: 1.4,
+                    marginTop: 0,
+                    padding: '0 120px',
+                    whiteSpace: 'pre-wrap',
+                }}
+            >
+               
+              
+            </div>
+        );
+        intents = [
+        <Button action="/finalStats">See Stats</Button>,
+           
            
         ];
 
@@ -6710,16 +7189,150 @@ app.frame('/finalDecision2', (c) => {
 });
 
 
-app.frame('/blank', (c) => {
+app.frame('/blank2', (c) => {
     let image;
     let intents;
+
+    player.framesLoaded += 1;
+
+    player.finalDecision = 2;
+
+    updateData(farcasterid, currentframe, deathFrame, timerWatch, finalDecision)
+    .then(() => {
+      console.log('Data updated successfully');
+      console.log(farcasterid)
+    })
+    .catch((error) => {
+      console.error('Error updating data:', error.message);
+    });
 
 
         image = (
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmSEtYPBHm1f23Nx8DYTbNXP9KUEfn6xYKjEGazwM8HVor)',
+                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmWtEwrL3NGQhVnZEJm6chqFkFiKr8WG7tp9ZnMAEoRD7F)',
+                    backgroundSize: '100% 100%',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flexWrap: 'nowrap',
+                    height: '100%',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                    width: '100%',
+                    color: '#E1A411',
+                    fontStyle: 'normal',
+                    letterSpacing: '-0.025em',
+                    lineHeight: 1.4,
+                    marginTop: 0,
+                    padding: '0 120px',
+                    whiteSpace: 'pre-wrap',
+                }}
+            >
+               
+              
+            </div>
+        );
+        intents = [
+           <Button action="/finalStats">See Stats</Button>,
+           
+        ];
+
+
+    return c.res({
+       
+        image: image,
+        intents: intents
+    });
+});
+
+
+
+app.frame('/blank3', (c) => {
+    let image;
+    let intents;
+    player.framesLoaded += 1;
+
+    player.finalDecision = 3;
+
+    updateData(farcasterid, currentframe, deathFrame, timerWatch, finalDecision)
+    .then(() => {
+      console.log('Data updated successfully');
+      console.log(farcasterid)
+    })
+    .catch((error) => {
+      console.error('Error updating data:', error.message);
+    });
+
+
+        image = (
+            <div
+                style={{
+                    alignItems: 'center',
+                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmZhtUCAHgpVsMwXNoAyPjDNGKg9nJCJoTCEom5McPdrpx)',
+                    backgroundSize: '100% 100%',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flexWrap: 'nowrap',
+                    height: '100%',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                    width: '100%',
+                    color: '#E1A411',
+                    fontStyle: 'normal',
+                    letterSpacing: '-0.025em',
+                    lineHeight: 1.4,
+                    marginTop: 0,
+                    padding: '0 120px',
+                    whiteSpace: 'pre-wrap',
+                }}
+            >
+               
+              
+            </div>
+        );
+        intents = [
+           <Button action="/finalStats">See Stats</Button>,
+           
+        ];
+
+
+    return c.res({
+       
+        image: image,
+        intents: intents
+    });
+});
+
+
+
+app.frame('/blank4', (c) => {
+    let image;
+    let intents;
+
+    player.framesLoaded += 1;
+
+    player.finalDecision = 4;
+
+    updateData(farcasterid, currentframe, deathFrame, timerWatch, finalDecision)
+    .then(() => {
+      console.log('Data updated successfully');
+      console.log(farcasterid)
+    })
+    .catch((error) => {
+      console.error('Error updating data:', error.message);
+    });
+
+
+        image = (
+            <div
+                style={{
+                    alignItems: 'center',
+                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmVercCWqZQFCY9zXgFw31hdwoZLhLrfME9hPkipF3f2hG)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -6745,8 +7358,59 @@ app.frame('/blank', (c) => {
         );
         intents = [
            
+           <Button action="/finalStats">See Stats</Button>,
+        ];
 
 
+    return c.res({
+       
+        image: image,
+        intents: intents
+    });
+});
+
+
+
+app.frame('/finalStats', (c) => {
+    let image;
+    let intents;
+    player.framesLoaded += 1;
+
+        image = (
+            <div
+                style={{
+                    alignItems: 'center',
+                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmcLTne4zVtLRzjkeBDRmsQ2sQj5dadxAwfuYUH6XCBs4e)',
+                    backgroundSize: '100% 100%',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flexWrap: 'nowrap',
+                    height: '100%',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                    width: '100%',
+                    color: '#E1A411',
+                    fontStyle: 'normal',
+                    letterSpacing: '-0.025em',
+                    lineHeight: 1.4,
+                    marginTop: 0,
+                    padding: '0 120px',
+                    whiteSpace: 'pre-wrap',
+                }}
+            >
+               <p style={{ fontSize : '50px', margin : '0', marginTop : '-200', color: 'green'  }}> {`Health remaining : ${player.life}`} </p>
+               <p style={{ fontSize : '50px', margin : '0', marginCenter : '-150', color: 'red'  }}> {`Enemies Defeated : ${player.framesLoaded}`} </p>
+               <p style={{ fontSize : '50px', margin : '0', marginCenter : '-50', color: 'red'  }}> {`Number of Death : ${player.death}`} </p>
+               <p style={{ fontSize : '50px', margin : '0', marginCenter : '+150', color: 'red'  }}> {`Total Frames Loaded : ${player.framesLoaded}`} </p>
+               <p style={{ fontSize : '50px', margin : '0', marginCenter : '+250', color: 'red'  }}> {`End Choice : ${player.finalDecision}`} </p>
+    
+              
+            </div>
+        );
+        intents = [
+           
            
         ];
 
@@ -6756,21 +7420,6 @@ app.frame('/blank', (c) => {
         image: image,
     });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
