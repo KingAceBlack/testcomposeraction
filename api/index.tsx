@@ -53,33 +53,34 @@ let player = {
   metStranger: 0,
   death: 0,
   finalDecision: 0,
-  framesLoaded: 0 
+  framesLoaded: 0, 
+  enemiesKilled: 0,
  
 };
 
 let enemy1 = {
-  name: 'ENEMY1',
+  name: 'enemy1',
   life: 50, 
 };
 
 let enemy2 = {
-  name: 'ENEMY2',
-  life: 50, 
+  name: 'enemy2',
+  life: 60, 
 };
 
 let enemy3 = {
-  name: 'ENEMY3',
-  life: 50, 
+  name: 'enemy3',
+  life: 70, 
 };
 
 let enemy4 = {
-  name: 'ENEMY4',
-  life: 50, 
+  name: 'enemy4',
+  life: 60, 
 };
 
 let enemy5 = {
-  name: 'ENEMY5',
-  life: 50, 
+  name: 'enemy5',
+  life: 60, 
 };
 
 
@@ -246,12 +247,16 @@ app.frame('/', (c) => {
     player = { ...player, hasGem: 0 };
     player = { ...player, metStranger: 0 };
     player = { ...player, framesLoaded: 0 };
+    player = { ...player, specials: 3 };
+    player = { ...player, enemiesKilled: 0 };
+
+
 
     player.framesLoaded += 1;
     
 
 
-        image = 'https://gateway.pinata.cloud/ipfs/QmbrxySXqW5DtwLW1fRJPw6SY7UnENvudTL39dEwx6VaDw';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmbrxySXqW5DtwLW1fRJPw6SY7UnENvudTL39dEwx6VaDw';
         intents = [
            
            <Button action="/page1">Continue</Button>,
@@ -311,7 +316,7 @@ app.frame('/page1', async (c) => {
   }
   
   return c.res({
-    image: 'https://gateway.pinata.cloud/ipfs/QmW7c9DAWLQswZ4LWeWgPFMtNfQPNNsYq1YnYAu7tU41Pt',
+    image: 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmW7c9DAWLQswZ4LWeWgPFMtNfQPNNsYq1YnYAu7tU41Pt',
     intents: [
       //<Button action={enemy1.name}>Continue</Button>, // example of how to pass a variable to the button
       //<Button action={`/${progressMarker.previousFrame}`}>Continue</Button>,
@@ -325,8 +330,14 @@ app.frame('/page2', (c) => {
     let image;
     let intents;
 
+    enemy1 = { ...enemy1, life: 50 };
+    enemy2 = { ...enemy2, life: 60 };
+    enemy3 = { ...enemy3, life: 70 };
+    enemy4 = { ...enemy4, life: 60 };
+    enemy5 = { ...enemy5, life: 60 };
+
     player.framesLoaded += 1;
-        image = 'https://gateway.pinata.cloud/ipfs/QmPHukU9yW92rHXzaCK7rzaCpNezn2bHMv8PRqPKwbgWzk';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmPHukU9yW92rHXzaCK7rzaCpNezn2bHMv8PRqPKwbgWzk';
         intents = [
            
            <Button action="/page3">Continue</Button>,
@@ -347,7 +358,7 @@ app.frame('/page3', (c) => {
     player.framesLoaded += 1;
 
 
-        image = 'https://gateway.pinata.cloud/ipfs/QmTAAhhrrLT8G3MoP5JtoTyeeHEySEi1mZ6DEt6K24L9CA';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmTAAhhrrLT8G3MoP5JtoTyeeHEySEi1mZ6DEt6K24L9CA';
         intents = [
            
            <Button action="/page4">Continue</Button>,
@@ -368,7 +379,7 @@ app.frame('/page4', (c) => {
     player.framesLoaded += 1;
 
 
-        image = 'https://gateway.pinata.cloud/ipfs/QmeysSoLVdEGaTN3GtibY5aMinxAQZyJgNaFb72zxHdNPf';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmeysSoLVdEGaTN3GtibY5aMinxAQZyJgNaFb72zxHdNPf';
         intents = [
            
            <Button action="/page5">Continue</Button>,
@@ -389,7 +400,7 @@ app.frame('/page5', (c) => {
     player.framesLoaded += 1;
 
 
-        image = 'https://gateway.pinata.cloud/ipfs/QmW7c9DAWLQswZ4LWeWgPFMtNfQPNNsYq1YnYAu7tU41Pt';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmW7c9DAWLQswZ4LWeWgPFMtNfQPNNsYq1YnYAu7tU41Pt';
         intents = [
            
            <Button action="/page6">Continue</Button>,
@@ -410,7 +421,7 @@ app.frame('/page6', (c) => {
     player.framesLoaded += 1;
 
 
-        image = 'https://gateway.pinata.cloud/ipfs/Qma86ajf9Ypgz7x9ACud3FK8PpLLzXnb4kLvzWTCmCVfR9';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qma86ajf9Ypgz7x9ACud3FK8PpLLzXnb4kLvzWTCmCVfR9';
         intents = [
            
            <Button action="/page7">Continue</Button>,
@@ -431,7 +442,7 @@ app.frame('/page7', (c) => {
     player.framesLoaded += 1;
 
 
-        image = 'https://gateway.pinata.cloud/ipfs/QmPXNPXRDrKep4FvgunvmYPgYqtxTjZGFe8xdmnDA445ax';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmPXNPXRDrKep4FvgunvmYPgYqtxTjZGFe8xdmnDA445ax';
         intents = [
            
            <Button action="/page8">Continue</Button>,
@@ -452,7 +463,125 @@ app.frame('/page8', (c) => {
     player.framesLoaded += 1;
 
 
-        image = 'https://gateway.pinata.cloud/ipfs/Qmb4gxDGb1i1DE4T1gjcR8hgFvJmUzuGLir6t6vNpPKRru';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmeK5Jes44jUZXYjCpStkyX5mrXQscC1LrQrx498XVSoBG';
+        intents = [
+           
+           <Button action="/page8a">Threaten</Button>,
+           <Button action="/page8b">Persuade</Button>,
+        ];
+
+
+    return c.res({
+       
+        image: image,
+        intents: intents
+    });
+});
+
+
+app.frame('/page8a', (c) => {
+    let image;
+    let intents;
+    player.framesLoaded += 1;
+
+
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmY9Bga16mZEkL8LZMeWaRU8H7hpT4y2cwmcsfd3n9az8M';
+        intents = [
+           
+           <Button action="/page8af">Continue</Button>,
+        ];
+
+
+    return c.res({
+       
+        image: image,
+        intents: intents
+    });
+});
+
+
+app.frame('/page8b', (c) => {
+    let image;
+    let intents;
+    player.framesLoaded += 1;
+
+
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmU4RPYeifszfDd95sRFqoGvVbtKdGrJSqdsfpxhxZM6nF';
+        intents = [
+           
+           <Button action="/page8bf">Continue</Button>,
+        ];
+
+
+    return c.res({
+       
+        image: image,
+        intents: intents
+    });
+});
+
+
+app.frame('/page8bf', (c) => {
+    let image;
+    let intents;
+    player.framesLoaded += 1;
+
+
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmd8mSBbWhjsGxmozwSHKriSgZEo3bPENniEVCq8z5F63a';
+        intents = [
+           
+           <Button action="/page8c">Continue</Button>,
+        ];
+
+
+    return c.res({
+       
+        image: image,
+        intents: intents
+    });
+});
+
+
+
+
+app.frame('/page8af', (c) => {
+    let image;
+    let intents;
+    const threatNum = Math.floor(Math.random() * 4);
+    player.framesLoaded += 1;
+
+
+
+    if (threatNum < 2) {
+      //successfull threat
+
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmSwb98FKbU3GeQLC5y4egSHj5iDiMZhTnqw6Zg6Xs58VZ';
+          intents = [<Button action="/page8c">Continue</Button>];
+
+        
+    } else {
+
+      //failed threat
+          player.specials -=1;
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmUZeqtwfRg3HsuSPjSAxmNx5y19jRY8JqxCHszTqxYc82';
+          intents = [<Button action="/page8c">Continue</Button>];
+
+    }
+
+    return c.res({
+        image: image,
+        intents: intents
+    });
+});
+
+
+app.frame('/page8c', (c) => {
+    let image;
+    let intents;
+    player.framesLoaded += 1;
+
+
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmR1RTjuCqFjvHyoVwTx6Z6gWCT4kJSsHsQ6Ew1vEubjX7';
         intents = [
            
            <Button action="/page9">Continue</Button>,
@@ -467,13 +596,14 @@ app.frame('/page8', (c) => {
 });
 
 
+
 app.frame('/page9', (c) => {
     let image;
     let intents;
     player.framesLoaded += 1;
 
 
-        image = 'https://gateway.pinata.cloud/ipfs/QmRKDiH5r4wmbrSozVfQDPLGsSi76TnNfmQZJYAmfizLUX';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmQ1nEKyDdTrq1Zz4CpcBC4JGm8EJuAZQJDZyv4fMx3q5E';
         intents = [
            
            <Button action="/page10">Continue</Button>,
@@ -494,7 +624,7 @@ app.frame('/page10', (c) => {
     player.framesLoaded += 1;
 
 
-        image = 'https://gateway.pinata.cloud/ipfs/QmUn3xvseCruKD71t6S6WwwqrnUVDf9eGEszF27xF7QhfN';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmUn3xvseCruKD71t6S6WwwqrnUVDf9eGEszF27xF7QhfN';
         intents = [
            
            <Button action="/page11">Continue</Button>,
@@ -515,7 +645,7 @@ app.frame('/page11', (c) => {
     player.framesLoaded += 1;
 
 
-        image = 'https://gateway.pinata.cloud/ipfs/QmcFtaDb4zn8rf73jGhjmo4UPFznBnpVKaHA4SGoo1Tgfr';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmcFtaDb4zn8rf73jGhjmo4UPFznBnpVKaHA4SGoo1Tgfr';
         intents = [
            
            <Button action="/page12">Continue</Button>,
@@ -536,7 +666,7 @@ app.frame('/page12', (c) => {
     player.framesLoaded += 1;
 
 
-        image = 'https://gateway.pinata.cloud/ipfs/QmYxdpdWjgNVgzCLv96eLMTHKyDpc3baF8HSBfDh9nK3HR';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmYxdpdWjgNVgzCLv96eLMTHKyDpc3baF8HSBfDh9nK3HR';
         intents = [
            
            <Button action="/page13">Continue</Button>,
@@ -557,7 +687,7 @@ app.frame('/page13', (c) => {
     player.framesLoaded += 1;
 
 
-        image = 'https://gateway.pinata.cloud/ipfs/Qmah1EN6DLdjhckatDeZFpjmvbADq3U8HVpzNHDXXNkDQS';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmah1EN6DLdjhckatDeZFpjmvbADq3U8HVpzNHDXXNkDQS';
         intents = [
            
            <Button action="/page14">Continue</Button>,
@@ -578,7 +708,7 @@ app.frame('/page14', (c) => {
     player.framesLoaded += 1;
 
 
-        image = 'https://gateway.pinata.cloud/ipfs/QmX9tUhVJKbcnwQLxvPxhSjYdoLButiJHWpcWo925dZ1rn';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmX9tUhVJKbcnwQLxvPxhSjYdoLButiJHWpcWo925dZ1rn';
         intents = [
            
            <Button action="/page15">Continue</Button>,
@@ -599,7 +729,7 @@ app.frame('/page15', (c) => {
     player.framesLoaded += 1;
 
 
-        image = 'https://gateway.pinata.cloud/ipfs/QmaU4YRpUASHGm7YfCEPwA5Aa2pA66CkyiH4ETHB7naoGu';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmaU4YRpUASHGm7YfCEPwA5Aa2pA66CkyiH4ETHB7naoGu';
         intents = [
            
            <Button.Transaction key="mint" target="/mint">Collect</Button.Transaction>,
@@ -623,7 +753,7 @@ app.frame('/page16', (c) => {
     player.framesLoaded += 1;
 
 
-        image = 'https://gateway.pinata.cloud/ipfs/QmWVvc4fgFDNprYSGB7474zp3rmNSB5Zw9dL2innz2AFmT';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmWVvc4fgFDNprYSGB7474zp3rmNSB5Zw9dL2innz2AFmT';
         intents = [
            
            <Button action="/page17">Continue</Button>,
@@ -663,7 +793,7 @@ app.frame('/page17', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmNck5jritxPS1TJgzWn3oaMNKUTEXV5Y6ToKjb4gijJQk)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmNck5jritxPS1TJgzWn3oaMNKUTEXV5Y6ToKjb4gijJQk)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -733,7 +863,7 @@ app.frame('/showPlayerStatus', (c) => {
                 <div
                     style={{
                         alignItems: 'center',
-                        backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmX3xsh5xRREWpciXj2HknNGxyoeUqkNNoKesPMeR1cVUC)',
+                        backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmX3xsh5xRREWpciXj2HknNGxyoeUqkNNoKesPMeR1cVUC)',
                         backgroundSize: '100% 100%',
                         backgroundPosition: 'center',
                         backgroundRepeat: 'no-repeat',
@@ -767,7 +897,7 @@ app.frame('/showPlayerStatus', (c) => {
                 <div
                     style={{
                         alignItems: 'center',
-                        backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmY6r5cvVkPvzUUkstMyawMxRJVzMgDp5KjGZ6oc8oLrXh)',
+                        backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmY6r5cvVkPvzUUkstMyawMxRJVzMgDp5KjGZ6oc8oLrXh)',
                         backgroundSize: '100% 100%',
                         backgroundPosition: 'center',
                         backgroundRepeat: 'no-repeat',
@@ -813,7 +943,7 @@ app.frame('/showPlayerStatus', (c) => {
                 <div
                     style={{
                         alignItems: 'center',
-                        backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmTJ4FVye2q2rBHUV2rPdFng1VdWBwgw1ABKEif9u3DZhS)',
+                        backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmTJ4FVye2q2rBHUV2rPdFng1VdWBwgw1ABKEif9u3DZhS)',
                         backgroundSize: '100% 100%',
                         backgroundPosition: 'center',
                         backgroundRepeat: 'no-repeat',
@@ -847,7 +977,7 @@ app.frame('/showPlayerStatus', (c) => {
                 <div
                     style={{
                         alignItems: 'center',
-                        backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmYAZCUfMxRq8r7yHRbtetgeyZMSkTdQ3xLvFNhZfmsAoZ)',
+                        backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmYAZCUfMxRq8r7yHRbtetgeyZMSkTdQ3xLvFNhZfmsAoZ)',
                         backgroundSize: '100% 100%',
                         backgroundPosition: 'center',
                         backgroundRepeat: 'no-repeat',
@@ -893,7 +1023,7 @@ app.frame('/showPlayerStatus', (c) => {
                 <div
                     style={{
                         alignItems: 'center',
-                        backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/Qmerm3cNCLE7byLN45dEQiEqEtQQPUUKrHq7bUZ7M1t6Zz)',
+                        backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmerm3cNCLE7byLN45dEQiEqEtQQPUUKrHq7bUZ7M1t6Zz)',
                         backgroundSize: '100% 100%',
                         backgroundPosition: 'center',
                         backgroundRepeat: 'no-repeat',
@@ -927,7 +1057,7 @@ app.frame('/showPlayerStatus', (c) => {
                 <div
                     style={{
                         alignItems: 'center',
-                        backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmXGMwR8S1jHhbhusJPBj8HrH814y5ZEtXnTEZtd6Fmj3q)',
+                        backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmXGMwR8S1jHhbhusJPBj8HrH814y5ZEtXnTEZtd6Fmj3q)',
                         backgroundSize: '100% 100%',
                         backgroundPosition: 'center',
                         backgroundRepeat: 'no-repeat',
@@ -973,7 +1103,7 @@ app.frame('/showPlayerStatus', (c) => {
                 <div
                     style={{
                         alignItems: 'center',
-                        backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmeztAkgn6qPDNU4ky7fHZbqx91d74XFyuCGxjqcJC7Dby)',
+                        backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmeztAkgn6qPDNU4ky7fHZbqx91d74XFyuCGxjqcJC7Dby)',
                         backgroundSize: '100% 100%',
                         backgroundPosition: 'center',
                         backgroundRepeat: 'no-repeat',
@@ -1007,7 +1137,7 @@ app.frame('/showPlayerStatus', (c) => {
                 <div
                     style={{
                         alignItems: 'center',
-                        backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmcUhfkUouMmGpd8j5z2qVQtvpRZozbiJ9PAof9vaH14eV)',
+                        backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmcUhfkUouMmGpd8j5z2qVQtvpRZozbiJ9PAof9vaH14eV)',
                         backgroundSize: '100% 100%',
                         backgroundPosition: 'center',
                         backgroundRepeat: 'no-repeat',
@@ -1082,7 +1212,7 @@ app.frame('/fleedeath', (c) => {
   return c.res({
 
     
-    image : 'https://gateway.pinata.cloud/ipfs/QmPuJUqocdEgbWrrb8B2CG6htYKAbdkdHrwGShSnna1RFz',
+    image : 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmPuJUqocdEgbWrrb8B2CG6htYKAbdkdHrwGShSnna1RFz',
   
     
     intents: [
@@ -1112,11 +1242,11 @@ app.frame('/battle1', (c) => {
 
     if (player.specials === 0) {
       
-        image = 'https://gateway.pinata.cloud/ipfs/QmaF6RJPCAimGvc1vRD2i2a8xLPJAwWNHr7N4L7mkW5b3U';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmaF6RJPCAimGvc1vRD2i2a8xLPJAwWNHr7N4L7mkW5b3U';
         intents = [<Button action="/SwiftAttack">Swift Attack</Button>,<Button action="/HeavyAttack">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
     } else {
  
-        image = 'https://gateway.pinata.cloud/ipfs/QmaF6RJPCAimGvc1vRD2i2a8xLPJAwWNHr7N4L7mkW5b3U';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmaF6RJPCAimGvc1vRD2i2a8xLPJAwWNHr7N4L7mkW5b3U';
         intents = [<Button action="/SwiftAttack">SwiftAtk</Button>,<Button action="/HeavyAttack">PowerAtk</Button>,<Button action="/specialAttack">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
 
@@ -1143,15 +1273,15 @@ app.frame('/fight2', (c) => {
 
         if (fightRandomImage < 1) {
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmdW9mg7ZJT3U2vC4rYjNdFjPvmuGszc2rzsGvAHmEuZjP';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmdW9mg7ZJT3U2vC4rYjNdFjPvmuGszc2rzsGvAHmEuZjP';
           intents = [<Button action="/SwiftAttack">Swift Attack</Button>,<Button action="/HeavyAttack">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         } else if (fightRandomImage === 1) {
-          image = 'https://gateway.pinata.cloud/ipfs/Qmasur9LzzzyuP2ACtM7LuZdDATaATuHCjViLUEungncYp';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmasur9LzzzyuP2ACtM7LuZdDATaATuHCjViLUEungncYp';
           intents = [<Button action="/SwiftAttack">Swift Attack</Button>,<Button action="/HeavyAttack">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         } else {
-          image = 'https://gateway.pinata.cloud/ipfs/Qmasur9LzzzyuP2ACtM7LuZdDATaATuHCjViLUEungncYp';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmasur9LzzzyuP2ACtM7LuZdDATaATuHCjViLUEungncYp';
           intents = [<Button action="/SwiftAttack">Swift Attack</Button>,<Button action="/HeavyAttack">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         }
@@ -1162,15 +1292,15 @@ app.frame('/fight2', (c) => {
         
         if (fightRandomImage < 1) {
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmdW9mg7ZJT3U2vC4rYjNdFjPvmuGszc2rzsGvAHmEuZjP';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmdW9mg7ZJT3U2vC4rYjNdFjPvmuGszc2rzsGvAHmEuZjP';
           intents = [<Button action="/SwiftAttack">SwiftAtk</Button>,<Button action="/HeavyAttack">PowerAtk</Button>,<Button action="/specialAttack">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         } else if (fightRandomImage === 1) {
-          image = 'https://gateway.pinata.cloud/ipfs/Qmasur9LzzzyuP2ACtM7LuZdDATaATuHCjViLUEungncYp';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmasur9LzzzyuP2ACtM7LuZdDATaATuHCjViLUEungncYp';
           intents = [<Button action="/SwiftAttack">SwiftAtk</Button>,<Button action="/HeavyAttack">PowerAtk</Button>,<Button action="/specialAttack">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         } else {
-          image = 'https://gateway.pinata.cloud/ipfs/Qmasur9LzzzyuP2ACtM7LuZdDATaATuHCjViLUEungncYp';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmasur9LzzzyuP2ACtM7LuZdDATaATuHCjViLUEungncYp';
           intents = [<Button action="/SwiftAttack">SwiftAtk</Button>,<Button action="/HeavyAttack">PowerAtk</Button>,<Button action="/specialAttack">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         }
@@ -1190,7 +1320,7 @@ app.frame('/SwiftAttack', (c) => {
     let intents;
     player.framesLoaded += 1;
 
-    const swiftRandomNum = Math.floor(Math.random() * 8);
+    const swiftRandomNum = Math.floor(Math.random() * 12);
     const swiftRandomMiss = Math.floor(Math.random() * 3);
 
 
@@ -1201,13 +1331,13 @@ app.frame('/SwiftAttack', (c) => {
         if (enemy1.life > 0) {
           //enemy is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmWftAuEYa3emBjVBpEA4qq8RkRsocxAPBDuCrhtRdKRQe';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmWftAuEYa3emBjVBpEA4qq8RkRsocxAPBDuCrhtRdKRQe';
           intents = [<Button action="/dodgeResult">Dodge</Button>,<Button action="/counterResult">Counter</Button>];
 
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmSzG66K5d7RiCLN3LZoMefZi9DrJNbHcsNjmhXh6enbc9';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmPnA8eMg43zu7VDSYxqi5b67j4dtSpYJrAbzQKbnXdx3M';
           intents = [<Button action="/battle1narrative1">Continue</Button>];
 
 
@@ -1218,12 +1348,12 @@ app.frame('/SwiftAttack', (c) => {
     } else if (swiftRandomNum === 3) {
       // attack missed
       if (swiftRandomMiss < 1) {
-        image = 'https://gateway.pinata.cloud/ipfs/QmS4RuqGL8dTiHNgqhtHGAwe2Mqf4ipkHpLomHsomHyPCP';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmS4RuqGL8dTiHNgqhtHGAwe2Mqf4ipkHpLomHsomHyPCP';
         intents = [<Button action="/dodgeResult">Dodge</Button>,<Button action="/counterResult">Counter</Button>];
 
       } else {
 
-        image = 'https://gateway.pinata.cloud/ipfs/QmRcn3BEgxaSBK7mrpPyQoZdEVqWYBqmvdCGj7ubRGcv1Z';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmRcn3BEgxaSBK7mrpPyQoZdEVqWYBqmvdCGj7ubRGcv1Z';
         intents = [<Button action="/dodgeResult">Dodge</Button>,<Button action="/counterResult">Counter</Button>];
 
       }
@@ -1237,13 +1367,13 @@ app.frame('/SwiftAttack', (c) => {
       if (enemy1.life > 0) {
           //enemy is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmSr7aYbmg4t6UKjzhizFj1WzsXCu6PehxVb14LKrh7CxM';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmSr7aYbmg4t6UKjzhizFj1WzsXCu6PehxVb14LKrh7CxM';
           intents = [<Button action="/dodgeResult">Dodge</Button>,<Button action="/counterResult">Counter</Button>];
 
       } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmSzG66K5d7RiCLN3LZoMefZi9DrJNbHcsNjmhXh6enbc9';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmPnA8eMg43zu7VDSYxqi5b67j4dtSpYJrAbzQKbnXdx3M';
           intents = [<Button action="/battle1narrative1">Continue</Button>];
 
 
@@ -1258,17 +1388,17 @@ app.frame('/SwiftAttack', (c) => {
           //enemy is still alive
 
             if (swiftRandomMiss < 1) {
-              image = 'https://gateway.pinata.cloud/ipfs/QmVA85GLmm4qMTCyAUGbJoJGYYpv8Bfw8jfr5cqrzgJCFy';
+              image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmVA85GLmm4qMTCyAUGbJoJGYYpv8Bfw8jfr5cqrzgJCFy';
               intents = [<Button action="/dodgeResult">Dodge</Button>,<Button action="/counterResult">Counter</Button>];
 
             }else if (swiftRandomMiss === 1) {
 
-              image = 'https://gateway.pinata.cloud/ipfs/QmYzqr1zm5HNQCEJskbiPbCSjp5Cj7u9BHLyTmuDq8eBso';
+              image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmYzqr1zm5HNQCEJskbiPbCSjp5Cj7u9BHLyTmuDq8eBso';
               intents = [<Button action="/dodgeResult">Dodge</Button>,<Button action="/counterResult">Counter</Button>];
 
             } else {
 
-              image = 'https://gateway.pinata.cloud/ipfs/QmVA85GLmm4qMTCyAUGbJoJGYYpv8Bfw8jfr5cqrzgJCFy';
+              image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmVA85GLmm4qMTCyAUGbJoJGYYpv8Bfw8jfr5cqrzgJCFy';
               intents = [<Button action="/dodgeResult">Dodge</Button>,<Button action="/counterResult">Counter</Button>];
 
             }
@@ -1278,7 +1408,7 @@ app.frame('/SwiftAttack', (c) => {
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmSzG66K5d7RiCLN3LZoMefZi9DrJNbHcsNjmhXh6enbc9';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmPnA8eMg43zu7VDSYxqi5b67j4dtSpYJrAbzQKbnXdx3M';
           intents = [<Button action="/battle1narrative1">Continue</Button>];
 
 
@@ -1302,7 +1432,7 @@ app.frame('/HeavyAttack', (c) => {
     player.framesLoaded += 1;
 
 
-    const heavyRandomNum =  Math.floor(Math.random() * 10);
+    const heavyRandomNum =  Math.floor(Math.random() * 12);
     const heavyRandomMiss = Math.floor(Math.random() * 2);
 
 
@@ -1314,13 +1444,13 @@ app.frame('/HeavyAttack', (c) => {
         if (enemy1.life > 0) {
           //enemy is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmWftAuEYa3emBjVBpEA4qq8RkRsocxAPBDuCrhtRdKRQe';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmWftAuEYa3emBjVBpEA4qq8RkRsocxAPBDuCrhtRdKRQe';
           intents = [<Button action="/dodgeResult">Dodge</Button>,<Button action="/counterResult">Counter</Button>];
 
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmSzG66K5d7RiCLN3LZoMefZi9DrJNbHcsNjmhXh6enbc9';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmPnA8eMg43zu7VDSYxqi5b67j4dtSpYJrAbzQKbnXdx3M';
           intents = [<Button action="/battle1narrative1">Continue</Button>];
 
 
@@ -1330,12 +1460,12 @@ app.frame('/HeavyAttack', (c) => {
         // attack missed
         // attack missed
         if (heavyRandomMiss < 1) {
-          image = 'https://gateway.pinata.cloud/ipfs/QmS4RuqGL8dTiHNgqhtHGAwe2Mqf4ipkHpLomHsomHyPCP';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmS4RuqGL8dTiHNgqhtHGAwe2Mqf4ipkHpLomHsomHyPCP';
           intents = [<Button action="/dodgeResult">Dodge</Button>,<Button action="/counterResult">Counter</Button>];
 
         } else {
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmRcn3BEgxaSBK7mrpPyQoZdEVqWYBqmvdCGj7ubRGcv1Z';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmRcn3BEgxaSBK7mrpPyQoZdEVqWYBqmvdCGj7ubRGcv1Z';
           intents = [<Button action="/dodgeResult">Dodge</Button>,<Button action="/counterResult">Counter</Button>];
 
         }
@@ -1343,12 +1473,12 @@ app.frame('/HeavyAttack', (c) => {
     } else if (heavyRandomNum === 5) {
           // attack missed
           if (heavyRandomMiss < 1) {
-            image = 'https://gateway.pinata.cloud/ipfs/QmS4RuqGL8dTiHNgqhtHGAwe2Mqf4ipkHpLomHsomHyPCP';
+            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmS4RuqGL8dTiHNgqhtHGAwe2Mqf4ipkHpLomHsomHyPCP';
             intents = [<Button action="/dodgeResult">Dodge</Button>,<Button action="/counterResult">Counter</Button>];
 
           } else {
 
-            image = 'https://gateway.pinata.cloud/ipfs/QmRcn3BEgxaSBK7mrpPyQoZdEVqWYBqmvdCGj7ubRGcv1Z';
+            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmRcn3BEgxaSBK7mrpPyQoZdEVqWYBqmvdCGj7ubRGcv1Z';
             intents = [<Button action="/dodgeResult">Dodge</Button>,<Button action="/counterResult">Counter</Button>];
 
           }
@@ -1361,13 +1491,13 @@ app.frame('/HeavyAttack', (c) => {
       if (enemy1.life > 0) {
           //enemy is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmSr7aYbmg4t6UKjzhizFj1WzsXCu6PehxVb14LKrh7CxM';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmSr7aYbmg4t6UKjzhizFj1WzsXCu6PehxVb14LKrh7CxM';
           intents = [<Button action="/dodgeResult">Dodge</Button>,<Button action="/counterResult">Counter</Button>];
 
       } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmSzG66K5d7RiCLN3LZoMefZi9DrJNbHcsNjmhXh6enbc9';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmPnA8eMg43zu7VDSYxqi5b67j4dtSpYJrAbzQKbnXdx3M';
           intents = [<Button action="/battle1narrative1">Continue</Button>];
 
 
@@ -1380,13 +1510,13 @@ app.frame('/HeavyAttack', (c) => {
         if (enemy1.life > 0) {
           //enemy is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmRFWcqzu3g3GvtwxLQDj2mqh82WEQwoyMFAxZKuKPvaKV';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmRFWcqzu3g3GvtwxLQDj2mqh82WEQwoyMFAxZKuKPvaKV';
           intents = [<Button action="/dodgeResult">Dodge</Button>,<Button action="/counterResult">Counter</Button>];
 
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmSzG66K5d7RiCLN3LZoMefZi9DrJNbHcsNjmhXh6enbc9';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmPnA8eMg43zu7VDSYxqi5b67j4dtSpYJrAbzQKbnXdx3M';
           intents = [<Button action="/battle1narrative1">Continue</Button>];
 
 
@@ -1405,10 +1535,10 @@ app.frame('/HeavyAttack', (c) => {
 app.frame('/specialAttack', (c) => {
     let image;
     let intents;
-    player.specials -=1
+    player.specials -=1;
     player.framesLoaded += 1;
    
-    const specialRandomNum = Math.floor(Math.random() * 8);
+    const specialRandomNum = Math.floor(Math.random() * 12);
 
     const specialRandomMiss = Math.floor(Math.random() * 2);
     //progressMarker = { ...progressMarker, previousFrame: '/specialAttack' };
@@ -1418,12 +1548,12 @@ app.frame('/specialAttack', (c) => {
         //unsuccessful special attack 
 
         if (specialRandomMiss < 1) {
-            image = 'https://gateway.pinata.cloud/ipfs/QmS4RuqGL8dTiHNgqhtHGAwe2Mqf4ipkHpLomHsomHyPCP';
+            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmS4RuqGL8dTiHNgqhtHGAwe2Mqf4ipkHpLomHsomHyPCP';
             intents = [<Button action="/dodgeResult">Dodge</Button>,<Button action="/counterResult">Counter</Button>];
 
         } else {
 
-            image = 'https://gateway.pinata.cloud/ipfs/QmRcn3BEgxaSBK7mrpPyQoZdEVqWYBqmvdCGj7ubRGcv1Z';
+            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmRcn3BEgxaSBK7mrpPyQoZdEVqWYBqmvdCGj7ubRGcv1Z';
             intents = [<Button action="/dodgeResult">Dodge</Button>,<Button action="/counterResult">Counter</Button>];
 
         }
@@ -1437,12 +1567,12 @@ app.frame('/specialAttack', (c) => {
           //enemy is still alive
 
           if (specialRandomMiss < 1) {
-            image = 'https://gateway.pinata.cloud/ipfs/QmR6T1Z1doowM6k5g5J1F8o1cQK772inoBopCdyC4KsyfP';
+            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmR6T1Z1doowM6k5g5J1F8o1cQK772inoBopCdyC4KsyfP';
             intents = [<Button action="/dodgeResult">Dodge</Button>,<Button action="/counterResult">Counter</Button>];
 
           } else {
 
-              image = 'https://gateway.pinata.cloud/ipfs/QmR6T1Z1doowM6k5g5J1F8o1cQK772inoBopCdyC4KsyfP';
+              image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmR6T1Z1doowM6k5g5J1F8o1cQK772inoBopCdyC4KsyfP';
               intents = [<Button action="/dodgeResult">Dodge</Button>,<Button action="/counterResult">Counter</Button>];
 
           }
@@ -1451,7 +1581,7 @@ app.frame('/specialAttack', (c) => {
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmSzG66K5d7RiCLN3LZoMefZi9DrJNbHcsNjmhXh6enbc9';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmPnA8eMg43zu7VDSYxqi5b67j4dtSpYJrAbzQKbnXdx3M';
           intents = [<Button action="/battle1narrative1">Continue</Button>];
 
 
@@ -1480,9 +1610,9 @@ app.frame('/dodgeResult', (c) => {
     const dodgeRandomNum = Math.floor(Math.random() * 10);
 
 
-    if (dodgeRandomNum < 6) {
+    if (dodgeRandomNum < 4) {
         // player dodged
-        image = 'https://gateway.pinata.cloud/ipfs/QmNf4EZfcLG8haCgXXGHCCmFBik9jvNBqrnQpmhqdm8d2n';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmNf4EZfcLG8haCgXXGHCCmFBik9jvNBqrnQpmhqdm8d2n';
         intents = [<Button action="/fight2">Continue</Button>];
 
     } else {
@@ -1491,7 +1621,7 @@ app.frame('/dodgeResult', (c) => {
         if (player.life > 0) {
           //player is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmV2xn7Az2jSr3ndjrfMQd5sXsHQV3TEy8DCTiJAqNkKDw';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmV2xn7Az2jSr3ndjrfMQd5sXsHQV3TEy8DCTiJAqNkKDw';
           intents = [<Button action="/fight2">Continue</Button>];
 
         } else {
@@ -1499,7 +1629,7 @@ app.frame('/dodgeResult', (c) => {
           progressMarker = { ...progressMarker, deathFrame: '/page17' };
           deathFrame = "/page17";
           currentframe = "checktime";
-          image = 'https://gateway.pinata.cloud/ipfs/QmX5XwxUQAMRsr49UgqGQVxhJDLcZVqr7DGDRTy7ghUVRd';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmX5XwxUQAMRsr49UgqGQVxhJDLcZVqr7DGDRTy7ghUVRd';
           intents = [<Button action="/fleedeath">Continue</Button>];
 
 
@@ -1522,19 +1652,19 @@ app.frame('/counterResult', (c) => {
     const counterRandomNum = Math.floor(Math.random() * 10);
 
 
-    if (counterRandomNum < 4) {
+    if (counterRandomNum < 6) {
         // succesful counter
         enemy1.life -= 10
         
         if (enemy1.life > 0) {
           //show counter frame
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmYoHbnQZCeomM2WWBgoMZj7nLrP1r9eP7oDWM2py4VBhb';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmYoHbnQZCeomM2WWBgoMZj7nLrP1r9eP7oDWM2py4VBhb';
           intents = [<Button action="/fight2">Continue</Button>];
 
         } else {
           // enemy is dead
-          image = 'https://gateway.pinata.cloud/ipfs/QmSzG66K5d7RiCLN3LZoMefZi9DrJNbHcsNjmhXh6enbc9';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmPnA8eMg43zu7VDSYxqi5b67j4dtSpYJrAbzQKbnXdx3M';
           intents = [<Button action="/battle1narrative1">Continue</Button>];
 
         }
@@ -1546,7 +1676,7 @@ app.frame('/counterResult', (c) => {
         if (player.life > 0) {
           //player is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmV2xn7Az2jSr3ndjrfMQd5sXsHQV3TEy8DCTiJAqNkKDw';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmV2xn7Az2jSr3ndjrfMQd5sXsHQV3TEy8DCTiJAqNkKDw';
           intents = [<Button action="/fight2">Continue</Button>];
 
         } else {
@@ -1554,7 +1684,7 @@ app.frame('/counterResult', (c) => {
           progressMarker = { ...progressMarker, deathFrame: '/page17' };
           deathFrame = "/page17";
           currentframe = "checktime";
-          image = 'https://gateway.pinata.cloud/ipfs/QmX5XwxUQAMRsr49UgqGQVxhJDLcZVqr7DGDRTy7ghUVRd';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmX5XwxUQAMRsr49UgqGQVxhJDLcZVqr7DGDRTy7ghUVRd';
           intents = [<Button action="/fleedeath">Continue</Button>];
 
 
@@ -1573,13 +1703,14 @@ app.frame('/counterResult', (c) => {
     let image;
     let intents;
     player.framesLoaded += 1;
+    player.enemiesKilled += 1;
 
     progressMarker = { ...progressMarker, previousFrame: '/battle1narrative1' };
         image = (
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmebqhTMzcdm31DGnqz49jywFhVBTr9bo5RykFc97KCzmZ)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmebqhTMzcdm31DGnqz49jywFhVBTr9bo5RykFc97KCzmZ)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -1629,7 +1760,7 @@ app.frame('/counterResult', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmWEEiBBmiGVLk7nMd2fAFbB2RuNtTkvswcJwLZmNkDL8v)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmWEEiBBmiGVLk7nMd2fAFbB2RuNtTkvswcJwLZmNkDL8v)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -1684,7 +1815,7 @@ app.frame('/trap1', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmdG5e2UNojACV7kpxmSF1sDB27HcVpt29AbPDFMoBhy71)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmdG5e2UNojACV7kpxmSF1sDB27HcVpt29AbPDFMoBhy71)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -1788,7 +1919,7 @@ app.frame('/dodgeCrossbow', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmcdSYonEe1frpwtDVxpkzusMGTyw4oMYRxbvW43SYg1ii)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmcdSYonEe1frpwtDVxpkzusMGTyw4oMYRxbvW43SYg1ii)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -1842,7 +1973,7 @@ app.frame('/fleeCrossbow', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmXGVsZeo9JJFFY4JA6HyqVQCtBx1kLWaLeAmWbZCDanUB)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmXGVsZeo9JJFFY4JA6HyqVQCtBx1kLWaLeAmWbZCDanUB)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -1886,7 +2017,7 @@ app.frame('/fleeCrossbow', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmcdSYonEe1frpwtDVxpkzusMGTyw4oMYRxbvW43SYg1ii)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmcdSYonEe1frpwtDVxpkzusMGTyw4oMYRxbvW43SYg1ii)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -1955,7 +2086,7 @@ app.frame('/trapwounded', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmX5XwxUQAMRsr49UgqGQVxhJDLcZVqr7DGDRTy7ghUVRd)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmX5XwxUQAMRsr49UgqGQVxhJDLcZVqr7DGDRTy7ghUVRd)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -2015,7 +2146,7 @@ app.frame('/trapwounded', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmQGAodqAWiJoAibRrGgYU5xCzsyUPL8QCeTYc9PRGLNdZ)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmQGAodqAWiJoAibRrGgYU5xCzsyUPL8QCeTYc9PRGLNdZ)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -2065,7 +2196,7 @@ app.frame('/trapwounded', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmR8JwvZ2AKFxGhXMW87ngmFJVJY5JLGRhrYCBgukDWAFN)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmR8JwvZ2AKFxGhXMW87ngmFJVJY5JLGRhrYCBgukDWAFN)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -2126,7 +2257,7 @@ app.frame('/narrative3', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmeUkUpZv5Ew5bKTtNvTYV5tXPfZnyAvt8fdPs9AQgwv1T)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmeUkUpZv5Ew5bKTtNvTYV5tXPfZnyAvt8fdPs9AQgwv1T)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -2182,7 +2313,7 @@ app.frame('/narrative3b1', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/Qmc6ZRv31T5DiytNFmykyeHEwTREDpFMGzfkMbaNUBDWUt)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmc6ZRv31T5DiytNFmykyeHEwTREDpFMGzfkMbaNUBDWUt)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -2234,7 +2365,7 @@ app.frame('/narrative3b2', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmSdApEReFRbmDf1xUECuzRwncuE22usdQejjmVXXebfn3)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmSdApEReFRbmDf1xUECuzRwncuE22usdQejjmVXXebfn3)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -2285,7 +2416,7 @@ app.frame('/narrative3b3', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmX7jesPTb3RsqU5i9cDUzpLy2we8gVey9HxUnM3YJdLso)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmX7jesPTb3RsqU5i9cDUzpLy2we8gVey9HxUnM3YJdLso)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -2341,7 +2472,7 @@ app.frame('/narrative3a1', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmT6XJ2nLJCb4gZXS1XEct1Q6i1BXsvgUSJM1AampULnQX)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmT6XJ2nLJCb4gZXS1XEct1Q6i1BXsvgUSJM1AampULnQX)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -2394,7 +2525,7 @@ app.frame('/narrative3a1a', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmQeGTkpfoyLV7bYUzPxCoFiVCn2yb9wfXuVokX5dfK1oL)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmQeGTkpfoyLV7bYUzPxCoFiVCn2yb9wfXuVokX5dfK1oL)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -2451,7 +2582,7 @@ app.frame('/narrative3a3', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmNLq5MzsoLdyomxDGKX9XwKjzZ2cbviP3qGZGQTZQRSmf)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmNLq5MzsoLdyomxDGKX9XwKjzZ2cbviP3qGZGQTZQRSmf)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -2504,7 +2635,7 @@ app.frame('/narrative3a1b', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/Qmf4BKfSZ7UJyaac9yaQVxFVoD31WKSuuwAPzsiSWnya25)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmf4BKfSZ7UJyaac9yaQVxFVoD31WKSuuwAPzsiSWnya25)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -2558,7 +2689,7 @@ app.frame('/narrative3a2', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmevkW6SpYDd32F4X9sYtVS92Ni3NZq6i9su53wVZK26T3)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmevkW6SpYDd32F4X9sYtVS92Ni3NZq6i9su53wVZK26T3)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -2620,11 +2751,11 @@ app.frame('/battle3', (c) => {
 
     if (player.specials === 0) {
       
-        image = 'https://gateway.pinata.cloud/ipfs/QmYu34gzTF1svqT3sxSZpdSF1UVvsZaYCwzkdi9HP8g7Vs';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmYu34gzTF1svqT3sxSZpdSF1UVvsZaYCwzkdi9HP8g7Vs';
         intents = [<Button action="/SwiftAttack3">Swift Attack</Button>,<Button action="/HeavyAttack3">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
     } else {
  
-        image = 'https://gateway.pinata.cloud/ipfs/QmYu34gzTF1svqT3sxSZpdSF1UVvsZaYCwzkdi9HP8g7Vs';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmYu34gzTF1svqT3sxSZpdSF1UVvsZaYCwzkdi9HP8g7Vs';
         intents = [<Button action="/SwiftAttack3">SwiftAtk</Button>,<Button action="/HeavyAttack3">PowerAtk</Button>,<Button action="/specialAttack3">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
 
@@ -2651,15 +2782,15 @@ app.frame('/fight2-3', (c) => {
 
         if (fightRandomImage3 < 1) {
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmWgDvPr1Vgf5BFMXGQSucmDWKSFArhLMhMBp7wtaHQK8b';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmWgDvPr1Vgf5BFMXGQSucmDWKSFArhLMhMBp7wtaHQK8b';
           intents = [<Button action="/SwiftAttack3">Swift Attack</Button>,<Button action="/HeavyAttack3">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         } else if (fightRandomImage3 === 1) {
-          image = 'https://gateway.pinata.cloud/ipfs/QmWgDvPr1Vgf5BFMXGQSucmDWKSFArhLMhMBp7wtaHQK8b';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmWgDvPr1Vgf5BFMXGQSucmDWKSFArhLMhMBp7wtaHQK8b';
           intents = [<Button action="/SwiftAttack3">Swift Attack</Button>,<Button action="/HeavyAttack3">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         } else {
-          image = 'https://gateway.pinata.cloud/ipfs/QmTDCzd3XSv1ggGyKdxs6SxyEGD2fkx5riAkKUnGQJWPPN';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmTDCzd3XSv1ggGyKdxs6SxyEGD2fkx5riAkKUnGQJWPPN';
           intents = [<Button action="/SwiftAttack3">Swift Attack</Button>,<Button action="/HeavyAttack3">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         }
@@ -2669,15 +2800,15 @@ app.frame('/fight2-3', (c) => {
 
         if (fightRandomImage3 < 1) {
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmWgDvPr1Vgf5BFMXGQSucmDWKSFArhLMhMBp7wtaHQK8b';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmWgDvPr1Vgf5BFMXGQSucmDWKSFArhLMhMBp7wtaHQK8b';
           intents = [<Button action="/SwiftAttack3">SwiftAtk</Button>,<Button action="/HeavyAttack3">PowerAtk</Button>,<Button action="/specialAttack3">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         } else if (fightRandomImage3 === 1) {
-          image = 'https://gateway.pinata.cloud/ipfs/QmWgDvPr1Vgf5BFMXGQSucmDWKSFArhLMhMBp7wtaHQK8b';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmWgDvPr1Vgf5BFMXGQSucmDWKSFArhLMhMBp7wtaHQK8b';
           intents = [<Button action="/SwiftAttack3">SwiftAtk</Button>,<Button action="/HeavyAttack3">PowerAtk</Button>,<Button action="/specialAttack3">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         } else {
-          image = 'https://gateway.pinata.cloud/ipfs/QmTDCzd3XSv1ggGyKdxs6SxyEGD2fkx5riAkKUnGQJWPPN';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmTDCzd3XSv1ggGyKdxs6SxyEGD2fkx5riAkKUnGQJWPPN';
           intents = [<Button action="/SwiftAttack3">SwiftAtk</Button>,<Button action="/HeavyAttack3">PowerAtk</Button>,<Button action="/specialAttack3">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         }
@@ -2710,13 +2841,13 @@ app.frame('/SwiftAttack3', (c) => {
         if (enemy3.life > 0) {
           //enemy is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmVwuX45JpHm6FheR7ppsvS2ff7BRAamCSbDuQsQ6UYS6z';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmVwuX45JpHm6FheR7ppsvS2ff7BRAamCSbDuQsQ6UYS6z';
           intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
 
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/Qme92iuQNJt3knc8rTqj8mpDS3FUZznaawnUiREY3pZSX4';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qme92iuQNJt3knc8rTqj8mpDS3FUZznaawnUiREY3pZSX4';
           intents = [<Button action="/battle3transition">Continue</Button>];
 
 
@@ -2727,12 +2858,12 @@ app.frame('/SwiftAttack3', (c) => {
     } else if (swiftRandomNum3 === 3) {
       // attack missed
       if (swiftRandomMiss3 < 2) {
-        image = 'https://gateway.pinata.cloud/ipfs/Qmd1xz1PUtZUjBKFkqE1tMb5GnEfkVcC3uYwRc1h4dNRLy';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmd1xz1PUtZUjBKFkqE1tMb5GnEfkVcC3uYwRc1h4dNRLy';
         intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
 
       } else {
 
-        image = 'https://gateway.pinata.cloud/ipfs/Qmbqb99MrpqaLCusaf9Ard1gfbS9y4UUSKw5cTvAzPT6v7';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmbqb99MrpqaLCusaf9Ard1gfbS9y4UUSKw5cTvAzPT6v7';
         intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
 
       }
@@ -2746,13 +2877,13 @@ app.frame('/SwiftAttack3', (c) => {
       if (enemy3.life > 0) {
           //enemy is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmSCxgCwWfScCBRr5WowEX8Hi6vQqa2tgGWc4WcKAxvNUS';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmSCxgCwWfScCBRr5WowEX8Hi6vQqa2tgGWc4WcKAxvNUS';
           intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
 
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/Qme92iuQNJt3knc8rTqj8mpDS3FUZznaawnUiREY3pZSX4';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qme92iuQNJt3knc8rTqj8mpDS3FUZznaawnUiREY3pZSX4';
           intents = [<Button action="/battle3transition">Continue</Button>];
 
 
@@ -2767,17 +2898,17 @@ app.frame('/SwiftAttack3', (c) => {
           //enemy is still alive
 
             if (swiftRandomMiss3 < 1) {
-              image = 'https://gateway.pinata.cloud/ipfs/QmcWF7Bck5aH54Q4jfy8qAWWHS4CEDUiYvrTdH6cU4U8XE';
+              image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmcWF7Bck5aH54Q4jfy8qAWWHS4CEDUiYvrTdH6cU4U8XE';
               intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
 
             }else if (swiftRandomMiss3 === 1) {
 
-              image = 'https://gateway.pinata.cloud/ipfs/QmcWF7Bck5aH54Q4jfy8qAWWHS4CEDUiYvrTdH6cU4U8XE';
+              image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmcWF7Bck5aH54Q4jfy8qAWWHS4CEDUiYvrTdH6cU4U8XE';
               intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
 
             } else {
 
-              image = 'https://gateway.pinata.cloud/ipfs/QmeNVDbJ4QqCGx2R3R8cC7V5Vr1oH7igUMR64ow9dow1eW';
+              image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmeNVDbJ4QqCGx2R3R8cC7V5Vr1oH7igUMR64ow9dow1eW';
               intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
 
             }
@@ -2787,7 +2918,7 @@ app.frame('/SwiftAttack3', (c) => {
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/Qme92iuQNJt3knc8rTqj8mpDS3FUZznaawnUiREY3pZSX4';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qme92iuQNJt3knc8rTqj8mpDS3FUZznaawnUiREY3pZSX4';
           intents = [<Button action="/battle3transition">Continue</Button>];
 
 
@@ -2811,7 +2942,7 @@ app.frame('/HeavyAttack3', (c) => {
     player.framesLoaded += 1;
 
 
-    const heavyRandomNum3 = Math.floor(Math.random() * 11);
+    const heavyRandomNum3 = Math.floor(Math.random() * 12);
     const heavyRandomMiss3 = Math.floor(Math.random() * 2);
 
 
@@ -2822,13 +2953,13 @@ app.frame('/HeavyAttack3', (c) => {
         if (enemy3.life > 0) {
           //enemy is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmVwuX45JpHm6FheR7ppsvS2ff7BRAamCSbDuQsQ6UYS6z';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmVwuX45JpHm6FheR7ppsvS2ff7BRAamCSbDuQsQ6UYS6z';
           intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
 
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/Qme92iuQNJt3knc8rTqj8mpDS3FUZznaawnUiREY3pZSX4';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qme92iuQNJt3knc8rTqj8mpDS3FUZznaawnUiREY3pZSX4';
           intents = [<Button action="/battle3transition">Continue</Button>];
 
 
@@ -2839,12 +2970,12 @@ app.frame('/HeavyAttack3', (c) => {
     } else if (heavyRandomNum3 === 4) {
         // attack missed
         if (heavyRandomMiss3 < 1) {
-          image = 'https://gateway.pinata.cloud/ipfs/Qmd1xz1PUtZUjBKFkqE1tMb5GnEfkVcC3uYwRc1h4dNRLy';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmd1xz1PUtZUjBKFkqE1tMb5GnEfkVcC3uYwRc1h4dNRLy';
           intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
 
         } else {
 
-          image = 'https://gateway.pinata.cloud/ipfs/Qmbqb99MrpqaLCusaf9Ard1gfbS9y4UUSKw5cTvAzPT6v7';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmbqb99MrpqaLCusaf9Ard1gfbS9y4UUSKw5cTvAzPT6v7';
           intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
 
         }
@@ -2852,12 +2983,12 @@ app.frame('/HeavyAttack3', (c) => {
     } else if (heavyRandomNum3 === 5) {
           // attack missed
           if (heavyRandomMiss3 < 1) {
-            image = 'https://gateway.pinata.cloud/ipfs/Qmd1xz1PUtZUjBKFkqE1tMb5GnEfkVcC3uYwRc1h4dNRLy';
+            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmd1xz1PUtZUjBKFkqE1tMb5GnEfkVcC3uYwRc1h4dNRLy';
             intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
 
           } else {
 
-            image = 'https://gateway.pinata.cloud/ipfs/Qmbqb99MrpqaLCusaf9Ard1gfbS9y4UUSKw5cTvAzPT6v7';
+            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmbqb99MrpqaLCusaf9Ard1gfbS9y4UUSKw5cTvAzPT6v7';
             intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
 
           }
@@ -2870,13 +3001,13 @@ app.frame('/HeavyAttack3', (c) => {
       if (enemy3.life > 0) {
           //enemy is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmSCxgCwWfScCBRr5WowEX8Hi6vQqa2tgGWc4WcKAxvNUS';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmSCxgCwWfScCBRr5WowEX8Hi6vQqa2tgGWc4WcKAxvNUS';
           intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
 
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/Qme92iuQNJt3knc8rTqj8mpDS3FUZznaawnUiREY3pZSX4';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qme92iuQNJt3knc8rTqj8mpDS3FUZznaawnUiREY3pZSX4';
           intents = [<Button action="/battle3transition">Continue</Button>];
 
 
@@ -2889,13 +3020,13 @@ app.frame('/HeavyAttack3', (c) => {
         if (enemy3.life > 0) {
           //enemy is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmdbMZuEFiDv14efornEaamynboDqbaag48qn5AFGPBPb2';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmdbMZuEFiDv14efornEaamynboDqbaag48qn5AFGPBPb2';
           intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
 
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/Qme92iuQNJt3knc8rTqj8mpDS3FUZznaawnUiREY3pZSX4';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qme92iuQNJt3knc8rTqj8mpDS3FUZznaawnUiREY3pZSX4';
           intents = [<Button action="/battle3transition">Continue</Button>];
 
 
@@ -2914,7 +3045,7 @@ app.frame('/HeavyAttack3', (c) => {
 app.frame('/specialAttack3', (c) => {
     let image;
     let intents;
-    player.specials -=1
+    player.specials -=1;
     player.framesLoaded += 1;
    
     const specialRandomNum3 = Math.floor(Math.random() * 8);
@@ -2927,12 +3058,12 @@ app.frame('/specialAttack3', (c) => {
         //unsuccessful special attack 
 
         if (specialRandomMiss3 < 1) {
-            image = 'https://gateway.pinata.cloud/ipfs/Qmbqb99MrpqaLCusaf9Ard1gfbS9y4UUSKw5cTvAzPT6v7';
+            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmbqb99MrpqaLCusaf9Ard1gfbS9y4UUSKw5cTvAzPT6v7';
             intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
 
         } else {
 
-            image = 'https://gateway.pinata.cloud/ipfs/Qmbqb99MrpqaLCusaf9Ard1gfbS9y4UUSKw5cTvAzPT6v7';
+            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmbqb99MrpqaLCusaf9Ard1gfbS9y4UUSKw5cTvAzPT6v7';
             intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
 
         }
@@ -2946,12 +3077,12 @@ app.frame('/specialAttack3', (c) => {
           //enemy is still alive
 
           if (specialRandomMiss3 < 1) {
-            image = 'https://gateway.pinata.cloud/ipfs/QmR6T1Z1doowM6k5g5J1F8o1cQK772inoBopCdyC4KsyfP';
+            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmR6T1Z1doowM6k5g5J1F8o1cQK772inoBopCdyC4KsyfP';
             intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
 
           } else {
 
-              image = 'https://gateway.pinata.cloud/ipfs/QmR6T1Z1doowM6k5g5J1F8o1cQK772inoBopCdyC4KsyfP';
+              image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmR6T1Z1doowM6k5g5J1F8o1cQK772inoBopCdyC4KsyfP';
               intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
 
           }
@@ -2960,7 +3091,7 @@ app.frame('/specialAttack3', (c) => {
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/Qme92iuQNJt3knc8rTqj8mpDS3FUZznaawnUiREY3pZSX4';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qme92iuQNJt3knc8rTqj8mpDS3FUZznaawnUiREY3pZSX4';
           intents = [<Button action="/battle3transition">Continue</Button>];
 
 
@@ -2989,9 +3120,9 @@ app.frame('/dodgeResult3', (c) => {
     const dodgeRandomNum3 = Math.floor(Math.random() * 10);
 
 
-    if (dodgeRandomNum3 < 6) {
+    if (dodgeRandomNum3 < 4) {
         // player dodged
-        image = 'https://gateway.pinata.cloud/ipfs/QmZCLzqBKZy1VFYGmAAmdvb47kSzVd3Er3VPo9EuZAGGsp';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmZCLzqBKZy1VFYGmAAmdvb47kSzVd3Er3VPo9EuZAGGsp';
         intents = [<Button action="/fight2-3">Continue</Button>];
 
     } else {
@@ -3000,7 +3131,7 @@ app.frame('/dodgeResult3', (c) => {
         if (player.life > 0) {
           //player is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmNm79M6aDsZ58NDXDC1xZ1xEsrEdW4vpXM6rWJSLoQKSq';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmNm79M6aDsZ58NDXDC1xZ1xEsrEdW4vpXM6rWJSLoQKSq';
           intents = [<Button action="/fight2-3">Continue</Button>];
 
         } else {
@@ -3008,7 +3139,7 @@ app.frame('/dodgeResult3', (c) => {
           progressMarker = { ...progressMarker, deathFrame: '/narrative3' };
           deathFrame = "/narrative3";
           currentframe = "checktime";
-          image = 'https://gateway.pinata.cloud/ipfs/QmX5XwxUQAMRsr49UgqGQVxhJDLcZVqr7DGDRTy7ghUVRd';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmX5XwxUQAMRsr49UgqGQVxhJDLcZVqr7DGDRTy7ghUVRd';
           intents = [<Button action="/fleedeath">Continue</Button>];
 
 
@@ -3031,7 +3162,7 @@ app.frame('/counterResult3', (c) => {
     const counterRandomNum3 = Math.floor(Math.random() * 10);
 
 
-    if (counterRandomNum3 < 4) {
+    if (counterRandomNum3 < 7) {
         // succesful counter
         enemy3.life -= 10
         
@@ -3039,12 +3170,12 @@ app.frame('/counterResult3', (c) => {
         if (enemy3.life > 0) {
           //show counter frame
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmdnNeKbLyeVjdJTm1g7BGm7vzcBSkFebWRA398v8ZTZ2C';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmdnNeKbLyeVjdJTm1g7BGm7vzcBSkFebWRA398v8ZTZ2C';
           intents = [<Button action="/fight2-3">Continue</Button>];
 
         } else {
           // enemy is dead
-          image = 'https://gateway.pinata.cloud/ipfs/Qme92iuQNJt3knc8rTqj8mpDS3FUZznaawnUiREY3pZSX4';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qme92iuQNJt3knc8rTqj8mpDS3FUZznaawnUiREY3pZSX4';
           intents = [<Button action="/battle3transition">Continue</Button>];
 
         }
@@ -3056,7 +3187,7 @@ app.frame('/counterResult3', (c) => {
         if (player.life > 0) {
           //player is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmNm79M6aDsZ58NDXDC1xZ1xEsrEdW4vpXM6rWJSLoQKSq';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmNm79M6aDsZ58NDXDC1xZ1xEsrEdW4vpXM6rWJSLoQKSq';
           intents = [<Button action="/fight2-3">Continue</Button>];
 
         } else {
@@ -3064,7 +3195,7 @@ app.frame('/counterResult3', (c) => {
           progressMarker = { ...progressMarker, deathFrame: '/narrative3' };
           deathFrame = "/narrative3";
           currentframe = "checktime";
-          image = 'https://gateway.pinata.cloud/ipfs/QmX5XwxUQAMRsr49UgqGQVxhJDLcZVqr7DGDRTy7ghUVRd';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmX5XwxUQAMRsr49UgqGQVxhJDLcZVqr7DGDRTy7ghUVRd';
           intents = [<Button action="/fleedeath">Continue</Button>];
 
 
@@ -3087,13 +3218,14 @@ app.frame('/counterResult3', (c) => {
       let image;
       let intents;
       player.framesLoaded += 1;
+      player.enemiesKilled += 1;
       progressMarker = { ...progressMarker, previousFrame: '/battle3transition' };
 
           image = (
               <div
                   style={{
                       alignItems: 'center',
-                      backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmWAaD4VDEPh3AcV5BKbCNMJumEo5XtteN6cbPJs1pMdrh)',
+                      backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmPpkPx7TK3CTE3LGmvTCUSem7Chzdr9DWTKtiPKUC5UMv)',
                       backgroundSize: '100% 100%',
                       backgroundPosition: 'center',
                       backgroundRepeat: 'no-repeat',
@@ -3161,7 +3293,7 @@ app.frame('/narrative5', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmZvGvuLc8nSDvitjsr586CetHqvroFJp1gEZ6Z2erHFs9)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmZvGvuLc8nSDvitjsr586CetHqvroFJp1gEZ6Z2erHFs9)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -3211,7 +3343,7 @@ app.frame('/resist', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmNsCg5XkczHG8gw3NYJ7YvvaNB1THbPPXqxjWfhevvD2C)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmNsCg5XkczHG8gw3NYJ7YvvaNB1THbPPXqxjWfhevvD2C)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -3263,7 +3395,7 @@ app.frame('/resistb', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/Qmd6BzdfkTZSGPQy4koaNegXYCCFBQKeciBExoDGFuxdjN)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmd6BzdfkTZSGPQy4koaNegXYCCFBQKeciBExoDGFuxdjN)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -3313,7 +3445,7 @@ app.frame('/drink', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmfBSdaY8MgrwhFWoiJdw5JCMXeDVhGjNi9SWHnuQLyovA)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmfBSdaY8MgrwhFWoiJdw5JCMXeDVhGjNi9SWHnuQLyovA)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -3363,7 +3495,7 @@ app.frame('/vision', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmYtZ5FNWsPnyCKkngsLmm19qVVGKdFLbKqc62xCqUB3PN)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmYtZ5FNWsPnyCKkngsLmm19qVVGKdFLbKqc62xCqUB3PN)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -3412,7 +3544,7 @@ app.frame('/vision2', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmVd7EpvYCCzMTxf4n24zZFKtkYsiNmwgQosoDTTUnPQk6)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmVd7EpvYCCzMTxf4n24zZFKtkYsiNmwgQosoDTTUnPQk6)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -3461,7 +3593,7 @@ app.frame('/vision3', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmWspG13z1iieYCNsrGWV4a66AeRRwAUULS6a273pKx1ae)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmWspG13z1iieYCNsrGWV4a66AeRRwAUULS6a273pKx1ae)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -3511,7 +3643,7 @@ app.frame('/vision4', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmR39aL9cyQrE7wwZTBYGB4R8vJg6zAvSA5V2cLcjSEm7M)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmR39aL9cyQrE7wwZTBYGB4R8vJg6zAvSA5V2cLcjSEm7M)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -3560,7 +3692,7 @@ app.frame('/vision5', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmbLEKfWTojgNUWcwtgCNKHYGHBcRvnbxjP3wMpZw9nLsm)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmbLEKfWTojgNUWcwtgCNKHYGHBcRvnbxjP3wMpZw9nLsm)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -3609,7 +3741,7 @@ app.frame('/vision6', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmbMuWQ5pmBXXE11126pD13B8Mab56hHreejHvYzUKp1ij)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmbMuWQ5pmBXXE11126pD13B8Mab56hHreejHvYzUKp1ij)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -3658,7 +3790,7 @@ app.frame('/vision7', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmUCAe9a1Kq2tdbdq45iLHuqgpQN2wktCh5fYR8m9sdpuv)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmUCAe9a1Kq2tdbdq45iLHuqgpQN2wktCh5fYR8m9sdpuv)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -3707,7 +3839,7 @@ app.frame('/vision8', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmSuqiFotyWsdf6c8c3Yi62iJW25drcJUuSyvUivzeZrYT)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmSuqiFotyWsdf6c8c3Yi62iJW25drcJUuSyvUivzeZrYT)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -3757,7 +3889,7 @@ app.frame('/vision9', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmQBCnvGMXNLXJRkSnH6fWzKFPr6HoYqxrschMbuAuGshs)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmQBCnvGMXNLXJRkSnH6fWzKFPr6HoYqxrschMbuAuGshs)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -3808,7 +3940,7 @@ app.frame('/vision10', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmQgddfbxqixWjipo6EWVbHR84AtHWgQnz2bgPGf4EuFUn)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmQgddfbxqixWjipo6EWVbHR84AtHWgQnz2bgPGf4EuFUn)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -3858,7 +3990,7 @@ app.frame('/vision11', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmZUVL6RhAnTs7qfxaohxV3Dt1SA3AXYFgY6DmyecXiaaD)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmZUVL6RhAnTs7qfxaohxV3Dt1SA3AXYFgY6DmyecXiaaD)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -3909,7 +4041,7 @@ app.frame('/vision12', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmcMH25boYJQm2U26ny4TADm236naZVxT4kxA1rLowPi92)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmcMH25boYJQm2U26ny4TADm236naZVxT4kxA1rLowPi92)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -3959,7 +4091,7 @@ app.frame('/vision13', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmS1mjc15K2MLAgmsH4Vuhp2jPS1a4AxtEHM1H6vwu11Eb)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmS1mjc15K2MLAgmsH4Vuhp2jPS1a4AxtEHM1H6vwu11Eb)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -4016,11 +4148,11 @@ app.frame('/battle5', (c) => {
 
     if (player.specials === 0) {
       
-        image = 'https://gateway.pinata.cloud/ipfs/QmZ5xUBres27tMDktKyLsAujeeUrDaWz6SXdBdrewXeJRV';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmZ5xUBres27tMDktKyLsAujeeUrDaWz6SXdBdrewXeJRV';
         intents = [<Button action="/SwiftAttack5">Swift Attack</Button>,<Button action="/HeavyAttack5">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
     } else {
  
-        image = 'https://gateway.pinata.cloud/ipfs/QmZ5xUBres27tMDktKyLsAujeeUrDaWz6SXdBdrewXeJRV';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmZ5xUBres27tMDktKyLsAujeeUrDaWz6SXdBdrewXeJRV';
         intents = [<Button action="/SwiftAttack5">SwiftAtk</Button>,<Button action="/HeavyAttack5">PowerAtk</Button>,<Button action="/specialAttack5">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
 
@@ -4047,15 +4179,15 @@ app.frame('/fight2-5', (c) => {
 
         if (fightRandomImage5 < 1) {
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmNocrw4CUtwF7SqdfWasDBT2pPpHaK4YUxdvkXG7oSMkY';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmNocrw4CUtwF7SqdfWasDBT2pPpHaK4YUxdvkXG7oSMkY';
           intents = [<Button action="/SwiftAttack5">Swift Attack</Button>,<Button action="/HeavyAttack5">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         } else if (fightRandomImage5 === 1) {
-          image = 'https://gateway.pinata.cloud/ipfs/QmNocrw4CUtwF7SqdfWasDBT2pPpHaK4YUxdvkXG7oSMkY';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmNocrw4CUtwF7SqdfWasDBT2pPpHaK4YUxdvkXG7oSMkY';
           intents = [<Button action="/SwiftAttack5">Swift Attack</Button>,<Button action="/HeavyAttack5">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         } else {
-          image = 'https://gateway.pinata.cloud/ipfs/QmRQhGRuGFqhsWuw7RkjxwpfyHWAB8MJ2PunUzRsdKnxDi';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmRQhGRuGFqhsWuw7RkjxwpfyHWAB8MJ2PunUzRsdKnxDi';
           intents = [<Button action="/SwiftAttack5">Swift Attack</Button>,<Button action="/HeavyAttack5">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         }
@@ -4064,17 +4196,17 @@ app.frame('/fight2-5', (c) => {
 
         if (fightRandomImage5 < 1) {
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmNocrw4CUtwF7SqdfWasDBT2pPpHaK4YUxdvkXG7oSMkY';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmNocrw4CUtwF7SqdfWasDBT2pPpHaK4YUxdvkXG7oSMkY';
            intents = [<Button action="/SwiftAttack5">SwiftAtk</Button>,<Button action="/HeavyAttack5">PowerAtk</Button>,<Button action="/specialAttack5">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
 
         } else if (fightRandomImage5 === 1) {
-          image = 'https://gateway.pinata.cloud/ipfs/QmNocrw4CUtwF7SqdfWasDBT2pPpHaK4YUxdvkXG7oSMkY';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmNocrw4CUtwF7SqdfWasDBT2pPpHaK4YUxdvkXG7oSMkY';
            intents = [<Button action="/SwiftAttack5">SwiftAtk</Button>,<Button action="/HeavyAttack5">PowerAtk</Button>,<Button action="/specialAttack5">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
 
         } else {
-          image = 'https://gateway.pinata.cloud/ipfs/QmRQhGRuGFqhsWuw7RkjxwpfyHWAB8MJ2PunUzRsdKnxDi';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmRQhGRuGFqhsWuw7RkjxwpfyHWAB8MJ2PunUzRsdKnxDi';
            intents = [<Button action="/SwiftAttack5">SwiftAtk</Button>,<Button action="/HeavyAttack5">PowerAtk</Button>,<Button action="/specialAttack5">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
 
@@ -4096,7 +4228,7 @@ app.frame('/SwiftAttack5', (c) => {
     let intents;
       player.framesLoaded += 1;
 
-    const swiftRandomNum5 =  Math.floor(Math.random() * 8);
+    const swiftRandomNum5 =  Math.floor(Math.random() * 10);
     const swiftRandomMiss5 = Math.floor(Math.random() * 3);
 
 
@@ -4107,13 +4239,13 @@ app.frame('/SwiftAttack5', (c) => {
         if (enemy5.life > 0) {
           //enemy is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmbwsDLV6EzPBFx44HQx8voDZErUajfgaMQqLTpH69AbDg';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmbwsDLV6EzPBFx44HQx8voDZErUajfgaMQqLTpH69AbDg';
           intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
 
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/Qmf885yCN11AHwtvnbjQQ8JpemG4fZgBeUxRy1cmiwboow';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmf885yCN11AHwtvnbjQQ8JpemG4fZgBeUxRy1cmiwboow';
           intents = [<Button action="/scriptedfight">Continue</Button>];
 
 
@@ -4124,12 +4256,12 @@ app.frame('/SwiftAttack5', (c) => {
     } else if (swiftRandomNum5 === 3) {
       // attack missed
       if (swiftRandomMiss5 < 1) {
-        image = 'https://gateway.pinata.cloud/ipfs/QmW2u4m3Q4zJxfVx1dwWn6nfE267bamwB1LEKpS5MDo2fK';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmW2u4m3Q4zJxfVx1dwWn6nfE267bamwB1LEKpS5MDo2fK';
         intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
 
       } else {
 
-        image = 'https://gateway.pinata.cloud/ipfs/QmUcwYTsriwKafffZQ6nvDDhvW65fyhR5x6iKhh4oe2zVB';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmUcwYTsriwKafffZQ6nvDDhvW65fyhR5x6iKhh4oe2zVB';
         intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
 
       }
@@ -4143,13 +4275,13 @@ app.frame('/SwiftAttack5', (c) => {
       if (enemy5.life > 0) {
           //enemy is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmRr6hCrzcFTDAkbhb49so6n9TiXkFJ8Qm4qpc9Dm7o5C6';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmRr6hCrzcFTDAkbhb49so6n9TiXkFJ8Qm4qpc9Dm7o5C6';
           intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
 
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/Qmf885yCN11AHwtvnbjQQ8JpemG4fZgBeUxRy1cmiwboow';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmf885yCN11AHwtvnbjQQ8JpemG4fZgBeUxRy1cmiwboow';
           intents = [<Button action="/scriptedfight">Continue</Button>];
 
 
@@ -4164,17 +4296,17 @@ app.frame('/SwiftAttack5', (c) => {
           //enemy is still alive
 
             if (swiftRandomMiss5 < 1) {
-              image = 'https://gateway.pinata.cloud/ipfs/QmXRUE2j9nvHt65RCxht3x2JCoR6SAmVPtk8LuJM2ydbmt';
+              image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmXRUE2j9nvHt65RCxht3x2JCoR6SAmVPtk8LuJM2ydbmt';
               intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
 
             }else if (swiftRandomMiss5 === 1) {
 
-              image = 'https://gateway.pinata.cloud/ipfs/QmXRUE2j9nvHt65RCxht3x2JCoR6SAmVPtk8LuJM2ydbmt';
+              image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmXRUE2j9nvHt65RCxht3x2JCoR6SAmVPtk8LuJM2ydbmt';
               intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
 
             } else {
 
-              image = 'https://gateway.pinata.cloud/ipfs/QmW4R68D7XHbTbA9RTGayeAeUxeDzHLm5ew4Fhi8HdXVTs';
+              image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmW4R68D7XHbTbA9RTGayeAeUxeDzHLm5ew4Fhi8HdXVTs';
               intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
 
             }
@@ -4184,7 +4316,7 @@ app.frame('/SwiftAttack5', (c) => {
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/Qmf885yCN11AHwtvnbjQQ8JpemG4fZgBeUxRy1cmiwboow';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmf885yCN11AHwtvnbjQQ8JpemG4fZgBeUxRy1cmiwboow';
           intents = [<Button action="/scriptedfight">Continue</Button>];
 
 
@@ -4208,7 +4340,7 @@ app.frame('/HeavyAttack5', (c) => {
 
   player.framesLoaded += 1;
 
-    const heavyRandomNum5 = Math.floor(Math.random() * 8);
+    const heavyRandomNum5 = Math.floor(Math.random() * 9);
     const heavyRandomMiss5 = Math.floor(Math.random() * 2);
 
 
@@ -4219,13 +4351,13 @@ app.frame('/HeavyAttack5', (c) => {
         if (enemy5.life > 0) {
           //enemy is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmbwsDLV6EzPBFx44HQx8voDZErUajfgaMQqLTpH69AbDg';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmbwsDLV6EzPBFx44HQx8voDZErUajfgaMQqLTpH69AbDg';
           intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
 
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/Qmf885yCN11AHwtvnbjQQ8JpemG4fZgBeUxRy1cmiwboow';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmf885yCN11AHwtvnbjQQ8JpemG4fZgBeUxRy1cmiwboow';
           intents = [<Button action="/scriptedfight">Continue</Button>];
 
 
@@ -4236,12 +4368,12 @@ app.frame('/HeavyAttack5', (c) => {
     } else if (heavyRandomNum5 === 4) {
         // attack missed
         if (heavyRandomMiss5 < 1) {
-          image = 'https://gateway.pinata.cloud/ipfs/QmW2u4m3Q4zJxfVx1dwWn6nfE267bamwB1LEKpS5MDo2fK';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmW2u4m3Q4zJxfVx1dwWn6nfE267bamwB1LEKpS5MDo2fK';
           intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
 
         } else {
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmUcwYTsriwKafffZQ6nvDDhvW65fyhR5x6iKhh4oe2zVB';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmUcwYTsriwKafffZQ6nvDDhvW65fyhR5x6iKhh4oe2zVB';
           intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
 
         }
@@ -4249,12 +4381,12 @@ app.frame('/HeavyAttack5', (c) => {
     } else if (heavyRandomNum5 === 5) {
           // attack missed
           if (heavyRandomMiss5 < 1) {
-            image = 'https://gateway.pinata.cloud/ipfs/QmW2u4m3Q4zJxfVx1dwWn6nfE267bamwB1LEKpS5MDo2fK';
+            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmW2u4m3Q4zJxfVx1dwWn6nfE267bamwB1LEKpS5MDo2fK';
             intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
 
           } else {
 
-            image = 'https://gateway.pinata.cloud/ipfs/QmUcwYTsriwKafffZQ6nvDDhvW65fyhR5x6iKhh4oe2zVB';
+            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmUcwYTsriwKafffZQ6nvDDhvW65fyhR5x6iKhh4oe2zVB';
             intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
 
           }
@@ -4267,13 +4399,13 @@ app.frame('/HeavyAttack5', (c) => {
       if (enemy5.life > 0) {
           //enemy is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmRr6hCrzcFTDAkbhb49so6n9TiXkFJ8Qm4qpc9Dm7o5C6';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmRr6hCrzcFTDAkbhb49so6n9TiXkFJ8Qm4qpc9Dm7o5C6';
           intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
 
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/Qmf885yCN11AHwtvnbjQQ8JpemG4fZgBeUxRy1cmiwboow';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmf885yCN11AHwtvnbjQQ8JpemG4fZgBeUxRy1cmiwboow';
           intents = [<Button action="/scriptedfight">Continue</Button>];
 
 
@@ -4286,13 +4418,13 @@ app.frame('/HeavyAttack5', (c) => {
         if (enemy5.life > 0) {
           //enemy is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmYTFZMnQhMvoq7SyFY1GpkCU7s4JVV7c3w6jo16ZYjQKP';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmYTFZMnQhMvoq7SyFY1GpkCU7s4JVV7c3w6jo16ZYjQKP';
           intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
 
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/Qmf885yCN11AHwtvnbjQQ8JpemG4fZgBeUxRy1cmiwboow';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmf885yCN11AHwtvnbjQQ8JpemG4fZgBeUxRy1cmiwboow';
           intents = [<Button action="/scriptedfight">Continue</Button>];
 
 
@@ -4324,13 +4456,13 @@ app.frame('/specialAttack5', (c) => {
         //unsuccessful special attack 
 
         if (specialRandomMiss5 < 1) {
-            image = 'https://gateway.pinata.cloud/ipfs/QmW2u4m3Q4zJxfVx1dwWn6nfE267bamwB1LEKpS5MDo2fK';
-            intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
+            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmW2u4m3Q4zJxfVx1dwWn6nfE267bamwB1LEKpS5MDo2fK';
+            intents = [<Button action="/fight2-5">Continue</Button>];
 
         } else {
 
-            image = 'https://gateway.pinata.cloud/ipfs/QmUcwYTsriwKafffZQ6nvDDhvW65fyhR5x6iKhh4oe2zVB';
-            intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
+            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmUcwYTsriwKafffZQ6nvDDhvW65fyhR5x6iKhh4oe2zVB';
+            intents = [<Button action="/fight2-5">Continue</Button>];
 
         }
               
@@ -4343,13 +4475,13 @@ app.frame('/specialAttack5', (c) => {
           //enemy is still alive
 
           if (specialRandomMiss5 < 1) {
-            image = 'https://gateway.pinata.cloud/ipfs/QmR6T1Z1doowM6k5g5J1F8o1cQK772inoBopCdyC4KsyfP';
-            intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
+            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmR6T1Z1doowM6k5g5J1F8o1cQK772inoBopCdyC4KsyfP';
+            intents = [<Button action="/fight2-5">Continue</Button>];
 
           } else {
 
-              image = 'https://gateway.pinata.cloud/ipfs/QmR6T1Z1doowM6k5g5J1F8o1cQK772inoBopCdyC4KsyfP';
-              intents = [<Button action="/dodgeResult5">Dodge</Button>,<Button action="/counterResult5">Counter</Button>];
+              image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmR6T1Z1doowM6k5g5J1F8o1cQK772inoBopCdyC4KsyfP';
+              intents = [<Button action="/fight2-5">Continue</Button>];
 
           }
 
@@ -4357,7 +4489,7 @@ app.frame('/specialAttack5', (c) => {
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/Qmf885yCN11AHwtvnbjQQ8JpemG4fZgBeUxRy1cmiwboow';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmf885yCN11AHwtvnbjQQ8JpemG4fZgBeUxRy1cmiwboow';
           intents = [<Button action="/scriptedfight">Continue</Button>];
 
 
@@ -4388,7 +4520,7 @@ app.frame('/dodgeResult5', (c) => {
 
     if (dodgeRandomNum5 < 4) {
         // player dodged
-        image = 'https://gateway.pinata.cloud/ipfs/QmPwoMi4KRCceyVGYEYGjwz9MEmwhzERCSg1HXf3g493cZ';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmPwoMi4KRCceyVGYEYGjwz9MEmwhzERCSg1HXf3g493cZ';
         intents = [<Button action="/fight2-5">Continue</Button>];
 
     } else {
@@ -4397,7 +4529,7 @@ app.frame('/dodgeResult5', (c) => {
         if (player.life > 0) {
           //player is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/Qmcy3ifXZF7NTiZo1cjDkoFx6eoroezFscsTLWHEiqVxh6';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmcy3ifXZF7NTiZo1cjDkoFx6eoroezFscsTLWHEiqVxh6';
           intents = [<Button action="/fight2-5">Continue</Button>];
 
         } else {
@@ -4405,7 +4537,7 @@ app.frame('/dodgeResult5', (c) => {
           progressMarker = { ...progressMarker, deathFrame: '/narrative8' };
           deathFrame = "/narrative8";
           currentframe = "checktime";
-          image = 'https://gateway.pinata.cloud/ipfs/QmX5XwxUQAMRsr49UgqGQVxhJDLcZVqr7DGDRTy7ghUVRd';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmX5XwxUQAMRsr49UgqGQVxhJDLcZVqr7DGDRTy7ghUVRd';
           intents = [<Button action="/fleedeath">Continue</Button>];
 
 
@@ -4428,19 +4560,19 @@ app.frame('/counterResult5', (c) => {
     const counterRandomNum5 = Math.floor(Math.random() * 10);
 
 
-    if (counterRandomNum5 < 3) {
+    if (counterRandomNum5 < 6) {
         // succesful counter
         enemy5.life -= 10
         
         if (enemy5.life > 0) {
           //show counter frame
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmdAHcrdyqozXScjy4mXMCp1NQGA4uMuC8bLFogWrZ4qJf';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmdAHcrdyqozXScjy4mXMCp1NQGA4uMuC8bLFogWrZ4qJf';
           intents = [<Button action="/fight2-5">Continue</Button>];
 
         } else {
           // enemy is dead
-          image = 'https://gateway.pinata.cloud/ipfs/Qmf885yCN11AHwtvnbjQQ8JpemG4fZgBeUxRy1cmiwboow';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmf885yCN11AHwtvnbjQQ8JpemG4fZgBeUxRy1cmiwboow';
           intents = [<Button action="/scriptedfight">Continue</Button>];
 
         }
@@ -4452,7 +4584,7 @@ app.frame('/counterResult5', (c) => {
         if (player.life > 0) {
           //player is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/Qmcy3ifXZF7NTiZo1cjDkoFx6eoroezFscsTLWHEiqVxh6';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmcy3ifXZF7NTiZo1cjDkoFx6eoroezFscsTLWHEiqVxh6';
           intents = [<Button action="/fight2-5">Continue</Button>];
 
         } else {
@@ -4460,7 +4592,7 @@ app.frame('/counterResult5', (c) => {
           progressMarker = { ...progressMarker, deathFrame: '/narrative8' };
           deathFrame = "/narrative8";
           currentframe = "checktime";
-          image = 'https://gateway.pinata.cloud/ipfs/QmX5XwxUQAMRsr49UgqGQVxhJDLcZVqr7DGDRTy7ghUVRd';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmX5XwxUQAMRsr49UgqGQVxhJDLcZVqr7DGDRTy7ghUVRd';
           intents = [<Button action="/fleedeath">Continue</Button>];
 
 
@@ -4512,6 +4644,8 @@ app.frame('/narrative2', (c) => {
     let image;
     let intents;
       player.framesLoaded += 1;
+      player.enemiesKilled += 1;
+
 
         progressMarker = { ...progressMarker, previousFrame: '/narrative2' };
 
@@ -4519,7 +4653,7 @@ app.frame('/narrative2', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmNhgkmpviMhH2FmsxFeurxau8S2wYyQ3ofV5xwzKi5dRo)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmNhgkmpviMhH2FmsxFeurxau8S2wYyQ3ofV5xwzKi5dRo)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -4578,7 +4712,7 @@ app.frame('/trap2', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmbAm9RXw3tAD9YMthAAdJqTg9tFJXhnrwFzg9a3xhtR2b)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmbAm9RXw3tAD9YMthAAdJqTg9tFJXhnrwFzg9a3xhtR2b)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -4639,7 +4773,7 @@ app.frame('/option1', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmRLJcuU5DGBznsafXFzfrzyVXqHssdk5ubti73DGngv4L)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmRLJcuU5DGBznsafXFzfrzyVXqHssdk5ubti73DGngv4L)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -4682,7 +4816,7 @@ app.frame('/option1', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmPzBMPxDFsNMmKsMT9aBCFHLekPPCHZqPy3i4pXV3XWUE)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmPzBMPxDFsNMmKsMT9aBCFHLekPPCHZqPy3i4pXV3XWUE)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -4736,7 +4870,7 @@ app.frame('/option2', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmRLJcuU5DGBznsafXFzfrzyVXqHssdk5ubti73DGngv4L)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmRLJcuU5DGBznsafXFzfrzyVXqHssdk5ubti73DGngv4L)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -4780,7 +4914,7 @@ app.frame('/option2', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmPzBMPxDFsNMmKsMT9aBCFHLekPPCHZqPy3i4pXV3XWUE)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmPzBMPxDFsNMmKsMT9aBCFHLekPPCHZqPy3i4pXV3XWUE)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -4829,7 +4963,7 @@ app.frame('/trap3', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmPpqWgmSVVLPDsUdLP8bJDVxpE1s6UiLm5RMua4FQywzn)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmPpqWgmSVVLPDsUdLP8bJDVxpE1s6UiLm5RMua4FQywzn)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -4894,7 +5028,7 @@ app.frame('/trap3Option', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/Qmeaf3LrLBjUfwRggvuBiWzoraB7WiyTSQ1ef8ZVtTQw1n)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmeaf3LrLBjUfwRggvuBiWzoraB7WiyTSQ1ef8ZVtTQw1n)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -4937,7 +5071,7 @@ app.frame('/trap3Option', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmP1tY4EwcPEBnz3wWNJS6vy5YoDVvBo73JDG6sJhM1jaA)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmP1tY4EwcPEBnz3wWNJS6vy5YoDVvBo73JDG6sJhM1jaA)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -4998,7 +5132,7 @@ app.frame('/trap3Option2', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/Qmeaf3LrLBjUfwRggvuBiWzoraB7WiyTSQ1ef8ZVtTQw1n)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmeaf3LrLBjUfwRggvuBiWzoraB7WiyTSQ1ef8ZVtTQw1n)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -5041,7 +5175,7 @@ app.frame('/trap3Option2', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmP1tY4EwcPEBnz3wWNJS6vy5YoDVvBo73JDG6sJhM1jaA)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmP1tY4EwcPEBnz3wWNJS6vy5YoDVvBo73JDG6sJhM1jaA)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -5095,7 +5229,7 @@ app.frame('/narrative4', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmXmi5wkJwpJ7XmcVJhAjcR1PpzFnNpPVzFS1bhLkABYyr)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmXmi5wkJwpJ7XmcVJhAjcR1PpzFnNpPVzFS1bhLkABYyr)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -5146,7 +5280,7 @@ app.frame('/narrative4b', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmP4WuyRgksARHAT5Fq6UL5epCuhwpwV5Q2KvWTNuLvopz)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmP4WuyRgksARHAT5Fq6UL5epCuhwpwV5Q2KvWTNuLvopz)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -5205,11 +5339,11 @@ app.frame('/battle2', (c) => {
 
     if (player.specials === 0) {
       
-        image = 'https://gateway.pinata.cloud/ipfs/QmcLGp1YAG5kPyHnL3bAAvJi1pYh21RacVkBaPBGMgLrFy';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmcLGp1YAG5kPyHnL3bAAvJi1pYh21RacVkBaPBGMgLrFy';
         intents = [<Button action="/SwiftAttack2">Swift Attack</Button>,<Button action="/HeavyAttack2">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
     } else {
  
-        image = 'https://gateway.pinata.cloud/ipfs/QmcLGp1YAG5kPyHnL3bAAvJi1pYh21RacVkBaPBGMgLrFy';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmcLGp1YAG5kPyHnL3bAAvJi1pYh21RacVkBaPBGMgLrFy';
         intents = [<Button action="/SwiftAttack2">SwiftAtk</Button>,<Button action="/HeavyAttack2">PowerAtk</Button>,<Button action="/specialAttack2">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
 
@@ -5235,15 +5369,15 @@ app.frame('/fight2-2', (c) => {
 
         if (fightRandomImage2 < 2) {
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmUUNBCVTdhhL8Y744Fn2KZk1kzBhYoogQDdZfJibjnanF';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmUUNBCVTdhhL8Y744Fn2KZk1kzBhYoogQDdZfJibjnanF';
           intents = [<Button action="/SwiftAttack2">Swift Attack</Button>,<Button action="/HeavyAttack2">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         } else if (fightRandomImage2 === 1) {
-          image = 'https://gateway.pinata.cloud/ipfs/QmTsfTyVxZayYa1kAirVTi86FMHozjGoUPAvjKZLUH9Yof';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmTsfTyVxZayYa1kAirVTi86FMHozjGoUPAvjKZLUH9Yof';
           intents = [<Button action="/SwiftAttack2">Swift Attack</Button>,<Button action="/HeavyAttack2">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         } else {
-          image = 'https://gateway.pinata.cloud/ipfs/QmTsfTyVxZayYa1kAirVTi86FMHozjGoUPAvjKZLUH9Yof';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmTsfTyVxZayYa1kAirVTi86FMHozjGoUPAvjKZLUH9Yof';
           intents = [<Button action="/SwiftAttack2">Swift Attack</Button>,<Button action="/HeavyAttack2">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         }
@@ -5252,15 +5386,15 @@ app.frame('/fight2-2', (c) => {
 
         if (fightRandomImage2 < 2) {
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmUUNBCVTdhhL8Y744Fn2KZk1kzBhYoogQDdZfJibjnanF';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmUUNBCVTdhhL8Y744Fn2KZk1kzBhYoogQDdZfJibjnanF';
           intents = [<Button action="/SwiftAttack2">SwiftAtk</Button>,<Button action="/HeavyAttack2">PowerAtk</Button>,<Button action="/specialAttack2">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         } else if (fightRandomImage2 === 1) {
-          image = 'https://gateway.pinata.cloud/ipfs/QmTsfTyVxZayYa1kAirVTi86FMHozjGoUPAvjKZLUH9Yof';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmTsfTyVxZayYa1kAirVTi86FMHozjGoUPAvjKZLUH9Yof';
           intents = [<Button action="/SwiftAttack2">SwiftAtk</Button>,<Button action="/HeavyAttack2">PowerAtk</Button>,<Button action="/specialAttack2">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         } else {
-          image = 'https://gateway.pinata.cloud/ipfs/QmTsfTyVxZayYa1kAirVTi86FMHozjGoUPAvjKZLUH9Yof';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmTsfTyVxZayYa1kAirVTi86FMHozjGoUPAvjKZLUH9Yof';
           intents = [<Button action="/SwiftAttack2">SwiftAtk</Button>,<Button action="/HeavyAttack2">PowerAtk</Button>,<Button action="/specialAttack2">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         }        
@@ -5280,7 +5414,7 @@ app.frame('/SwiftAttack2', (c) => {
     let image;
     let intents;
     player.framesLoaded += 1;
-    const swiftRandomNum2 = Math.floor(Math.random() * 8);
+    const swiftRandomNum2 = Math.floor(Math.random() * 12);
     const swiftRandomMiss2 = Math.floor(Math.random() * 4);
 
 
@@ -5291,13 +5425,13 @@ app.frame('/SwiftAttack2', (c) => {
         if (enemy2.life > 0) {
           //enemy is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/Qme41TxaoqjhwvkA95XgRBHaJGixshmtqBf6TfAPFxKtW4';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qme41TxaoqjhwvkA95XgRBHaJGixshmtqBf6TfAPFxKtW4';
           intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
 
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmUqk9oVXtLUArg9o8rzr4ygdzXWCybayiWeHJDCrvp9Kt';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmUqk9oVXtLUArg9o8rzr4ygdzXWCybayiWeHJDCrvp9Kt';
           intents = [<Button action="/battle2transition">Continue</Button>];
 
 
@@ -5308,12 +5442,12 @@ app.frame('/SwiftAttack2', (c) => {
     } else if (swiftRandomNum2 === 3) {
       // attack missed
       if (swiftRandomMiss2 < 2) {
-        image = 'https://gateway.pinata.cloud/ipfs/QmbBecCfckVbDF28p6N4xVycKZbeFiEro7THP5rRk9ZV2M';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmbBecCfckVbDF28p6N4xVycKZbeFiEro7THP5rRk9ZV2M';
         intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
 
       } else {
 
-        image = 'https://gateway.pinata.cloud/ipfs/QmYKjG4kuuausTnpoy6NAxmYzGJWTAJ7axyhsLkBWoWGYk';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmYKjG4kuuausTnpoy6NAxmYzGJWTAJ7axyhsLkBWoWGYk';
         intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
 
       }
@@ -5327,13 +5461,13 @@ app.frame('/SwiftAttack2', (c) => {
       if (enemy2.life > 0) {
           //enemy is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmQ9opFvN4fUaJej7rbpVZca2AcXxAwJvyWrbBsuw3dxvX';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmQ9opFvN4fUaJej7rbpVZca2AcXxAwJvyWrbBsuw3dxvX';
           intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
 
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmUqk9oVXtLUArg9o8rzr4ygdzXWCybayiWeHJDCrvp9Kt';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmUqk9oVXtLUArg9o8rzr4ygdzXWCybayiWeHJDCrvp9Kt';
           intents = [<Button action="/battle2transition">Continue</Button>];
 
 
@@ -5348,17 +5482,17 @@ app.frame('/SwiftAttack2', (c) => {
           //enemy is still alive
 
             if (swiftRandomMiss2 < 1) {
-              image = 'https://gateway.pinata.cloud/ipfs/QmV3gD8rjjMaYk2qUUtNxbPi9wDGEkNG9BKbnkXpwj8iDa';
+              image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmV3gD8rjjMaYk2qUUtNxbPi9wDGEkNG9BKbnkXpwj8iDa';
               intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
 
             }else if (swiftRandomMiss2 === 1) {
 
-              image = 'https://gateway.pinata.cloud/ipfs/QmPjfbP9vvULCpHcC1SC1nYDgTPcN5eW2P1T3gmhJkVFCX';
+              image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmPjfbP9vvULCpHcC1SC1nYDgTPcN5eW2P1T3gmhJkVFCX';
               intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
 
             } else {
 
-              image = 'https://gateway.pinata.cloud/ipfs/QmPjfbP9vvULCpHcC1SC1nYDgTPcN5eW2P1T3gmhJkVFCX';
+              image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmPjfbP9vvULCpHcC1SC1nYDgTPcN5eW2P1T3gmhJkVFCX';
               intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
 
             }
@@ -5368,7 +5502,7 @@ app.frame('/SwiftAttack2', (c) => {
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmUqk9oVXtLUArg9o8rzr4ygdzXWCybayiWeHJDCrvp9Kt';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmUqk9oVXtLUArg9o8rzr4ygdzXWCybayiWeHJDCrvp9Kt';
           intents = [<Button action="/battle2transition">Continue</Button>];
 
 
@@ -5391,7 +5525,7 @@ app.frame('/HeavyAttack2', (c) => {
     let intents;
     player.framesLoaded += 1;
 
-    const heavyRandomNum2 = Math.floor(Math.random() * 10);
+    const heavyRandomNum2 = Math.floor(Math.random() * 8);
     const heavyRandomMiss2 = Math.floor(Math.random() * 4);
 
 
@@ -5402,13 +5536,13 @@ app.frame('/HeavyAttack2', (c) => {
         if (enemy2.life > 0) {
           //enemy is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/Qme41TxaoqjhwvkA95XgRBHaJGixshmtqBf6TfAPFxKtW4';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qme41TxaoqjhwvkA95XgRBHaJGixshmtqBf6TfAPFxKtW4';
           intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
 
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmUqk9oVXtLUArg9o8rzr4ygdzXWCybayiWeHJDCrvp9Kt';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmUqk9oVXtLUArg9o8rzr4ygdzXWCybayiWeHJDCrvp9Kt';
           intents = [<Button action="/battle2transition">Continue</Button>];
 
 
@@ -5419,12 +5553,12 @@ app.frame('/HeavyAttack2', (c) => {
     } else if (heavyRandomNum2 === 4) {
         // attack missed
         if (heavyRandomMiss2 < 2) {
-          image = 'https://gateway.pinata.cloud/ipfs/QmbBecCfckVbDF28p6N4xVycKZbeFiEro7THP5rRk9ZV2M';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmbBecCfckVbDF28p6N4xVycKZbeFiEro7THP5rRk9ZV2M';
           intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
 
         } else {
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmYKjG4kuuausTnpoy6NAxmYzGJWTAJ7axyhsLkBWoWGYk';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmYKjG4kuuausTnpoy6NAxmYzGJWTAJ7axyhsLkBWoWGYk';
           intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
 
         }
@@ -5432,12 +5566,12 @@ app.frame('/HeavyAttack2', (c) => {
     } else if (heavyRandomNum2 === 5) {
           // attack missed
           if (heavyRandomMiss2 < 2) {
-            image = 'https://gateway.pinata.cloud/ipfs/QmbBecCfckVbDF28p6N4xVycKZbeFiEro7THP5rRk9ZV2M';
+            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmbBecCfckVbDF28p6N4xVycKZbeFiEro7THP5rRk9ZV2M';
             intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
 
           } else {
 
-            image = 'https://gateway.pinata.cloud/ipfs/QmYKjG4kuuausTnpoy6NAxmYzGJWTAJ7axyhsLkBWoWGYk';
+            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmYKjG4kuuausTnpoy6NAxmYzGJWTAJ7axyhsLkBWoWGYk';
             intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
 
           }
@@ -5450,13 +5584,13 @@ app.frame('/HeavyAttack2', (c) => {
       if (enemy2.life > 0) {
           //enemy is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmQ9opFvN4fUaJej7rbpVZca2AcXxAwJvyWrbBsuw3dxvX';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmQ9opFvN4fUaJej7rbpVZca2AcXxAwJvyWrbBsuw3dxvX';
           intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
 
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmUqk9oVXtLUArg9o8rzr4ygdzXWCybayiWeHJDCrvp9Kt';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmUqk9oVXtLUArg9o8rzr4ygdzXWCybayiWeHJDCrvp9Kt';
           intents = [<Button action="/battle2transition">Continue</Button>];
 
 
@@ -5469,13 +5603,13 @@ app.frame('/HeavyAttack2', (c) => {
         if (enemy2.life > 0) {
           //enemy is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmWnZDsfnxJiW3nowVuAzAZhsca5LqbVbGbLCBrGFdJHFG';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmWnZDsfnxJiW3nowVuAzAZhsca5LqbVbGbLCBrGFdJHFG';
           intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
 
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmUqk9oVXtLUArg9o8rzr4ygdzXWCybayiWeHJDCrvp9Kt';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmUqk9oVXtLUArg9o8rzr4ygdzXWCybayiWeHJDCrvp9Kt';
           intents = [<Button action="/battle2transition">Continue</Button>];
 
 
@@ -5496,7 +5630,7 @@ app.frame('/specialAttack2', (c) => {
     let intents;
     player.specials -=1
     player.framesLoaded += 1;
-    const specialRandomNum2 = Math.floor(Math.random() * 8);
+    const specialRandomNum2 = Math.floor(Math.random() * 10);
 
     const specialRandomMiss2 = Math.floor(Math.random() * 2);
     //progressMarker = { ...progressMarker, previousFrame: '/specialAttack' };
@@ -5506,12 +5640,12 @@ app.frame('/specialAttack2', (c) => {
         //unsuccessful special attack 
 
         if (specialRandomMiss2 < 1) {
-            image = 'https://gateway.pinata.cloud/ipfs/QmYKjG4kuuausTnpoy6NAxmYzGJWTAJ7axyhsLkBWoWGYk';
+            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmYKjG4kuuausTnpoy6NAxmYzGJWTAJ7axyhsLkBWoWGYk';
             intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
 
         } else {
 
-            image = 'https://gateway.pinata.cloud/ipfs/QmYKjG4kuuausTnpoy6NAxmYzGJWTAJ7axyhsLkBWoWGYk';
+            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmYKjG4kuuausTnpoy6NAxmYzGJWTAJ7axyhsLkBWoWGYk';
             intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
 
         }
@@ -5525,12 +5659,12 @@ app.frame('/specialAttack2', (c) => {
           //enemy is still alive
 
           if (specialRandomMiss2 < 1) {
-            image = 'https://gateway.pinata.cloud/ipfs/QmR6T1Z1doowM6k5g5J1F8o1cQK772inoBopCdyC4KsyfP';
+            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmR6T1Z1doowM6k5g5J1F8o1cQK772inoBopCdyC4KsyfP';
             intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
 
           } else {
 
-              image = 'https://gateway.pinata.cloud/ipfs/QmR6T1Z1doowM6k5g5J1F8o1cQK772inoBopCdyC4KsyfP';
+              image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmR6T1Z1doowM6k5g5J1F8o1cQK772inoBopCdyC4KsyfP';
               intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
 
           }
@@ -5539,7 +5673,7 @@ app.frame('/specialAttack2', (c) => {
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmUqk9oVXtLUArg9o8rzr4ygdzXWCybayiWeHJDCrvp9Kt';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmUqk9oVXtLUArg9o8rzr4ygdzXWCybayiWeHJDCrvp9Kt';
           intents = [<Button action="/battle2transition">Continue</Button>];
 
 
@@ -5567,9 +5701,9 @@ app.frame('/dodgeResult2', (c) => {
     const dodgeRandomNum2 = Math.floor(Math.random() * 10);
 
 
-    if (dodgeRandomNum2 < 6) {
+    if (dodgeRandomNum2 < 7) {
         // player dodged
-        image = 'https://gateway.pinata.cloud/ipfs/QmYxj6c2DcTpZLnYWaU8VDDkyJ6uLeQ6t1JGrQD3Fg18bA';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmYxj6c2DcTpZLnYWaU8VDDkyJ6uLeQ6t1JGrQD3Fg18bA';
         intents = [<Button action="/fight2-2">Continue</Button>];
 
     } else {
@@ -5578,7 +5712,7 @@ app.frame('/dodgeResult2', (c) => {
         if (player.life > 0) {
           //player is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmTf2BDZo9SNPVSM4fmn8n9fxwiq8rqzER5138K4rGAMqg';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmTf2BDZo9SNPVSM4fmn8n9fxwiq8rqzER5138K4rGAMqg';
           intents = [<Button action="/fight2-2">Continue</Button>];
 
         } else {
@@ -5586,7 +5720,7 @@ app.frame('/dodgeResult2', (c) => {
           progressMarker = { ...progressMarker, deathFrame: '/narrative6' };
           deathFrame = "/narrative6";
           currentframe = "checktime";
-          image = 'https://gateway.pinata.cloud/ipfs/QmX5XwxUQAMRsr49UgqGQVxhJDLcZVqr7DGDRTy7ghUVRd';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmX5XwxUQAMRsr49UgqGQVxhJDLcZVqr7DGDRTy7ghUVRd';
           intents = [<Button action="/fleedeath">Continue</Button>];
 
 
@@ -5615,12 +5749,12 @@ app.frame('/counterResult2', (c) => {
         if (enemy2.life > 0) {
           //show counter frame
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmR8w7jqKyVzaNd4FQdfbKSw9r3bErYs1bofA7hZoQeej2';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmR8w7jqKyVzaNd4FQdfbKSw9r3bErYs1bofA7hZoQeej2';
           intents = [<Button action="/fight2-2">Continue</Button>];
 
         } else {
           // enemy is dead
-          image = 'https://gateway.pinata.cloud/ipfs/QmUqk9oVXtLUArg9o8rzr4ygdzXWCybayiWeHJDCrvp9Kt';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmUqk9oVXtLUArg9o8rzr4ygdzXWCybayiWeHJDCrvp9Kt';
           intents = [<Button action="/battle2transition">Continue</Button>];
 
         }
@@ -5632,7 +5766,7 @@ app.frame('/counterResult2', (c) => {
         if (player.life > 0) {
           //player is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmTf2BDZo9SNPVSM4fmn8n9fxwiq8rqzER5138K4rGAMqg';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmTf2BDZo9SNPVSM4fmn8n9fxwiq8rqzER5138K4rGAMqg';
           intents = [<Button action="/fight2-2">Continue</Button>];
 
         } else {
@@ -5640,7 +5774,7 @@ app.frame('/counterResult2', (c) => {
           progressMarker = { ...progressMarker, deathFrame: '/narrative6' };
           deathFrame = "/narrative6";
           currentframe = "checktime";
-          image = 'https://gateway.pinata.cloud/ipfs/QmX5XwxUQAMRsr49UgqGQVxhJDLcZVqr7DGDRTy7ghUVRd';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmX5XwxUQAMRsr49UgqGQVxhJDLcZVqr7DGDRTy7ghUVRd';
           intents = [<Button action="/fleedeath">Continue</Button>];
 
 
@@ -5663,11 +5797,13 @@ app.frame('/counterResult2', (c) => {
       let intents;
       progressMarker = { ...progressMarker, previousFrame: '/battle2transition' };
       player.framesLoaded += 1;
+      player.enemiesKilled += 1;
+
           image = (
               <div
                   style={{
                       alignItems: 'center',
-                      backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmWmkszrpfMatjpgvzwFG2JrcLR6TbSYWKjqkqJHkvv9t9)',
+                      backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmWmkszrpfMatjpgvzwFG2JrcLR6TbSYWKjqkqJHkvv9t9)',
                       backgroundSize: '100% 100%',
                       backgroundPosition: 'center',
                       backgroundRepeat: 'no-repeat',
@@ -5724,7 +5860,7 @@ app.frame('/counterResult2', (c) => {
               <div
                   style={{
                       alignItems: 'center',
-                      backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/Qmf23d4fvECsCEj2djT6nSEyBkbTsgEDQgnEZ5dyWgEqQo)',
+                      backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmf23d4fvECsCEj2djT6nSEyBkbTsgEDQgnEZ5dyWgEqQo)',
                       backgroundSize: '100% 100%',
                       backgroundPosition: 'center',
                       backgroundRepeat: 'no-repeat',
@@ -5776,7 +5912,7 @@ app.frame('/counterResult2', (c) => {
               <div
                   style={{
                       alignItems: 'center',
-                      backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmYyvoVBEm87xCp1P6TbR7LZ8esHr3EyTGu5wA9GRfyycK)',
+                      backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmYyvoVBEm87xCp1P6TbR7LZ8esHr3EyTGu5wA9GRfyycK)',
                       backgroundSize: '100% 100%',
                       backgroundPosition: 'center',
                       backgroundRepeat: 'no-repeat',
@@ -5830,7 +5966,7 @@ app.frame('/counterResult2', (c) => {
               <div
                   style={{
                       alignItems: 'center',
-                      backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmPQRepTKoH2ZnwGDRcxK9ehV1nq9smZL8LLceM1MxsHDE)',
+                      backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmPQRepTKoH2ZnwGDRcxK9ehV1nq9smZL8LLceM1MxsHDE)',
                       backgroundSize: '100% 100%',
                       backgroundPosition: 'center',
                       backgroundRepeat: 'no-repeat',
@@ -5889,11 +6025,11 @@ app.frame('/battle4', (c) => {
 
     if (player.specials === 0) {
       
-        image = 'https://gateway.pinata.cloud/ipfs/QmUwG7Wm9TToczsiNeuCQQfW92p61wZFVbM1ZFeWHCdaKv';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmUwG7Wm9TToczsiNeuCQQfW92p61wZFVbM1ZFeWHCdaKv';
         intents = [<Button action="/SwiftAttack4">Swift Attack</Button>,<Button action="/HeavyAttack4">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
     } else {
  
-        image = 'https://gateway.pinata.cloud/ipfs/QmUwG7Wm9TToczsiNeuCQQfW92p61wZFVbM1ZFeWHCdaKv';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmUwG7Wm9TToczsiNeuCQQfW92p61wZFVbM1ZFeWHCdaKv';
         intents = [<Button action="/SwiftAttack4">SwiftAtk</Button>,<Button action="/HeavyAttack4">PowerAtk</Button>,<Button action="/specialAttack4">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
 
@@ -5919,15 +6055,15 @@ app.frame('/fight2-4', (c) => {
 
         if (fightRandomImage4 < 1) {
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmVgoX7bJgrspJgvgCCCVrCEsWSSydxELo4GVB6GRZR2BS';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmVgoX7bJgrspJgvgCCCVrCEsWSSydxELo4GVB6GRZR2BS';
           intents = [<Button action="/SwiftAttack4">Swift Attack</Button>,<Button action="/HeavyAttack4">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         } else if (fightRandomImage4 === 1) {
-          image = 'https://gateway.pinata.cloud/ipfs/QmR42zKyJYunPNXEqiHCoKyzW7oVMdjhVLp1jWECH9ng1V';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmR42zKyJYunPNXEqiHCoKyzW7oVMdjhVLp1jWECH9ng1V';
           intents = [<Button action="/SwiftAttack4">Swift Attack</Button>,<Button action="/HeavyAttack4">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         } else {
-          image = 'https://gateway.pinata.cloud/ipfs/QmR42zKyJYunPNXEqiHCoKyzW7oVMdjhVLp1jWECH9ng1V';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmR42zKyJYunPNXEqiHCoKyzW7oVMdjhVLp1jWECH9ng1V';
           intents = [<Button action="/SwiftAttack4">Swift Attack</Button>,<Button action="/HeavyAttack4">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         }
@@ -5936,15 +6072,15 @@ app.frame('/fight2-4', (c) => {
 
       if (fightRandomImage4 < 1) {
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmVgoX7bJgrspJgvgCCCVrCEsWSSydxELo4GVB6GRZR2BS';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmVgoX7bJgrspJgvgCCCVrCEsWSSydxELo4GVB6GRZR2BS';
           intents = [<Button action="/SwiftAttack4">SwiftAtk</Button>,<Button action="/HeavyAttack4">PowerAtk</Button>,<Button action="/specialAttack4">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         } else if (fightRandomImage4 === 1) {
-          image = 'https://gateway.pinata.cloud/ipfs/QmR42zKyJYunPNXEqiHCoKyzW7oVMdjhVLp1jWECH9ng1V';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmR42zKyJYunPNXEqiHCoKyzW7oVMdjhVLp1jWECH9ng1V';
           intents = [<Button action="/SwiftAttack4">SwiftAtk</Button>,<Button action="/HeavyAttack4">PowerAtk</Button>,<Button action="/specialAttack4">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         } else {
-          image = 'https://gateway.pinata.cloud/ipfs/QmR42zKyJYunPNXEqiHCoKyzW7oVMdjhVLp1jWECH9ng1V';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmR42zKyJYunPNXEqiHCoKyzW7oVMdjhVLp1jWECH9ng1V';
           intents = [<Button action="/SwiftAttack4">SwiftAtk</Button>,<Button action="/HeavyAttack4">PowerAtk</Button>,<Button action="/specialAttack4">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         }
@@ -5966,7 +6102,7 @@ app.frame('/SwiftAttack4', (c) => {
     let image;
     let intents;
 
-    const swiftRandomNum4 = Math.floor(Math.random() * 8);
+    const swiftRandomNum4 = Math.floor(Math.random() * 12);
     const swiftRandomMiss4 = Math.floor(Math.random() * 4);
     player.framesLoaded += 1;
 
@@ -5977,13 +6113,13 @@ app.frame('/SwiftAttack4', (c) => {
         if (enemy4.life > 0) {
           //enemy is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmeHTBf6eb43EYQdxGjXJeGRYVc6RtMEer95inCiBZR7sh';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmeHTBf6eb43EYQdxGjXJeGRYVc6RtMEer95inCiBZR7sh';
           intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
 
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmT4ue93NYK4rgfzFFrV7LzQ8NuMtuP6f7vEtrAJdhpF7N';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmT4ue93NYK4rgfzFFrV7LzQ8NuMtuP6f7vEtrAJdhpF7N';
           intents = [<Button action="/battle4transition">Continue</Button>];
 
 
@@ -5994,12 +6130,12 @@ app.frame('/SwiftAttack4', (c) => {
     } else if (swiftRandomNum4 === 3) {
       // attack missed
       if (swiftRandomMiss4 < 2) {
-        image = 'https://gateway.pinata.cloud/ipfs/QmWS23WKpQY3ScL8dD3LrgHoshWNReF965PaLq1tWAJFJV';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmWS23WKpQY3ScL8dD3LrgHoshWNReF965PaLq1tWAJFJV';
         intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
 
       } else {
 
-        image = 'https://gateway.pinata.cloud/ipfs/QmZj5358i7jDw3r9fNiMWnMB5BpjpC8Uh1y4cnWeaXTgMs';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmZj5358i7jDw3r9fNiMWnMB5BpjpC8Uh1y4cnWeaXTgMs';
         intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
 
       }
@@ -6013,13 +6149,13 @@ app.frame('/SwiftAttack4', (c) => {
       if (enemy4.life > 0) {
           //enemy is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmXVBknNHNSYPSRwwwnY6rBR25vTMdNCLLjvxfLcUuuQ7L';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmXVBknNHNSYPSRwwwnY6rBR25vTMdNCLLjvxfLcUuuQ7L';
           intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
 
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmT4ue93NYK4rgfzFFrV7LzQ8NuMtuP6f7vEtrAJdhpF7N';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmT4ue93NYK4rgfzFFrV7LzQ8NuMtuP6f7vEtrAJdhpF7N';
           intents = [<Button action="/battle4transition">Continue</Button>];
 
 
@@ -6034,17 +6170,17 @@ app.frame('/SwiftAttack4', (c) => {
           //enemy is still alive
 
             if (swiftRandomMiss4 < 1) {
-              image = 'https://gateway.pinata.cloud/ipfs/QmPA6P6BAiLEuQAawBN3mbtMmEjhPaZM6HBA7zDrADU1VD';
+              image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmPA6P6BAiLEuQAawBN3mbtMmEjhPaZM6HBA7zDrADU1VD';
               intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
 
             }else if (swiftRandomMiss4 === 1) {
 
-              image = 'https://gateway.pinata.cloud/ipfs/QmPA6P6BAiLEuQAawBN3mbtMmEjhPaZM6HBA7zDrADU1VD';
+              image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmPA6P6BAiLEuQAawBN3mbtMmEjhPaZM6HBA7zDrADU1VD';
               intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
 
             } else {
 
-              image = 'https://gateway.pinata.cloud/ipfs/QmXPeF4hpjMQTN49cz7tui8TVJNp86ftpVAsKC3RZDW9nT';
+              image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmXPeF4hpjMQTN49cz7tui8TVJNp86ftpVAsKC3RZDW9nT';
               intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
 
             }
@@ -6054,7 +6190,7 @@ app.frame('/SwiftAttack4', (c) => {
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmT4ue93NYK4rgfzFFrV7LzQ8NuMtuP6f7vEtrAJdhpF7N';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmT4ue93NYK4rgfzFFrV7LzQ8NuMtuP6f7vEtrAJdhpF7N';
           intents = [<Button action="/battle4transition">Continue</Button>];
 
 
@@ -6077,7 +6213,7 @@ app.frame('/HeavyAttack4', (c) => {
     let intents;
     player.framesLoaded += 1;
 
-    const heavyRandomNum4 = Math.floor(Math.random() * 10);
+    const heavyRandomNum4 = Math.floor(Math.random() * 8);
     const heavyRandomMiss4 = Math.floor(Math.random() * 4);
 
 
@@ -6088,13 +6224,13 @@ app.frame('/HeavyAttack4', (c) => {
         if (enemy4.life > 0) {
           //enemy is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmeHTBf6eb43EYQdxGjXJeGRYVc6RtMEer95inCiBZR7sh';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmeHTBf6eb43EYQdxGjXJeGRYVc6RtMEer95inCiBZR7sh';
           intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
 
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmT4ue93NYK4rgfzFFrV7LzQ8NuMtuP6f7vEtrAJdhpF7N';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmT4ue93NYK4rgfzFFrV7LzQ8NuMtuP6f7vEtrAJdhpF7N';
           intents = [<Button action="/battle4transition">Continue</Button>];
 
 
@@ -6105,12 +6241,12 @@ app.frame('/HeavyAttack4', (c) => {
     } else if (heavyRandomNum4 === 4) {
         // attack missed
       if (heavyRandomMiss4 < 2) {
-        image = 'https://gateway.pinata.cloud/ipfs/QmWS23WKpQY3ScL8dD3LrgHoshWNReF965PaLq1tWAJFJV';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmWS23WKpQY3ScL8dD3LrgHoshWNReF965PaLq1tWAJFJV';
         intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
 
       } else {
 
-        image = 'https://gateway.pinata.cloud/ipfs/QmZj5358i7jDw3r9fNiMWnMB5BpjpC8Uh1y4cnWeaXTgMs';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmZj5358i7jDw3r9fNiMWnMB5BpjpC8Uh1y4cnWeaXTgMs';
         intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
 
       }
@@ -6118,12 +6254,12 @@ app.frame('/HeavyAttack4', (c) => {
     } else if (heavyRandomNum4 === 5) {
           // attack missed
         if (heavyRandomMiss4 < 2) {
-          image = 'https://gateway.pinata.cloud/ipfs/QmWS23WKpQY3ScL8dD3LrgHoshWNReF965PaLq1tWAJFJV';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmWS23WKpQY3ScL8dD3LrgHoshWNReF965PaLq1tWAJFJV';
           intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
 
         } else {
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmZj5358i7jDw3r9fNiMWnMB5BpjpC8Uh1y4cnWeaXTgMs';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmZj5358i7jDw3r9fNiMWnMB5BpjpC8Uh1y4cnWeaXTgMs';
           intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
 
         }
@@ -6136,13 +6272,13 @@ app.frame('/HeavyAttack4', (c) => {
       if (enemy4.life > 0) {
           //enemy is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmXVBknNHNSYPSRwwwnY6rBR25vTMdNCLLjvxfLcUuuQ7L';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmXVBknNHNSYPSRwwwnY6rBR25vTMdNCLLjvxfLcUuuQ7L';
           intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
 
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmT4ue93NYK4rgfzFFrV7LzQ8NuMtuP6f7vEtrAJdhpF7N';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmT4ue93NYK4rgfzFFrV7LzQ8NuMtuP6f7vEtrAJdhpF7N';
           intents = [<Button action="/battle4transition">Continue</Button>];
 
 
@@ -6156,17 +6292,17 @@ app.frame('/HeavyAttack4', (c) => {
           //enemy is still alive
 
            if (heavyRandomMiss4 < 1) {
-              image = 'https://gateway.pinata.cloud/ipfs/Qmbv5e57r8GZRF6TAqvGWbaof5VPbAzPpXFvKGW31fw9Vf';
+              image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmbv5e57r8GZRF6TAqvGWbaof5VPbAzPpXFvKGW31fw9Vf';
               intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
 
             }else if (heavyRandomMiss4 === 1) {
 
-              image = 'https://gateway.pinata.cloud/ipfs/QmXPeF4hpjMQTN49cz7tui8TVJNp86ftpVAsKC3RZDW9nT';
+              image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmXPeF4hpjMQTN49cz7tui8TVJNp86ftpVAsKC3RZDW9nT';
               intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
 
             } else {
 
-              image = 'https://gateway.pinata.cloud/ipfs/Qmbv5e57r8GZRF6TAqvGWbaof5VPbAzPpXFvKGW31fw9Vf';
+              image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmbv5e57r8GZRF6TAqvGWbaof5VPbAzPpXFvKGW31fw9Vf';
               intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
 
             }
@@ -6175,7 +6311,7 @@ app.frame('/HeavyAttack4', (c) => {
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmT4ue93NYK4rgfzFFrV7LzQ8NuMtuP6f7vEtrAJdhpF7N';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmT4ue93NYK4rgfzFFrV7LzQ8NuMtuP6f7vEtrAJdhpF7N';
           intents = [<Button action="/battle4transition">Continue</Button>];
 
 
@@ -6206,12 +6342,12 @@ app.frame('/specialAttack4', (c) => {
         //unsuccessful special attack 
 
         if (specialRandomMiss4 < 1) {
-            image = 'https://gateway.pinata.cloud/ipfs/QmWS23WKpQY3ScL8dD3LrgHoshWNReF965PaLq1tWAJFJV';
+            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmWS23WKpQY3ScL8dD3LrgHoshWNReF965PaLq1tWAJFJV';
             intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
 
         } else {
 
-            image = 'https://gateway.pinata.cloud/ipfs/QmWS23WKpQY3ScL8dD3LrgHoshWNReF965PaLq1tWAJFJV';
+            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmWS23WKpQY3ScL8dD3LrgHoshWNReF965PaLq1tWAJFJV';
             intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
 
         }
@@ -6225,12 +6361,12 @@ app.frame('/specialAttack4', (c) => {
           //enemy is still alive
 
           if (specialRandomMiss4 < 1) {
-            image = 'https://gateway.pinata.cloud/ipfs/QmR6T1Z1doowM6k5g5J1F8o1cQK772inoBopCdyC4KsyfP';
+            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmR6T1Z1doowM6k5g5J1F8o1cQK772inoBopCdyC4KsyfP';
             intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
 
           } else {
 
-              image = 'https://gateway.pinata.cloud/ipfs/QmR6T1Z1doowM6k5g5J1F8o1cQK772inoBopCdyC4KsyfP';
+              image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmR6T1Z1doowM6k5g5J1F8o1cQK772inoBopCdyC4KsyfP';
               intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
 
           }
@@ -6239,7 +6375,7 @@ app.frame('/specialAttack4', (c) => {
         } else {
           // enemy is dead
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmT4ue93NYK4rgfzFFrV7LzQ8NuMtuP6f7vEtrAJdhpF7N';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmT4ue93NYK4rgfzFFrV7LzQ8NuMtuP6f7vEtrAJdhpF7N';
           intents = [<Button action="/battle4transition">Continue</Button>];
 
 
@@ -6267,9 +6403,9 @@ app.frame('/dodgeResult4', (c) => {
     const dodgeRandomNum4 = Math.floor(Math.random() * 10);
 
 
-    if (dodgeRandomNum4 < 6) {
+    if (dodgeRandomNum4 < 5) {
         // player dodged
-        image = 'https://gateway.pinata.cloud/ipfs/QmZpT8GoL476vY7zEwsaC1NChkWbJ3bhp7UdcedAV1QXfq';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmZpT8GoL476vY7zEwsaC1NChkWbJ3bhp7UdcedAV1QXfq';
         intents = [<Button action="/fight2-4">Continue</Button>];
 
     } else {
@@ -6278,7 +6414,7 @@ app.frame('/dodgeResult4', (c) => {
         if (player.life > 0) {
           //player is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmYHr8ur6JumQpK5p1SibiQzgYQiHrXw5hrZSPL7ZRYjWv';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmYHr8ur6JumQpK5p1SibiQzgYQiHrXw5hrZSPL7ZRYjWv';
           intents = [<Button action="/fight2-4">Continue</Button>];
 
         } else {
@@ -6286,7 +6422,7 @@ app.frame('/dodgeResult4', (c) => {
           progressMarker = { ...progressMarker, deathFrame: '/narrative4' };
           deathFrame = "/narrative4";
           currentframe = "checktime";
-          image = 'https://gateway.pinata.cloud/ipfs/QmX5XwxUQAMRsr49UgqGQVxhJDLcZVqr7DGDRTy7ghUVRd';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmX5XwxUQAMRsr49UgqGQVxhJDLcZVqr7DGDRTy7ghUVRd';
           intents = [<Button action="/fleedeath">Continue</Button>];
 
 
@@ -6308,19 +6444,19 @@ app.frame('/counterResult4', (c) => {
     const counterRandomNum4 = Math.floor(Math.random() * 10);
 
 
-    if (counterRandomNum4 < 6) {
+    if (counterRandomNum4 < 7) {
         // succesful counter
         enemy4.life -= 10
         
         if (enemy4.life > 0) {
           //show counter frame
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmeL2xkfUC6Y8t5anUZvNMpnqeXCzsj4YKXdW8RRwh2MRg';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmeL2xkfUC6Y8t5anUZvNMpnqeXCzsj4YKXdW8RRwh2MRg';
           intents = [<Button action="/fight2-4">Continue</Button>];
 
         } else {
           // enemy is dead
-          image = 'https://gateway.pinata.cloud/ipfs/QmT4ue93NYK4rgfzFFrV7LzQ8NuMtuP6f7vEtrAJdhpF7N';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmT4ue93NYK4rgfzFFrV7LzQ8NuMtuP6f7vEtrAJdhpF7N';
           intents = [<Button action="/battle4transition">Continue</Button>];
 
         }
@@ -6332,7 +6468,7 @@ app.frame('/counterResult4', (c) => {
         if (player.life > 0) {
           //player is still alive
 
-          image = 'https://gateway.pinata.cloud/ipfs/QmYHr8ur6JumQpK5p1SibiQzgYQiHrXw5hrZSPL7ZRYjWv';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmYHr8ur6JumQpK5p1SibiQzgYQiHrXw5hrZSPL7ZRYjWv';
           intents = [<Button action="/fight2-4">Continue</Button>];
 
         } else {
@@ -6340,7 +6476,7 @@ app.frame('/counterResult4', (c) => {
           progressMarker = { ...progressMarker, deathFrame: '/narrative4' };
           deathFrame = "/narrative4";
           currentframe = "checktime";
-          image = 'https://gateway.pinata.cloud/ipfs/QmX5XwxUQAMRsr49UgqGQVxhJDLcZVqr7DGDRTy7ghUVRd';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmX5XwxUQAMRsr49UgqGQVxhJDLcZVqr7DGDRTy7ghUVRd';
           intents = [<Button action="/fleedeath">Continue</Button>];
 
 
@@ -6363,13 +6499,14 @@ app.frame('/counterResult4', (c) => {
       let image;
       let intents;
       player.framesLoaded += 1;
+      player.enemiesKilled += 1;
       progressMarker = { ...progressMarker, previousFrame: '/battle4transition' };
 
           image = (
               <div
                   style={{
                       alignItems: 'center',
-                      backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmWAaD4VDEPh3AcV5BKbCNMJumEo5XtteN6cbPJs1pMdrh)',
+                      backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmPpkPx7TK3CTE3LGmvTCUSem7Chzdr9DWTKtiPKUC5UMv)',
                       backgroundSize: '100% 100%',
                       backgroundPosition: 'center',
                       backgroundRepeat: 'no-repeat',
@@ -6446,7 +6583,7 @@ app.frame('/timegate', (c) => {
 
     // Return a response with the updated player object and expiration time
     return c.res({
-        image: 'https://gateway.pinata.cloud/ipfs/QmVrjY4UY21kTu4zr37etKk7VfQWqFSShLF8WbDTxK89JR',
+        image: 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmVrjY4UY21kTu4zr37etKk7VfQWqFSShLF8WbDTxK89JR',
         intents: [
             <Button action="/checktime">Continue</Button>,
         ],
@@ -6483,7 +6620,7 @@ app.frame('/checktime', (c) => {
                       <div
                           style={{
                               alignItems: 'center',
-                              backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/Qmeh4wiW53885vpLds3znH6W5sXs8c6E9KEDbGJBmrKRC8)',
+                              backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmeh4wiW53885vpLds3znH6W5sXs8c6E9KEDbGJBmrKRC8)',
                               backgroundSize: '100% 100%',
                               backgroundPosition: 'center',
                               backgroundRepeat: 'no-repeat',
@@ -6521,7 +6658,7 @@ app.frame('/checktime', (c) => {
                       <div
                           style={{
                               alignItems: 'center',
-                              backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/Qmeh4wiW53885vpLds3znH6W5sXs8c6E9KEDbGJBmrKRC8)',
+                              backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmeh4wiW53885vpLds3znH6W5sXs8c6E9KEDbGJBmrKRC8)',
                               backgroundSize: '100% 100%',
                               backgroundPosition: 'center',
                               backgroundRepeat: 'no-repeat',
@@ -6627,7 +6764,7 @@ app.frame('/scriptedfight', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmZ75Cp8DZFU9RoCsFhYCqwT25v4wBJcuGigr8CTGCSovo)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmZ75Cp8DZFU9RoCsFhYCqwT25v4wBJcuGigr8CTGCSovo)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -6677,7 +6814,7 @@ app.frame('/endscene1', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmWHNCgsCVMtdozRAaJ1H2xw4UxTUf2xHj7MYaGLfB1LNw)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmWHNCgsCVMtdozRAaJ1H2xw4UxTUf2xHj7MYaGLfB1LNw)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -6728,7 +6865,7 @@ app.frame('/endscene2', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmNe419LChwz6QZcWjT34mJWfFZ85kKs1duE6FMTpguzyk)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmNe419LChwz6QZcWjT34mJWfFZ85kKs1duE6FMTpguzyk)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -6780,7 +6917,7 @@ app.frame('/endscene3', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmXo9vuC4g5c3z7KNaCqZMxaKRZ8oSfrspP8k2udr964ZN)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmXo9vuC4g5c3z7KNaCqZMxaKRZ8oSfrspP8k2udr964ZN)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -6833,7 +6970,7 @@ app.frame('/endscene4', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmcY6tktxxQvxs4pg2VbnLv5cmuhoNda6QVDo6kP7iSsMy)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmcY6tktxxQvxs4pg2VbnLv5cmuhoNda6QVDo6kP7iSsMy)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -6934,7 +7071,7 @@ app.frame('/endscene6', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmZK5r89sNwtWK2rLzuTyPL6MB1LQ9Z9896UE2tgg9hyNw)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmZK5r89sNwtWK2rLzuTyPL6MB1LQ9Z9896UE2tgg9hyNw)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -6985,7 +7122,7 @@ app.frame('/finalDecision1', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmX5ZPyKzf3XAPTP28DKfQYgiteZ4YbvxPW2XjCEot1gGU)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmX5ZPyKzf3XAPTP28DKfQYgiteZ4YbvxPW2XjCEot1gGU)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -7039,7 +7176,7 @@ app.frame('/finalDecision2', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmQ87pc2eYmdCK5wz4oY8EEMBCQM9xUTvAX1uT22dKU4QB)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmQ87pc2eYmdCK5wz4oY8EEMBCQM9xUTvAX1uT22dKU4QB)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -7080,7 +7217,7 @@ app.frame('/finalDecision2', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmeucsR5KoMMu8ZRXFkuwp94ffEGBHEdFvSr1rtf3TUZZp)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmeucsR5KoMMu8ZRXFkuwp94ffEGBHEdFvSr1rtf3TUZZp)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -7150,7 +7287,7 @@ app.frame('/blank1', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmU8cvifAS6gEkLRxrJKXat2XCr2wMyLSLXvAkmYRhFU6Z)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmb9hjw2rCs9f4Yc3skyzgALVcskjuRkLc9wAY8L22af8K)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -7211,7 +7348,7 @@ app.frame('/blank2', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmWtEwrL3NGQhVnZEJm6chqFkFiKr8WG7tp9ZnMAEoRD7F)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmWtEwrL3NGQhVnZEJm6chqFkFiKr8WG7tp9ZnMAEoRD7F)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -7271,7 +7408,7 @@ app.frame('/blank3', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmZhtUCAHgpVsMwXNoAyPjDNGKg9nJCJoTCEom5McPdrpx)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmZhtUCAHgpVsMwXNoAyPjDNGKg9nJCJoTCEom5McPdrpx)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -7332,7 +7469,7 @@ app.frame('/blank4', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmVercCWqZQFCY9zXgFw31hdwoZLhLrfME9hPkipF3f2hG)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmVercCWqZQFCY9zXgFw31hdwoZLhLrfME9hPkipF3f2hG)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -7380,7 +7517,7 @@ app.frame('/finalStats', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://gateway.pinata.cloud/ipfs/QmcLTne4zVtLRzjkeBDRmsQ2sQj5dadxAwfuYUH6XCBs4e)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmcLTne4zVtLRzjkeBDRmsQ2sQj5dadxAwfuYUH6XCBs4e)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -7400,8 +7537,8 @@ app.frame('/finalStats', (c) => {
                     whiteSpace: 'pre-wrap',
                 }}
             >
-               <p style={{ fontSize : '50px', margin : '0', marginTop : '-200', color: 'green'  }}> {`Health remaining : ${player.life}`} </p>
-               <p style={{ fontSize : '50px', margin : '0', marginCenter : '-150', color: 'red'  }}> {`Enemies Defeated : ${player.framesLoaded}`} </p>
+               <p style={{ fontSize : '50px', margin : '0', marginTop : '-200', color: 'red'  }}> {`Health remaining : ${player.life}`} </p>
+               <p style={{ fontSize : '50px', margin : '0', marginCenter : '-150', color: 'red'  }}> {`Enemies Defeated : ${player.enemiesKilled}`} </p>
                <p style={{ fontSize : '50px', margin : '0', marginCenter : '-50', color: 'red'  }}> {`Number of Death : ${player.death}`} </p>
                <p style={{ fontSize : '50px', margin : '0', marginCenter : '+150', color: 'red'  }}> {`Total Frames Loaded : ${player.framesLoaded}`} </p>
                <p style={{ fontSize : '50px', margin : '0', marginCenter : '+250', color: 'red'  }}> {`End Choice : ${player.finalDecision}`} </p>
