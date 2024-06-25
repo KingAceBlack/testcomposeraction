@@ -452,6 +452,12 @@ app.frame('/page6', (c) => {
     let intents;
     player.framesLoaded += 1;
 
+    enemy1 = { ...enemy1, life: 50 };
+    enemy2 = { ...enemy2, life: 60 };
+    enemy3 = { ...enemy3, life: 70 };
+    enemy4 = { ...enemy4, life: 60 };
+    enemy5 = { ...enemy5, life: 60 };
+
 
         image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qma86ajf9Ypgz7x9ACud3FK8PpLLzXnb4kLvzWTCmCVfR9';
         intents = [
@@ -5105,7 +5111,7 @@ app.frame('/trap3Option', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmeaf3LrLBjUfwRggvuBiWzoraB7WiyTSQ1ef8ZVtTQw1n)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmfUkxMmm3F7v5owAh73N6hx3J7Pjaa7pGjqHjwbZqAa4c)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -5209,7 +5215,7 @@ app.frame('/trap3Option2', (c) => {
             <div
                 style={{
                     alignItems: 'center',
-                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmeaf3LrLBjUfwRggvuBiWzoraB7WiyTSQ1ef8ZVtTQw1n)',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmfUkxMmm3F7v5owAh73N6hx3J7Pjaa7pGjqHjwbZqAa4c)',
                     backgroundSize: '100% 100%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
