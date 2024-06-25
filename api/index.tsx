@@ -238,7 +238,6 @@ async function updateData(farcasterid: FarcasterID, currentframe: CurrentFrame, 
 
 //QmZzxxKUsyo3WwueRwqLb5D6obMHyTjQ7umS3iZWoTkPgz
 
-
 app.frame('/', (c) => {
     let image;
     let intents;
@@ -256,7 +255,40 @@ app.frame('/', (c) => {
     
 
 
-        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmbrxySXqW5DtwLW1fRJPw6SY7UnENvudTL39dEwx6VaDw';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmUTt1G8PZDERS2muWKekZ2FpmKVf9WjdtohJrJkVjTssx';
+        intents = [
+           
+           <Button action="/startframe">Play</Button>,
+           <Button.Link href="https://paragraph.xyz/@oexcess.eth/preview/oLuj50fHUK6FeqFePlqd">Guide</Button.Link>,
+        ];
+
+
+    return c.res({
+       
+        image: image,
+        intents: intents
+    });
+});
+
+
+app.frame('/startframe', (c) => {
+    let image;
+    let intents;
+
+    player = { ...player, life: 100 };
+    player = { ...player, hasGem: 0 };
+    player = { ...player, metStranger: 0 };
+    player = { ...player, framesLoaded: 0 };
+    player = { ...player, specials: 3 };
+    player = { ...player, enemiesKilled: 0 };
+
+
+
+    player.framesLoaded += 1;
+    
+
+
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmYRfvtQcukMMKgE3vSQGSGFaqJLF48QZ5d7iyzjFqjz7F';
         intents = [
            
            <Button action="/page1">Continue</Button>,
@@ -708,7 +740,7 @@ app.frame('/page14', (c) => {
     player.framesLoaded += 1;
 
 
-        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmX9tUhVJKbcnwQLxvPxhSjYdoLButiJHWpcWo925dZ1rn';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmXa2cbmWK1gqrfX45jU7pq1ip5grvsBQ5PYAUUFtk3s7S';
         intents = [
            
            <Button action="/page15">Continue</Button>,
@@ -788,40 +820,85 @@ app.frame('/page17', (c) => {
       console.error('Error updating data:', error.message);
     });*/
 
+    if (player.specials === 3) {
 
-        image = (
-            <div
-                style={{
-                    alignItems: 'center',
-                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmNck5jritxPS1TJgzWn3oaMNKUTEXV5Y6ToKjb4gijJQk)',
-                    backgroundSize: '100% 100%',
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    flexWrap: 'nowrap',
-                    height: '100%',
-                    justifyContent: 'center',
-                    textAlign: 'center',
-                    width: '100%',
-                    color: '#E1A411',
-                    fontStyle: 'normal',
-                    letterSpacing: '-0.025em',
-                    lineHeight: 1.4,
-                    marginTop: 0,
-                    padding: '0 120px',
-                    whiteSpace: 'pre-wrap',
-                }}
-            >
+            image = (
+                <div
+                    style={{
+                        alignItems: 'center',
+                        backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmNck5jritxPS1TJgzWn3oaMNKUTEXV5Y6ToKjb4gijJQk)',
+                        backgroundSize: '100% 100%',
+                        backgroundPosition: 'center',
+                        backgroundRepeat: 'no-repeat',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        flexWrap: 'nowrap',
+                        height: '100%',
+                        justifyContent: 'center',
+                        textAlign: 'center',
+                        width: '100%',
+                        color: '#E1A411',
+                        fontStyle: 'normal',
+                        letterSpacing: '-0.025em',
+                        lineHeight: 1.4,
+                        marginTop: 0,
+                        padding: '0 120px',
+                        whiteSpace: 'pre-wrap',
+                    }}
+                >
 
-              
-            </div>
-        );
-        intents = [
-           
-           <Button action="/battle1">Fight</Button>,
-           <Button action="/trap1">Flee</Button>,
-        ];
+                  
+                </div>
+            );
+            intents = [
+               
+               <Button action="/battle1">Fight</Button>,
+               <Button action="/trap1">Flee</Button>,
+            ];
+
+    } else {
+
+            image = (
+                <div
+                    style={{
+                        alignItems: 'center',
+                        backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmVLdTPWgKGgbUajiJDxGodPPQmC4CQM5wL5h4mZd4Xfr3)',
+                        backgroundSize: '100% 100%',
+                        backgroundPosition: 'center',
+                        backgroundRepeat: 'no-repeat',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        flexWrap: 'nowrap',
+                        height: '100%',
+                        justifyContent: 'center',
+                        textAlign: 'center',
+                        width: '100%',
+                        color: '#E1A411',
+                        fontStyle: 'normal',
+                        letterSpacing: '-0.025em',
+                        lineHeight: 1.4,
+                        marginTop: 0,
+                        padding: '0 120px',
+                        whiteSpace: 'pre-wrap',
+                    }}
+                >
+
+                  
+                </div>
+            );
+            intents = [
+               
+               <Button action="/battle1">Fight</Button>,
+               <Button action="/trap1">Flee</Button>,
+            ];
+
+
+
+    }
+
+
+
+
 
 
     return c.res({
@@ -1549,12 +1626,12 @@ app.frame('/specialAttack', (c) => {
 
         if (specialRandomMiss < 1) {
             image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmS4RuqGL8dTiHNgqhtHGAwe2Mqf4ipkHpLomHsomHyPCP';
-            intents = [<Button action="/dodgeResult">Dodge</Button>,<Button action="/counterResult">Counter</Button>];
+            intents = [<Button action="/fight2">Continue</Button>];
 
         } else {
 
             image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmRcn3BEgxaSBK7mrpPyQoZdEVqWYBqmvdCGj7ubRGcv1Z';
-            intents = [<Button action="/dodgeResult">Dodge</Button>,<Button action="/counterResult">Counter</Button>];
+            intents = [<Button action="/fight2">Continue</Button>];
 
         }
               
@@ -1568,12 +1645,12 @@ app.frame('/specialAttack', (c) => {
 
           if (specialRandomMiss < 1) {
             image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmR6T1Z1doowM6k5g5J1F8o1cQK772inoBopCdyC4KsyfP';
-            intents = [<Button action="/dodgeResult">Dodge</Button>,<Button action="/counterResult">Counter</Button>];
+            intents = [<Button action="/fight2">Continue</Button>];
 
           } else {
 
               image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmR6T1Z1doowM6k5g5J1F8o1cQK772inoBopCdyC4KsyfP';
-              intents = [<Button action="/dodgeResult">Dodge</Button>,<Button action="/counterResult">Counter</Button>];
+              intents = [<Button action="/fight2">Continue</Button>];
 
           }
 
@@ -3078,12 +3155,12 @@ app.frame('/specialAttack3', (c) => {
 
           if (specialRandomMiss3 < 1) {
             image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmR6T1Z1doowM6k5g5J1F8o1cQK772inoBopCdyC4KsyfP';
-            intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
+            intents = [<Button action="/fight2-3">Continue</Button>];
 
           } else {
 
               image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmR6T1Z1doowM6k5g5J1F8o1cQK772inoBopCdyC4KsyfP';
-              intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
+              intents = [<Button action="/fight2-3">Continue</Button>];
 
           }
 
@@ -5660,12 +5737,12 @@ app.frame('/specialAttack2', (c) => {
 
           if (specialRandomMiss2 < 1) {
             image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmR6T1Z1doowM6k5g5J1F8o1cQK772inoBopCdyC4KsyfP';
-            intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
+            intents = [<Button action="/fight2-2">Continue</Button>];
 
           } else {
 
               image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmR6T1Z1doowM6k5g5J1F8o1cQK772inoBopCdyC4KsyfP';
-              intents = [<Button action="/dodgeResult2">Dodge</Button>,<Button action="/counterResult2">Counter</Button>];
+              intents = [<Button action="/fight2-2">Continue</Button>];
 
           }
 
@@ -6362,12 +6439,12 @@ app.frame('/specialAttack4', (c) => {
 
           if (specialRandomMiss4 < 1) {
             image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmR6T1Z1doowM6k5g5J1F8o1cQK772inoBopCdyC4KsyfP';
-            intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
+            intents = [<Button action="/fight2-4">Continue</Button>];
 
           } else {
 
               image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmR6T1Z1doowM6k5g5J1F8o1cQK772inoBopCdyC4KsyfP';
-              intents = [<Button action="/dodgeResult4">Dodge</Button>,<Button action="/counterResult4">Counter</Button>];
+              intents = [<Button action="/fight2-4">Continue</Button>];
 
           }
 
