@@ -242,15 +242,6 @@ app.frame('/', (c) => {
     let image;
     let intents;
 
-    player = { ...player, life: 100 };
-    player = { ...player, hasGem: 0 };
-    player = { ...player, metStranger: 0 };
-    player = { ...player, framesLoaded: 0 };
-    player = { ...player, specials: 3 };
-    player = { ...player, enemiesKilled: 0 };
-
-
-
     player.framesLoaded += 1;
     
 
@@ -274,7 +265,7 @@ app.frame('/firstframe', (c) => {
     let image;
     let intents;
 
-    player = { ...player, life: 100 };
+    player = { ...player, life: 99 };
     player = { ...player, hasGem: 0 };
     player = { ...player, metStranger: 0 };
     player = { ...player, framesLoaded: 0 };
@@ -751,7 +742,7 @@ app.frame('/page11-2', (c) => {
     player.framesLoaded += 1;
 
 
-        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmYnkCU6wz1LiSKswJhaYu5GXdc2gMutUsGZ2S4FMvbyK4';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmSjUKbGvdNASh3U4Mr3yE1TCBg4ss5p5LQn4rC8GrTEww';
         intents = [
            
            <Button action="/page11-3">Equip Torch</Button>,
@@ -1001,7 +992,7 @@ app.frame('/showPlayerStatus', (c) => {
                           position: 'absolute',  // Position the text absolutely
                           top: '50%',            // Adjust as needed to center the text vertically
                           left: '50%',           // Adjust as needed to center the text horizontally
-                          transform: 'translate(-270%, 10%)',  // Center the text using transform
+                          transform: 'translate(-280%, 10%)',  // Center the text using transform
                           margin: '0',
                         }}
                       >
@@ -1047,7 +1038,7 @@ app.frame('/showPlayerStatus', (c) => {
                           position: 'absolute',  // Position the text absolutely
                           top: '50%',            // Adjust as needed to center the text vertically
                           left: '50%',           // Adjust as needed to center the text horizontally
-                          transform: 'translate(-270%, 10%)',  // Center the text using transform
+                          transform: 'translate(-280%, 10%)',  // Center the text using transform
                           margin: '0',
                         }}
                       >
@@ -1104,7 +1095,7 @@ app.frame('/showPlayerStatus', (c) => {
                           position: 'absolute',  // Position the text absolutely
                           top: '50%',            // Adjust as needed to center the text vertically
                           left: '50%',           // Adjust as needed to center the text horizontally
-                          transform: 'translate(-270%, 10%)',  // Center the text using transform
+                          transform: 'translate(-280%, 10%)',  // Center the text using transform
                           margin: '0',
                         }}
                       >
@@ -1149,7 +1140,7 @@ app.frame('/showPlayerStatus', (c) => {
                           position: 'absolute',  // Position the text absolutely
                           top: '50%',            // Adjust as needed to center the text vertically
                           left: '50%',           // Adjust as needed to center the text horizontally
-                          transform: 'translate(-270%, 10%)',  // Center the text using transform
+                          transform: 'translate(-280%, 10%)',  // Center the text using transform
                           margin: '0',
                         }}
                       >
@@ -1205,7 +1196,7 @@ app.frame('/showPlayerStatus', (c) => {
                           position: 'absolute',  // Position the text absolutely
                           top: '50%',            // Adjust as needed to center the text vertically
                           left: '50%',           // Adjust as needed to center the text horizontally
-                          transform: 'translate(-270%, 10%)',  // Center the text using transform
+                          transform: 'translate(-280%, 10%)',  // Center the text using transform
                           margin: '0',
                         }}
                       >
@@ -1249,7 +1240,7 @@ app.frame('/showPlayerStatus', (c) => {
                           position: 'absolute',  // Position the text absolutely
                           top: '50%',            // Adjust as needed to center the text vertically
                           left: '50%',           // Adjust as needed to center the text horizontally
-                          transform: 'translate(-270%, 10%)',  // Center the text using transform
+                          transform: 'translate(-280%, 10%)',  // Center the text using transform
                           margin: '0',
                         }}
                       >
@@ -1305,7 +1296,7 @@ app.frame('/showPlayerStatus', (c) => {
                           position: 'absolute',  // Position the text absolutely
                           top: '50%',            // Adjust as needed to center the text vertically
                           left: '50%',           // Adjust as needed to center the text horizontally
-                          transform: 'translate(-270%, 10%)',  // Center the text using transform
+                          transform: 'translate(-280%, 10%)',  // Center the text using transform
                           margin: '0',
                         }}
                       >
@@ -1350,7 +1341,7 @@ app.frame('/showPlayerStatus', (c) => {
                           position: 'absolute',  // Position the text absolutely
                           top: '50%',            // Adjust as needed to center the text vertically
                           left: '50%',           // Adjust as needed to center the text horizontally
-                          transform: 'translate(-270%, 10%)',  // Center the text using transform
+                          transform: 'translate(-280%, 10%)',  // Center the text using transform
                           margin: '0',
                         }}
                       >
@@ -5972,7 +5963,7 @@ app.frame('/blank4', (c) => {
     let intents;
 
     player.framesLoaded += 1;
-    image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmcSads3qRUDaE9VTyTjfCiUus1utB3M7qbcaQMTzh32TH';
+    image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmcMpJy9Vi6Wyf36rSSRi6zvch8SNm9QTUxpCn6ndSJ6aj';
 
     player.finalDecision = 4;
 
@@ -6033,7 +6024,7 @@ app.frame('/finalStats', (c) => {
             >
                <p style={{ fontSize : '50px', margin : '0', marginTop : '-200', color: 'red'  }}> {`Health remaining : ${player.life}`} </p>
                <p style={{ fontSize : '50px', margin : '0', marginCenter : '-150', color: 'red'  }}> {`Enemies Defeated : ${player.enemiesKilled}`} </p>
-               <p style={{ fontSize : '50px', margin : '0', marginCenter : '-50', color: 'red'  }}> {`Number of Death : ${player.death}`} </p>
+               <p style={{ fontSize : '50px', margin : '0', marginCenter : '-50', color: 'red'  }}> {`Deaths : ${player.death}`} </p>
                <p style={{ fontSize : '50px', margin : '0', marginCenter : '+150', color: 'red'  }}> {`Total Frames Loaded : ${player.framesLoaded}`} </p>
                <p style={{ fontSize : '50px', margin : '0', marginCenter : '+250', color: 'red'  }}> {`End Choice : ${player.finalDecision}`} </p>
     
