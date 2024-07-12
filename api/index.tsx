@@ -5877,13 +5877,14 @@ app.frame('/blank1', (c) => {
 
         intents = [
         <Button action="/finalStats">See Stats</Button>,
+        <Button.Transaction target="/mint1">Mint Northern Banner</Button.Transaction>,
            
            
         ];
 
 
     return c.res({
-       
+        action: '/finalStats',
         image: image,
         intents: intents
     });
@@ -5911,12 +5912,13 @@ app.frame('/blank2', (c) => {
 
         intents = [
            <Button action="/finalStats">See Stats</Button>,
+           <Button.Transaction target="/mint2">Mint Southern Banner</Button.Transaction>,
            
         ];
 
 
     return c.res({
-       
+        action: '/finalStats',
         image: image,
         intents: intents
     });
@@ -5945,12 +5947,13 @@ app.frame('/blank3', (c) => {
 
         intents = [
            <Button action="/finalStats">See Stats</Button>,
+           <Button.Transaction target="/mint3">Mint Verothi Banner</Button.Transaction>,
            
         ];
 
 
     return c.res({
-       
+        action: '/finalStats',
         image: image,
         intents: intents
     });
@@ -5980,11 +5983,12 @@ app.frame('/blank4', (c) => {
         intents = [
            
            <Button action="/finalStats">See Stats</Button>,
+           <Button.Transaction target="/mint4">Mint Enightment Banner</Button.Transaction>,
         ];
 
 
     return c.res({
-       
+        action: '/finalStats',
         image: image,
         intents: intents
     });
@@ -6073,7 +6077,232 @@ app.frame('/choseitem', (c) => {
 });
 
 
-app.transaction('/mint', (c) => {
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
+app.transaction('/mint', async (c, next) => {
+  await next();
+  const txParams = await c.res.json();
+  txParams.attribution = false;
+  console.log(txParams);
+  c.res = new Response(JSON.stringify(txParams), {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+},
+async (c) => {
+  const address = c.address;
+
+  // console.log('address', address);
+  //console.log('Button', Button.Transaction key);
+
+  return c.contract({
+    abi,
+    functionName: 'claim',
+    args: [
+      address as `0x${string}`, // _receiver address
+      0n, // _tokenId as uint256
+      1n, // _quantity as uint256
+      '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE', // _currency address
+      0n, // _pricePerToken as uint256
+      {
+        proof: [], // _allowlistProof.proof as bytes32[]
+        quantityLimitPerWallet: 100n, // _allowlistProof.quantityLimitPerWallet as uint256
+        pricePerToken: 0n, // _allowlistProof.pricePerToken as uint256
+        currency: '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE' // _allowlistProof.currency address
+      },
+      '0x' // _data as bytes
+    ],
+    chainId: `eip155:421614`,
+    to: '0x7C5B213CAaf6ebbcB6F1B24a193307261B1F6e69',
+  });
+});
+
+
+
+
+
+app.transaction('/mint1', async (c, next) => {
+  await next();
+  const txParams = await c.res.json();
+  txParams.attribution = false;
+  console.log(txParams);
+  c.res = new Response(JSON.stringify(txParams), {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+},
+async (c) => {
+  const address = c.address;
+
+  // console.log('address', address);
+  //console.log('Button', Button.Transaction key);
+
+  return c.contract({
+    abi,
+    functionName: 'claim',
+    args: [
+      address as `0x${string}`, // _receiver address
+      0n, // _tokenId as uint256
+      1n, // _quantity as uint256
+      '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE', // _currency address
+      0n, // _pricePerToken as uint256
+      {
+        proof: [], // _allowlistProof.proof as bytes32[]
+        quantityLimitPerWallet: 100n, // _allowlistProof.quantityLimitPerWallet as uint256
+        pricePerToken: 0n, // _allowlistProof.pricePerToken as uint256
+        currency: '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE' // _allowlistProof.currency address
+      },
+      '0x' // _data as bytes
+    ],
+    chainId: `eip155:421614`,
+    to: '0x02AB336725f92d6EFB4BCBD0B379Fd38b629f9E4',
+  });
+});
+
+
+
+
+
+app.transaction('/mint2', async (c, next) => {
+  await next();
+  const txParams = await c.res.json();
+  txParams.attribution = false;
+  console.log(txParams);
+  c.res = new Response(JSON.stringify(txParams), {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+},
+async (c) => {
+  const address = c.address;
+
+  // console.log('address', address);
+  //console.log('Button', Button.Transaction key);
+
+  return c.contract({
+    abi,
+    functionName: 'claim',
+    args: [
+      address as `0x${string}`, // _receiver address
+      0n, // _tokenId as uint256
+      1n, // _quantity as uint256
+      '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE', // _currency address
+      0n, // _pricePerToken as uint256
+      {
+        proof: [], // _allowlistProof.proof as bytes32[]
+        quantityLimitPerWallet: 100n, // _allowlistProof.quantityLimitPerWallet as uint256
+        pricePerToken: 0n, // _allowlistProof.pricePerToken as uint256
+        currency: '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE' // _allowlistProof.currency address
+      },
+      '0x' // _data as bytes
+    ],
+    chainId: `eip155:421614`,
+    to: '0x3065D8c7090a4D0844781D287E2f827ab127A638',
+  });
+});
+
+
+
+app.transaction('/mint3', async (c, next) => {
+  await next();
+  const txParams = await c.res.json();
+  txParams.attribution = false;
+  console.log(txParams);
+  c.res = new Response(JSON.stringify(txParams), {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+},
+async (c) => {
+  const address = c.address;
+
+  // console.log('address', address);
+  //console.log('Button', Button.Transaction key);
+
+  return c.contract({
+    abi,
+    functionName: 'claim',
+    args: [
+      address as `0x${string}`, // _receiver address
+      0n, // _tokenId as uint256
+      1n, // _quantity as uint256
+      '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE', // _currency address
+      0n, // _pricePerToken as uint256
+      {
+        proof: [], // _allowlistProof.proof as bytes32[]
+        quantityLimitPerWallet: 100n, // _allowlistProof.quantityLimitPerWallet as uint256
+        pricePerToken: 0n, // _allowlistProof.pricePerToken as uint256
+        currency: '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE' // _allowlistProof.currency address
+      },
+      '0x' // _data as bytes
+    ],
+    chainId: `eip155:421614`,
+    to: '0xd173B5FEc26E09e028CeA70C1E3B13d62b27d5C3',
+  });
+});
+
+
+
+
+
+
+app.transaction('/mint4', async (c, next) => {
+  await next();
+  const txParams = await c.res.json();
+  txParams.attribution = false;
+  console.log(txParams);
+  c.res = new Response(JSON.stringify(txParams), {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+},
+async (c) => {
+  const address = c.address;
+
+  // console.log('address', address);
+  //console.log('Button', Button.Transaction key);
+
+  return c.contract({
+    abi,
+    functionName: 'claim',
+    args: [
+      address as `0x${string}`, // _receiver address
+      0n, // _tokenId as uint256
+      1n, // _quantity as uint256
+      '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE', // _currency address
+      0n, // _pricePerToken as uint256
+      {
+        proof: [], // _allowlistProof.proof as bytes32[]
+        quantityLimitPerWallet: 100n, // _allowlistProof.quantityLimitPerWallet as uint256
+        pricePerToken: 0n, // _allowlistProof.pricePerToken as uint256
+        currency: '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE' // _allowlistProof.currency address
+      },
+      '0x' // _data as bytes
+    ],
+    chainId: `eip155:421614`,
+    to: '0xC238a08F551d5943309A3E5C1B4D5A8F410e337d',
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+app.transaction('/mintdeprecated', (c) => {
   const address = c.address as Address;
 
   console.log('address', address);
@@ -6101,7 +6330,7 @@ app.transaction('/mint', (c) => {
 });
 
 
-app.transaction('/mint2', (c) => {
+app.transaction('/mint2deprecated', (c) => {
   const address = c.address as Address;
 
   console.log('address', address);
@@ -6150,6 +6379,7 @@ app.frame('/startGame', (c) => {
   }) 
 
 });
+
 
 
 
