@@ -44,7 +44,7 @@ export const app = new Frog({
 
 let player = {
   name: 'player',
-  life: 99,
+  life: 100,
   timegated: 1,
   forgednumber: 0,
   timeremaining: "9000",
@@ -88,7 +88,7 @@ let expirationTimeRem = new Date(Date.now() + 60000);
 
 
 let progressMarker = {
-  previousFrame: '/page2',
+  previousFrame: '/page6',
   backButton:1,
   inventorySlot1: 0,
   inventorySlot2: 0,
@@ -104,10 +104,10 @@ type CurrentFrame = string;
 type DeathtFrame = string;
 type TimerWatch = number;
 type FinalDecision = number;
-let farcasterid: FarcasterID = '20359';
-let currentframe: CurrentFrame = 'page2';
+let farcasterid: FarcasterID = '1';
+let currentframe: CurrentFrame = 'page6';
 let deathFrame: DeathtFrame = '/page17';
-let timerWatch: TimerWatch = 17172627846293;
+let timerWatch: TimerWatch = 1717262784622;
 let finalDecision: FinalDecision = 0
 
 interface DataItem {
@@ -265,7 +265,7 @@ app.frame('/firstframe', (c) => {
     let image;
     let intents;
 
-    player = { ...player, life: 99 };
+    player = { ...player, life: 100 };
     player = { ...player, hasGem: 0 };
     player = { ...player, metStranger: 0 };
     player = { ...player, framesLoaded: 0 };
@@ -386,7 +386,7 @@ app.frame('/page1', async (c) => {
   }
   
   return c.res({
-    image: 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmShPssfHHxWfEzBqkX9JkHK2YQq6yzQDEAGMH43E8JPZD',
+    image: 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmbbVUFjEpD6ScZtr398ko33aBP5UX99vXMBYtMNcGMiji',
     intents: [
       //<Button action={enemy1.name}>Continue</Button>, // example of how to pass a variable to the button
       //<Button action={`/${progressMarker.previousFrame}`}>Continue</Button>,
@@ -942,6 +942,7 @@ app.frame('/showPlayerStatus', (c) => {
     let image;
     let intents;
     let healthColour;
+    let healthPos;
     player.framesLoaded += 1;
 
     if (player.life > 30) {
@@ -951,6 +952,20 @@ app.frame('/showPlayerStatus', (c) => {
     } else {
 
       healthColour = 'red';
+
+    }
+
+    if (player.life > 99) {
+
+      healthPos = 'translate(-210%, 10%)';
+
+    } else if (player.life < 10) {
+
+      healthPos = 'translate(-480%, 10%)';
+
+    } else {
+
+      healthPos = 'translate(-280%, 10%)';
 
     }
 
@@ -992,7 +1007,7 @@ app.frame('/showPlayerStatus', (c) => {
                           position: 'absolute',  // Position the text absolutely
                           top: '50%',            // Adjust as needed to center the text vertically
                           left: '50%',           // Adjust as needed to center the text horizontally
-                          transform: 'translate(-280%, 10%)',  // Center the text using transform
+                          transform: healthPos,  // Center the text using transform
                           margin: '0',
                         }}
                       >
@@ -1038,7 +1053,7 @@ app.frame('/showPlayerStatus', (c) => {
                           position: 'absolute',  // Position the text absolutely
                           top: '50%',            // Adjust as needed to center the text vertically
                           left: '50%',           // Adjust as needed to center the text horizontally
-                          transform: 'translate(-280%, 10%)',  // Center the text using transform
+                          transform: healthPos,  // Center the text using transform
                           margin: '0',
                         }}
                       >
@@ -1095,7 +1110,7 @@ app.frame('/showPlayerStatus', (c) => {
                           position: 'absolute',  // Position the text absolutely
                           top: '50%',            // Adjust as needed to center the text vertically
                           left: '50%',           // Adjust as needed to center the text horizontally
-                          transform: 'translate(-280%, 10%)',  // Center the text using transform
+                          transform: healthPos,  // Center the text using transform
                           margin: '0',
                         }}
                       >
@@ -1140,7 +1155,7 @@ app.frame('/showPlayerStatus', (c) => {
                           position: 'absolute',  // Position the text absolutely
                           top: '50%',            // Adjust as needed to center the text vertically
                           left: '50%',           // Adjust as needed to center the text horizontally
-                          transform: 'translate(-280%, 10%)',  // Center the text using transform
+                          transform: healthPos,  // Center the text using transform
                           margin: '0',
                         }}
                       >
@@ -1196,7 +1211,7 @@ app.frame('/showPlayerStatus', (c) => {
                           position: 'absolute',  // Position the text absolutely
                           top: '50%',            // Adjust as needed to center the text vertically
                           left: '50%',           // Adjust as needed to center the text horizontally
-                          transform: 'translate(-280%, 10%)',  // Center the text using transform
+                          transform: healthPos,  // Center the text using transform
                           margin: '0',
                         }}
                       >
@@ -1240,7 +1255,7 @@ app.frame('/showPlayerStatus', (c) => {
                           position: 'absolute',  // Position the text absolutely
                           top: '50%',            // Adjust as needed to center the text vertically
                           left: '50%',           // Adjust as needed to center the text horizontally
-                          transform: 'translate(-280%, 10%)',  // Center the text using transform
+                          transform: healthPos,  // Center the text using transform
                           margin: '0',
                         }}
                       >
@@ -1296,7 +1311,7 @@ app.frame('/showPlayerStatus', (c) => {
                           position: 'absolute',  // Position the text absolutely
                           top: '50%',            // Adjust as needed to center the text vertically
                           left: '50%',           // Adjust as needed to center the text horizontally
-                          transform: 'translate(-280%, 10%)',  // Center the text using transform
+                          transform: healthPos,  // Center the text using transform
                           margin: '0',
                         }}
                       >
@@ -1341,7 +1356,7 @@ app.frame('/showPlayerStatus', (c) => {
                           position: 'absolute',  // Position the text absolutely
                           top: '50%',            // Adjust as needed to center the text vertically
                           left: '50%',           // Adjust as needed to center the text horizontally
-                          transform: 'translate(-280%, 10%)',  // Center the text using transform
+                          transform: healthPos,  // Center the text using transform
                           margin: '0',
                         }}
                       >
@@ -1903,8 +1918,19 @@ app.frame('/counterResult', (c) => {
     let intents;
     player.framesLoaded += 1;
     player.enemiesKilled += 1;
-
     progressMarker = { ...progressMarker, previousFrame: '/battle1narrative1' };
+    currentframe = "battle1narrative1";
+
+    updateData(farcasterid, currentframe, deathFrame, timerWatch, finalDecision)
+    .then(() => {
+      console.log('Data updated successfully');
+      console.log(farcasterid)
+    })
+    .catch((error) => {
+      console.error('Error updating data:', error.message);
+    });
+
+    
        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmRJ4fDthSYXavqiSVZG2ZvxuwXEYeaeJzb4TtgxgdqcEb';
         intents = [
            <Button action="/battle1narrative2">Continue</Button>,
@@ -2571,7 +2597,7 @@ app.frame('/SwiftAttack3', (c) => {
 
       } else {
 
-        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmUAJjwQKMfQdKp3RVkXnN765s3C7Dj2Uk7fPDm9LQXpMW';
+        image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmesZRhrTRQUtdU2NY732g3vqmxnA26mdqDXtGEWJHHjwA';
         intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
 
       }
@@ -2683,7 +2709,7 @@ app.frame('/HeavyAttack3', (c) => {
 
         } else {
 
-          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmUAJjwQKMfQdKp3RVkXnN765s3C7Dj2Uk7fPDm9LQXpMW';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmesZRhrTRQUtdU2NY732g3vqmxnA26mdqDXtGEWJHHjwA';
           intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
 
         }
@@ -2696,7 +2722,7 @@ app.frame('/HeavyAttack3', (c) => {
 
           } else {
 
-            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmUAJjwQKMfQdKp3RVkXnN765s3C7Dj2Uk7fPDm9LQXpMW';
+            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmesZRhrTRQUtdU2NY732g3vqmxnA26mdqDXtGEWJHHjwA';
             intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
 
           }
@@ -2784,12 +2810,12 @@ app.frame('/specialAttack3', (c) => {
         //unsuccessful special attack 
 
         if (specialRandomMiss3 < 1) {
-            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmUAJjwQKMfQdKp3RVkXnN765s3C7Dj2Uk7fPDm9LQXpMW';
+            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmesZRhrTRQUtdU2NY732g3vqmxnA26mdqDXtGEWJHHjwA';
             intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
 
         } else {
 
-            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmUAJjwQKMfQdKp3RVkXnN765s3C7Dj2Uk7fPDm9LQXpMW';
+            image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmesZRhrTRQUtdU2NY732g3vqmxnA26mdqDXtGEWJHHjwA';
             intents = [<Button action="/dodgeResult3">Dodge</Button>,<Button action="/counterResult3">Counter</Button>];
 
         }
@@ -2946,6 +2972,16 @@ app.frame('/counterResult3', (c) => {
       player.framesLoaded += 1;
       player.enemiesKilled += 1;
       progressMarker = { ...progressMarker, previousFrame: '/battle3transition' };
+      currentframe = "battle3transition";
+
+      updateData(farcasterid, currentframe, deathFrame, timerWatch, finalDecision)
+      .then(() => {
+        console.log('Data updated successfully');
+        console.log(farcasterid)
+      })
+      .catch((error) => {
+        console.error('Error updating data:', error.message);
+      });
 
           image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmTGxRnfVLAuRMAM1y6PjnQSkTYRZm1mobY8cvT4mTQ8TT';
 
@@ -4767,6 +4803,17 @@ app.frame('/counterResult2', (c) => {
       player.framesLoaded += 1;
       player.enemiesKilled += 1;
 
+      currentframe = "battle2transition";
+
+      updateData(farcasterid, currentframe, deathFrame, timerWatch, finalDecision)
+      .then(() => {
+        console.log('Data updated successfully');
+        console.log(farcasterid)
+      })
+      .catch((error) => {
+        console.error('Error updating data:', error.message);
+      });
+
           image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/Qmetu9BauybkB2cpmhF3XVaXF1sbpeUKzwxumZG5J1P3uF';
 
           intents = [
@@ -5384,6 +5431,16 @@ app.frame('/counterResult4', (c) => {
       player.enemiesKilled += 1;
       progressMarker = { ...progressMarker, previousFrame: '/battle4transition' };
 
+      currentframe = "battle4transition";
+
+      updateData(farcasterid, currentframe, deathFrame, timerWatch, finalDecision)
+      .then(() => {
+        console.log('Data updated successfully');
+      })
+      .catch((error) => {
+        console.error('Error updating data:', error.message);
+      });
+
           image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmTGxRnfVLAuRMAM1y6PjnQSkTYRZm1mobY8cvT4mTQ8TT';
          
           intents = [
@@ -5878,7 +5935,7 @@ app.frame('/blank1', (c) => {
         intents = [
         <Button action="/finalStats">See Stats</Button>,
         <Button.Transaction target="/mint1">Mint Northern Banner</Button.Transaction>,
-           
+
            
         ];
 
@@ -5983,7 +6040,7 @@ app.frame('/blank4', (c) => {
         intents = [
            
            <Button action="/finalStats">See Stats</Button>,
-           <Button.Transaction target="/mint4">Mint Enightment Banner</Button.Transaction>,
+           <Button.Transaction target="/mint4">Mint Enlightenment Banner</Button.Transaction>,
         ];
 
 
@@ -6036,7 +6093,8 @@ app.frame('/finalStats', (c) => {
             </div>
         );
         intents = [
-           
+         // <Button.Reset>Replay Adventure</Button.Reset>, 
+          <Button action="/">Replay Adventure</Button>,
            
         ];
 
@@ -6044,6 +6102,7 @@ app.frame('/finalStats', (c) => {
     return c.res({
        
         image: image,
+        intents: intents
     });
 });
 
@@ -6114,8 +6173,8 @@ async (c) => {
       },
       '0x' // _data as bytes
     ],
-    chainId: `eip155:421614`,
-    to: '0x7C5B213CAaf6ebbcB6F1B24a193307261B1F6e69',
+    chainId: `eip155:42161`,
+    to: '0x5E3e89838E344e64F783f532d289f4bB2B520459',
   });
 });
 
@@ -6145,7 +6204,7 @@ async (c) => {
     functionName: 'claim',
     args: [
       address as `0x${string}`, // _receiver address
-      0n, // _tokenId as uint256
+      1n, // _tokenId as uint256
       1n, // _quantity as uint256
       '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE', // _currency address
       0n, // _pricePerToken as uint256
@@ -6157,8 +6216,8 @@ async (c) => {
       },
       '0x' // _data as bytes
     ],
-    chainId: `eip155:421614`,
-    to: '0x02AB336725f92d6EFB4BCBD0B379Fd38b629f9E4',
+    chainId: `eip155:42161`,
+    to: '0x5E3e89838E344e64F783f532d289f4bB2B520459',
   });
 });
 
@@ -6188,7 +6247,7 @@ async (c) => {
     functionName: 'claim',
     args: [
       address as `0x${string}`, // _receiver address
-      0n, // _tokenId as uint256
+      2n, // _tokenId as uint256
       1n, // _quantity as uint256
       '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE', // _currency address
       0n, // _pricePerToken as uint256
@@ -6200,8 +6259,8 @@ async (c) => {
       },
       '0x' // _data as bytes
     ],
-    chainId: `eip155:421614`,
-    to: '0x3065D8c7090a4D0844781D287E2f827ab127A638',
+    chainId: `eip155:42161`,
+    to: '0x5E3e89838E344e64F783f532d289f4bB2B520459',
   });
 });
 
@@ -6229,7 +6288,7 @@ async (c) => {
     functionName: 'claim',
     args: [
       address as `0x${string}`, // _receiver address
-      0n, // _tokenId as uint256
+      3n, // _tokenId as uint256
       1n, // _quantity as uint256
       '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE', // _currency address
       0n, // _pricePerToken as uint256
@@ -6241,8 +6300,8 @@ async (c) => {
       },
       '0x' // _data as bytes
     ],
-    chainId: `eip155:421614`,
-    to: '0xd173B5FEc26E09e028CeA70C1E3B13d62b27d5C3',
+    chainId: `eip155:42161`,
+    to: '0x5E3e89838E344e64F783f532d289f4bB2B520459',
   });
 });
 
@@ -6273,7 +6332,7 @@ async (c) => {
     functionName: 'claim',
     args: [
       address as `0x${string}`, // _receiver address
-      0n, // _tokenId as uint256
+      4n, // _tokenId as uint256
       1n, // _quantity as uint256
       '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE', // _currency address
       0n, // _pricePerToken as uint256
@@ -6285,8 +6344,8 @@ async (c) => {
       },
       '0x' // _data as bytes
     ],
-    chainId: `eip155:421614`,
-    to: '0xC238a08F551d5943309A3E5C1B4D5A8F410e337d',
+    chainId: `eip155:42161`,
+    to: '0x5E3e89838E344e64F783f532d289f4bB2B520459',
   });
 });
 
