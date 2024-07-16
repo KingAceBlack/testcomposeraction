@@ -4966,7 +4966,7 @@ app.frame('/fight2-4', (c) => {
 
         if (fightRandomImage4 < 1) {
 
-          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmQuS8TNPSdQsZuTogSJyqycH4qFwTBcoVhacPqhpDNnT9';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmaxiXAZ4aha5nkWebQLpoCLDjd8vpSwLMksxN5XLs73gU';
           intents = [<Button action="/SwiftAttack4">Swift Attack</Button>,<Button action="/HeavyAttack4">Power Attack</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         } else if (fightRandomImage4 === 1) {
@@ -4983,7 +4983,7 @@ app.frame('/fight2-4', (c) => {
 
       if (fightRandomImage4 < 1) {
 
-          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmQuS8TNPSdQsZuTogSJyqycH4qFwTBcoVhacPqhpDNnT9';
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmaxiXAZ4aha5nkWebQLpoCLDjd8vpSwLMksxN5XLs73gU';
           intents = [<Button action="/SwiftAttack4">SwiftAtk</Button>,<Button action="/HeavyAttack4">PowerAtk</Button>,<Button action="/activatespecialAttack4">SpecialAtk</Button>,<Button action="/showPlayerStatus">Status</Button>];
 
         } else if (fightRandomImage4 === 1) {
