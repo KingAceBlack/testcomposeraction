@@ -60,7 +60,7 @@ let player = {
 
 let enemy1 = {
   name: 'enemy1',
-  life: 50, 
+  life: 75, 
 };
 
 let enemy2 = {
@@ -70,17 +70,17 @@ let enemy2 = {
 
 let enemy3 = {
   name: 'enemy3',
-  life: 70, 
+  life: 75, 
 };
 
 let enemy4 = {
   name: 'enemy4',
-  life: 60, 
+  life: 75, 
 };
 
 let enemy5 = {
   name: 'enemy5',
-  life: 60, 
+  life: 75, 
 };
 
 
@@ -400,11 +400,11 @@ app.frame('/page2', (c) => {
     let image;
     let intents;
 
-    enemy1 = { ...enemy1, life: 50 };
-    enemy2 = { ...enemy2, life: 60 };
-    enemy3 = { ...enemy3, life: 70 };
-    enemy4 = { ...enemy4, life: 60 };
-    enemy5 = { ...enemy5, life: 60 };
+    enemy1 = { ...enemy1, life: 75 };
+    enemy2 = { ...enemy2, life: 75 };
+    enemy3 = { ...enemy3, life: 75 };
+    enemy4 = { ...enemy4, life: 75 };
+    enemy5 = { ...enemy5, life: 75 };
 
     player.framesLoaded += 1;
         image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmPHukU9yW92rHXzaCK7rzaCpNezn2bHMv8PRqPKwbgWzk';
@@ -490,11 +490,11 @@ app.frame('/page6', (c) => {
     let intents;
     player.framesLoaded += 1;
 
-    enemy1 = { ...enemy1, life: 50 };
-    enemy2 = { ...enemy2, life: 60 };
-    enemy3 = { ...enemy3, life: 70 };
-    enemy4 = { ...enemy4, life: 60 };
-    enemy5 = { ...enemy5, life: 60 };
+    enemy1 = { ...enemy1, life: 75 };
+    enemy2 = { ...enemy2, life: 75 };
+    enemy3 = { ...enemy3, life: 75 };
+    enemy4 = { ...enemy4, life: 75 };
+    enemy5 = { ...enemy5, life: 75 };
 
 
         image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmZD1aqVQsnXGBGCaNzRkNbdW6dX562xNujTxgERgwaEqh';
