@@ -271,6 +271,8 @@ app.frame('/firstframe', (c) => {
     player = { ...player, framesLoaded: 0 };
     player = { ...player, specials: 3 };
     player = { ...player, enemiesKilled: 0 };
+    player = { ...player, death: 0 };
+    
 
 
 
@@ -1397,14 +1399,14 @@ app.frame('/fleedeath', (c) => {
   
   timerWatch = expirationTimeRem.setMinutes(expirationTimeRem.getMinutes() + 2);
 
-  /*updateData(farcasterid, currentframe, deathFrame, timerWatch)
+  updateData(farcasterid, currentframe, deathFrame, timerWatch)
     .then(() => {
       console.log('Data updated successfully');
       
     })
     .catch((error) => {
       console.error('Error updating data:', error.message);
-    });*/
+    });
 
   return c.res({
 
@@ -1414,7 +1416,7 @@ app.frame('/fleedeath', (c) => {
     
     intents: [
      
-      <Button action="/timegate">Continue</Button>,
+      <Button action="/timegate">Flee</Button>,
      
     ],
   }) 
@@ -2110,14 +2112,15 @@ app.frame('/trapwounded', (c) => {
     
     timerWatch = expirationTimeRem.setMinutes(expirationTimeRem.getMinutes() + 2);
 
-      /*updateData(farcasterid, currentframe, deathFrame, timerWatch)
+      updateData(farcasterid, currentframe, deathFrame, timerWatch)
       .then(() => {
         console.log('Data updated successfully');
         
       })
       .catch((error) => {
         console.error('Error updating data:', error.message);
-      });*/
+      });
+
         image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmNnrvqokpzjXG7gwEyeMZFYT1PHqnJRcvqkd26o9yCeGM';
 
         intents = [
@@ -5498,16 +5501,48 @@ app.frame('/timegate', (c) => {
     return c.res({
         image: 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmVbR7xJACfcjyCwMD4ToB5uwWR1fdZrwcBEx2ATaGm28T',
         intents: [
-            <Button action="/checktime">Continue</Button>,
+            <Button action="/checktime">Rest</Button>,
         ],
         
     });
 });
 
 
+  app.frame('/checktime', (c) => {
+      let image;
+      let intents;
+      player.framesLoaded += 1;
+      player = { ...player, life: 100 };
+      enemy1 = { ...enemy1, life: 75 };
+      enemy2 = { ...enemy2, life: 75 };
+      enemy3 = { ...enemy3, life: 75 };
+      enemy4 = { ...enemy4, life: 75 };
+      enemy5 = { ...enemy5, life: 75 };
+      
+
+
+      currentframe = "checktime";
+
+
+          image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmcvQp8sCpq1ELVJeij5tx81iiDbfJzkaCaw9N7Pe7kgjJ';
+         
+          intents = [
+      
+            <Button action={progressMarker.deathFrame}>Proceed</Button>,
+
+          ];
+
+
+      return c.res({
+         
+          image: image,
+          intents: intents
+      });
+  });
+
 
 //this function countdowns
-app.frame('/checktime', (c) => {
+/*app.frame('/checktime', (c) => {
     let image;
     let intents;
     const timeDifference = timerWatch - Date.now();
@@ -5632,7 +5667,7 @@ app.frame('/checktime', (c) => {
         intents: intents
     });
 });
-
+*/
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -5933,7 +5968,7 @@ app.frame('/blank1', (c) => {
 
 
         intents = [
-        <Button action="/finalStats">See Stats</Button>,
+        <Button action="/finalStats2">See Stats</Button>,
         <Button.Transaction target="/mint1">Mint Northern Banner</Button.Transaction>,
 
            
@@ -5968,7 +6003,7 @@ app.frame('/blank2', (c) => {
 
 
         intents = [
-           <Button action="/finalStats">See Stats</Button>,
+           <Button action="/finalStats2">See Stats</Button>,
            <Button.Transaction target="/mint2">Mint Southern Banner</Button.Transaction>,
            
         ];
@@ -6003,7 +6038,7 @@ app.frame('/blank3', (c) => {
 
 
         intents = [
-           <Button action="/finalStats">See Stats</Button>,
+           <Button action="/finalStats2">See Stats</Button>,
            <Button.Transaction target="/mint3">Mint Verothi Banner</Button.Transaction>,
            
         ];
@@ -6039,7 +6074,7 @@ app.frame('/blank4', (c) => {
 
         intents = [
            
-           <Button action="/finalStats">See Stats</Button>,
+           <Button action="/finalStats2">See Stats</Button>,
            <Button.Transaction target="/mint4">Mint Enlightenment Banner</Button.Transaction>,
         ];
 
@@ -6091,7 +6126,7 @@ app.frame('/finalStats', (c) => {
 
 
     }
-    image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmdrXRE9FgBL9VkGVZXZ7nRAEidBPG3NcV8TrqkBk6371c';
+    
 
         image = (
             <div
@@ -6140,7 +6175,119 @@ app.frame('/finalStats', (c) => {
     });
 });
 
+app.frame('/finalStats2', (c) => {
+    let image;
+    let intents;
+    player.framesLoaded += 1;
 
+    if (player.framesLoaded < 20) {
+
+      player.framesLoaded += 50;
+
+        if (player.enemiesKilled < 1) {
+
+          player.enemiesKilled += 2
+
+        } else {
+
+          player.enemiesKilled += 1
+
+        }
+
+    } else if (player.framesLoaded < 40) {
+
+       player.framesLoaded += 30;
+
+        if (player.enemiesKilled < 1) {
+
+          player.enemiesKilled += 2
+
+        } else {
+
+          player.enemiesKilled += 1
+
+        }
+
+    } else {
+
+
+
+    }
+    
+
+        image = (
+            <div
+                style={{
+                    alignItems: 'center',
+                    backgroundImage: 'url(https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmcLTne4zVtLRzjkeBDRmsQ2sQj5dadxAwfuYUH6XCBs4e)',
+                    backgroundSize: '100% 100%',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flexWrap: 'nowrap',
+                    height: '100%',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                    width: '100%',
+                    color: '#E1A411',
+                    fontStyle: 'normal',
+                    letterSpacing: '-0.025em',
+                    lineHeight: 1.4,
+                    marginTop: 0,
+                    padding: '0 120px',
+                    whiteSpace: 'pre-wrap',
+                }}
+            >
+               <p style={{ fontSize : '50px', margin : '0', marginTop : '-200', color: 'red'  }}> {`Health remaining : ${player.life}`} </p>
+               <p style={{ fontSize : '50px', margin : '0', marginCenter : '-150', color: 'red'  }}> {`Enemies Defeated : ${player.enemiesKilled}`} </p>
+               <p style={{ fontSize : '50px', margin : '0', marginCenter : '-50', color: 'red'  }}> {`Deaths : ${player.death}`} </p>
+               <p style={{ fontSize : '50px', margin : '0', marginCenter : '+150', color: 'red'  }}> {`Total Frames Loaded : ${player.framesLoaded}`} </p>
+               <p style={{ fontSize : '50px', margin : '0', marginCenter : '+250', color: 'red'  }}> {`End Choice : ${player.finalDecision}`} </p>
+    
+              
+            </div>
+        );
+        
+         // <Button.Reset>Replay Adventure</Button.Reset>, 
+         if (player.finalDecision === 1) {
+            intents = [
+            <Button.Transaction target="/mint1">Mint Northern Banner</Button.Transaction>,
+            <Button action="/">Replay Adventure</Button>,
+            ];
+
+          } else if (player.finalDecision === 2) {
+            intents = [
+            <Button.Transaction target="/mint2">Mint Southern Banner</Button.Transaction>,
+            <Button action="/">Replay Adventure</Button>,
+            ];
+
+
+          } else if (player.finalDecision === 3) {
+            intents = [
+            <Button.Transaction target="/mint3">Mint Verothi Banner</Button.Transaction>,
+            <Button action="/">Replay Adventure</Button>,
+            ];
+
+          } else {
+            intents = [
+            <Button.Transaction target="/mint4">Mint Enlightenment Banner</Button.Transaction>,
+            <Button action="/">Replay Adventure</Button>,
+            ];
+
+          
+          }
+          
+           
+        
+
+
+    return c.res({
+       
+        image: image,
+        intents: intents
+    });
+});
 
 
 
