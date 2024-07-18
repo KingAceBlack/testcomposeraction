@@ -6057,6 +6057,40 @@ app.frame('/finalStats', (c) => {
     let image;
     let intents;
     player.framesLoaded += 1;
+
+    if (player.framesLoaded < 20) {
+
+      player.framesLoaded += 50;
+
+        if (player.enemiesKilled < 1) {
+
+          player.enemiesKilled += 2
+
+        } else {
+
+          player.enemiesKilled += 1
+
+        }
+
+    } else if (player.framesLoaded < 40) {
+
+       player.framesLoaded += 30;
+
+        if (player.enemiesKilled < 1) {
+
+          player.enemiesKilled += 2
+
+        } else {
+
+          player.enemiesKilled += 1
+
+        }
+
+    } else {
+
+
+
+    }
     image = 'https://violet-worldwide-sole-637.mypinata.cloud/ipfs/QmdrXRE9FgBL9VkGVZXZ7nRAEidBPG3NcV8TrqkBk6371c';
 
         image = (
