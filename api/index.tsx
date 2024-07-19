@@ -284,7 +284,7 @@ app.frame('/firstframe', (c) => {
         intents = [
            
            <Button action="/startframe">Continue</Button>,
-           <Button.Link href="https://paragraph.xyz/@oexcess.eth/preview/oLuj50fHUK6FeqFePlqd">Guide</Button.Link>,
+           <Button.Link href="https://paragraph.xyz/@oexcess.eth/lorecast">Guide</Button.Link>,
         ];
 
 
