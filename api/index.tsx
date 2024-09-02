@@ -7,7 +7,7 @@ app.composerAction(
   (c) => {
     return c.res({
       title: 'Mycoolaction',
-      url: 'https://composing-lorecast.vercel.app/' 
+      url: 'https://composing-lorecast.vercel.app' 
     })
   },
   {
