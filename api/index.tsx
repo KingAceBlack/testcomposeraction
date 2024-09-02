@@ -1,18 +1,4 @@
-import { Button, Frog, TextInput } from 'frog'
-import { devtools } from 'frog/dev'
-import { serveStatic } from 'frog/serve-static'
-// import { neynar } from 'frog/hubs'
-import { handle } from 'frog/vercel'
-import type { Address } from 'viem'
-import { arbitrumNova } from 'viem/chains'; // Ensure this import is correct
-
-
-
-
-
-
-
-
+import { Frog, TextInput } from 'frog'
  
 export const app = new Frog({ title: 'Frog Frame' })
  
@@ -20,20 +6,19 @@ app.composerAction(
   '/',
   (c) => {
     return c.res({
-      title: 'My Composr Action',
-      url: 'https://google.com'
+      title: 'My Composer Action',
+      url: 'https://example.com' 
     })
   },
   {
+    /* Name of the action – 14 characters max. */
     name: 'Some Composer Action',
+    /* Description of the action – 20 characters max. */
     description: 'Cool Composer Action',
     icon: 'image',
     imageUrl: 'https://frog.fm/logo-light.svg',
   }
 )
-
-
-
 
 import { postComposerCreateCastActionMessage } from 'frog/next'
  
@@ -44,22 +29,3 @@ function App() {
     </button>
   )
 }
-
-
-
-
-//////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-// @ts-ignore
-const isEdgeFunction = typeof EdgeFunction !== 'undefined'
-const isProduction = isEdgeFunction || import.meta.env?.MODE !== 'development'
-devtools(app, isProduction ? { assetsPath: '/.frog' } : { serveStatic })
-
-export const GET = handle(app)
-export const POST = handle(app)
