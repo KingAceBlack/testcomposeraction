@@ -6,13 +6,13 @@ app.composerAction(
   '/',
   (c) => {
     return c.res({
-      title: 'My Composer Action',
-      url: 'https://example.com' 
+      title: 'Mycoolaction',
+      url: 'https://composing-lorecast.vercel.app/' 
     })
   },
   {
     /* Name of the action – 14 characters max. */
-    name: 'Some Composer Action',
+    name: 'coolaction',
     /* Description of the action – 20 characters max. */
     description: 'Cool Composer Action',
     icon: 'image',
